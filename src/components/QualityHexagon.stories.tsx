@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { QualityHexagon, QualityHexagonCompact, QualityHexagonDetailed, QualityMetrics } from './QualityHexagon';
+import { QualityHexagon, QualityHexagonCompact, QualityHexagonDetailed, QualityHexagonExpandable, QualityMetrics } from './QualityHexagon';
 import { slateTheme } from '@principal-ade/industry-theme';
 
 const meta = {
@@ -407,6 +407,38 @@ export const AllTiers: Story = {
     docs: {
       description: {
         story: 'Overview of all quality tiers from none to platinum.'
+      }
+    }
+  }
+};
+
+export const Expandable: Story = {
+  args: {
+    metrics: goodMetrics,
+    tier: 'gold',
+    theme: slateTheme
+  },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 16, width: 300 }}>
+      <QualityHexagonExpandable
+        metrics={excellentMetrics}
+        tier="platinum"
+        theme={slateTheme}
+        packageName="@principal-ade/core"
+        packageVersion="1.2.3"
+      />
+      <QualityHexagonExpandable
+        metrics={goodMetrics}
+        tier="gold"
+        theme={slateTheme}
+        defaultExpanded={true}
+      />
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: 'Click the hexagon to expand/collapse the metrics breakdown below.'
       }
     }
   }

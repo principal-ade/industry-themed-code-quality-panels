@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { cn } from '../lib/utils';
 import type { Theme } from '@principal-ade/industry-theme';
 import type { QualityMetrics } from '@principal-ai/codebase-composition';
@@ -446,6 +447,224 @@ export function QualityHexagonDetailed({
             );
           })}
         </div>
+      </div>
+    </div>
+  );
+}
+
+interface QualityHexagonExpandableProps extends Pick<QualityHexagonProps, 'metrics' | 'tier' | 'theme' | 'className'> {
+  packageName?: string;
+  packageVersion?: string;
+  onRefresh?: () => void;
+  isRefreshing?: boolean;
+  defaultExpanded?: boolean;
+}
+
+export function QualityHexagonExpandable({
+  metrics,
+  tier,
+  theme,
+  className,
+  packageName,
+  packageVersion,
+  onRefresh,
+  isRefreshing = false,
+  defaultExpanded = false,
+}: QualityHexagonExpandableProps) {
+  const [expanded, setExpanded] = React.useState(defaultExpanded);
+  const themeColors = getThemeColors(theme);
+  const colors = themeColors.tierColors[tier] ?? themeColors.tierColors.none;
+  const metricConfig = getMetricConfig(themeColors);
+
+  const hasHeader = packageName || onRefresh;
+
+  return (
+    <div
+      className={cn(className)}
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 12,
+        padding: 16,
+        borderRadius: 8,
+        backgroundColor: colors.bg,
+        flex: '1 1 200px',
+      }}
+    >
+      {hasHeader && (
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 12,
+        }}>
+          {packageName ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 2 }}>
+              {packageName.startsWith('@') && packageName.includes('/') ? (
+                <>
+                  <span style={{
+                    fontSize: 12,
+                    color: theme.colors.textMuted,
+                  }}>
+                    {packageName.split('/')[0]}
+                  </span>
+                  <span style={{
+                    fontSize: 14,
+                    fontWeight: 500,
+                    color: colors.stroke,
+                  }}>
+                    {packageName.split('/')[1]}
+                  </span>
+                </>
+              ) : (
+                <span style={{
+                  fontSize: 14,
+                  fontWeight: 500,
+                  color: colors.stroke,
+                }}>
+                  {packageName}
+                </span>
+              )}
+              {packageVersion && (
+                <span style={{
+                  fontSize: 12,
+                  color: theme.colors.textMuted,
+                }}>
+                  v{packageVersion}
+                </span>
+              )}
+            </div>
+          ) : <span />}
+          {onRefresh && (
+            <button
+              onClick={onRefresh}
+              disabled={isRefreshing}
+              style={{
+                padding: 6,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                border: `1px solid ${theme.colors.border}`,
+                borderRadius: 4,
+                background: theme.colors.surface,
+                color: theme.colors.textMuted,
+                cursor: isRefreshing ? 'not-allowed' : 'pointer',
+                opacity: isRefreshing ? 0.6 : 1,
+              }}
+              title="Refresh"
+            >
+              <svg
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                style={{
+                  animation: isRefreshing ? 'spin 1s linear infinite' : 'none',
+                }}
+              >
+                <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                <path d="M3 3v5h5" />
+                <path d="M3 12a9 9 0 0 0 9 9 9.75 9.75 0 0 0 6.74-2.74L21 16" />
+                <path d="M16 16h5v5" />
+              </svg>
+            </button>
+          )}
+        </div>
+      )}
+
+      {/* Clickable hexagon */}
+      <div
+        onClick={() => setExpanded(!expanded)}
+        style={{
+          cursor: 'pointer',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+      >
+        <div style={{ width: 200, height: 200 }}>
+          <QualityHexagon
+            metrics={metrics}
+            tier={tier}
+            theme={theme}
+            showLabels={true}
+            showValues={false}
+          />
+        </div>
+      </div>
+
+      {/* Expandable metrics breakdown */}
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateRows: expanded ? '1fr' : '0fr',
+          transition: 'grid-template-rows 0.3s ease',
+        }}
+      >
+        <div style={{ overflow: 'hidden' }}>
+          <div style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 8,
+            padding: '8px 24px',
+            borderTop: `1px solid ${theme.colors.border}`,
+            marginTop: 8,
+          }}>
+            {metricConfig.map(({ key, label, color }) => {
+              const value = metrics[key as keyof QualityMetrics];
+
+              return (
+                <div key={key} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+                  <span style={{
+                    fontSize: 14,
+                    color: theme.colors.textMuted,
+                  }}>
+                    {label}{key === 'deadCode' ? ' ↓' : ''}
+                  </span>
+                  <span style={{
+                    fontSize: 14,
+                    fontWeight: 500,
+                    color: color,
+                  }}>
+                    {value}%
+                  </span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      {/* Expand/collapse indicator */}
+      <div
+        onClick={() => setExpanded(!expanded)}
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          cursor: 'pointer',
+          padding: 4,
+        }}
+      >
+        <svg
+          width="16"
+          height="16"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke={theme.colors.textMuted}
+          strokeWidth="2"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          style={{
+            transform: expanded ? 'rotate(180deg)' : 'rotate(0deg)',
+            transition: 'transform 0.3s ease',
+          }}
+        >
+          <path d="m6 9 6 6 6-6" />
+        </svg>
       </div>
     </div>
   );

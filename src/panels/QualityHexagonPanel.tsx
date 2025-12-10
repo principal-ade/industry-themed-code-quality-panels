@@ -4,7 +4,7 @@ import { ThemeProvider, useTheme } from '@principal-ade/industry-theme';
 import type { PanelComponentProps } from '../types';
 import type { QualityMetrics } from '@principal-ai/codebase-composition';
 import {
-  QualityHexagonDetailed,
+  QualityHexagonExpandable,
   QualityTier,
   calculateQualityTier,
 } from '../components/QualityHexagon';
@@ -141,18 +141,23 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
   return (
     <div
       style={{
-        padding: 20,
         fontFamily: theme.fonts.body,
         height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        gap: 16,
+        minHeight: 0,
         backgroundColor: theme.colors.background,
         color: theme.colors.text,
         overflowY: 'auto',
         boxSizing: 'border-box',
       }}
     >
+      <div
+        style={{
+          padding: 20,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 16,
+        }}
+      >
       {/* Header */}
       <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
         <Hexagon size={24} color={tierColors[overallTier]} />
@@ -194,7 +199,7 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
       </div>
 
       {/* Quality Hexagons for each package */}
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
+      <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, minHeight: 0 }}>
         {isLoading ? (
           <div style={{
             padding: 40,
@@ -215,19 +220,18 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
           packages.map((pkg) => {
             const tier = calculateQualityTier(pkg.metrics);
             return (
-              <QualityHexagonDetailed
+              <QualityHexagonExpandable
                 key={pkg.name}
                 metrics={pkg.metrics}
                 tier={tier}
                 theme={theme}
                 packageName={pkg.name}
                 packageVersion={pkg.version}
-                onRefresh={() => handleRefreshPackage(pkg.name)}
-                isRefreshing={refreshingPackages.has(pkg.name)}
               />
             );
           })
         )}
+      </div>
       </div>
     </div>
   );

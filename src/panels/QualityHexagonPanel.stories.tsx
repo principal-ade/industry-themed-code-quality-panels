@@ -25,13 +25,6 @@ const meta = {
     },
   },
   tags: ['autodocs'],
-  decorators: [
-    (Story) => (
-      <div style={{ height: '100vh', background: '#f5f5f5', overflow: 'hidden' }}>
-        <Story />
-      </div>
-    ),
-  ],
   args: {
     context: createMockContext(),
     actions: createMockActions(),

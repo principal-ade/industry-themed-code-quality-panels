@@ -272,7 +272,11 @@ export const MockPanelProvider: React.FC<{
   const actions = createMockActions(actionsOverrides);
   const events = createMockEvents();
 
-  return <>{children({ context, actions, events })}</>;
+  return (
+    <div style={{ height: '100vh', width: '100%' }}>
+      {children({ context, actions, events })}
+    </div>
+  );
 };
 
 /**
