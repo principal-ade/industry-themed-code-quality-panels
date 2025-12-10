@@ -8,6 +8,11 @@ import {
   QualityTier,
   calculateQualityTier,
 } from '../components/QualityHexagon';
+import {
+  QualityEmptyState,
+  checkFileExistsInTree,
+  WORKFLOW_FILE_PATH,
+} from '../components/QualityEmptyState';
 
 // Mock package data - in real usage, this would come from a quality slice
 const mockPackages: Array<{
@@ -56,6 +61,12 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
   const qualitySlice = context.getSlice<QualitySliceData>('quality');
   const hasQualitySlice = context.hasSlice('quality');
   const isLoading = qualitySlice?.loading ?? false;
+
+  // Get file tree to check for workflow presence
+  const fileTreeSlice = context.getSlice<{ allFiles?: Array<{ relativePath?: string; path?: string }> }>('fileTree');
+  const hasWorkflow = React.useMemo(() => {
+    return checkFileExistsInTree(fileTreeSlice?.data ?? undefined, WORKFLOW_FILE_PATH);
+  }, [fileTreeSlice?.data]);
 
   // Determine packages to display
   // - If slice exists and has data, use it
@@ -209,13 +220,10 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
             Loading quality metrics...
           </div>
         ) : packages.length === 0 ? (
-          <div style={{
-            padding: 40,
-            textAlign: 'center',
-            color: theme.colors.textMuted,
-          }}>
-            No packages found
-          </div>
+          <QualityEmptyState
+            theme={theme}
+            hasWorkflow={hasWorkflow}
+          />
         ) : (
           packages.map((pkg) => {
             const tier = calculateQualityTier(pkg.metrics);

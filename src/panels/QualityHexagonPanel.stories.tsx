@@ -374,3 +374,128 @@ export const Loading: Story = {
     },
   },
 };
+
+/**
+ * Empty state - no workflow installed
+ * Shows setup instructions for installing the Quality Lens CLI or GitHub Action
+ */
+export const EmptyNoWorkflow: Story = {
+  render: () => {
+    const mockSlices = new Map<string, DataSlice>();
+    // Quality slice exists but has no packages
+    mockSlices.set('quality', {
+      scope: 'repository',
+      name: 'quality',
+      data: { packages: [], lastUpdated: new Date().toISOString() },
+      loading: false,
+      error: null,
+      refresh: async () => {},
+    });
+    // File tree without the workflow file
+    mockSlices.set('fileTree', {
+      scope: 'repository',
+      name: 'fileTree',
+      data: {
+        allFiles: [
+          { relativePath: 'src/index.ts', path: '/project/src/index.ts' },
+          { relativePath: 'package.json', path: '/project/package.json' },
+          { relativePath: 'README.md', path: '/project/README.md' },
+        ],
+      },
+      loading: false,
+      error: null,
+      refresh: async () => {},
+    });
+
+    return (
+      <MockPanelProvider
+        contextOverrides={{
+          slices: mockSlices,
+          currentScope: {
+            type: 'repository',
+            workspace: {
+              name: 'my-workspace',
+              path: '/Users/developer/my-workspace',
+            },
+            repository: {
+              name: 'new-project',
+              path: '/Users/developer/new-project',
+            },
+          },
+        }}
+      >
+        {(props) => <QualityHexagonPanel {...props} />}
+      </MockPanelProvider>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Shows setup instructions when the Quality Lens workflow is not installed.',
+      },
+    },
+  },
+};
+
+/**
+ * Empty state - workflow installed, waiting for data
+ * Shows that the workflow is detected and waiting for the first CI run
+ */
+export const EmptyWithWorkflow: Story = {
+  render: () => {
+    const mockSlices = new Map<string, DataSlice>();
+    // Quality slice exists but has no packages
+    mockSlices.set('quality', {
+      scope: 'repository',
+      name: 'quality',
+      data: { packages: [], lastUpdated: new Date().toISOString() },
+      loading: false,
+      error: null,
+      refresh: async () => {},
+    });
+    // File tree WITH the workflow file
+    mockSlices.set('fileTree', {
+      scope: 'repository',
+      name: 'fileTree',
+      data: {
+        allFiles: [
+          { relativePath: 'src/index.ts', path: '/project/src/index.ts' },
+          { relativePath: 'package.json', path: '/project/package.json' },
+          { relativePath: '.github/workflows/quality-lens.yml', path: '/project/.github/workflows/quality-lens.yml' },
+          { relativePath: 'README.md', path: '/project/README.md' },
+        ],
+      },
+      loading: false,
+      error: null,
+      refresh: async () => {},
+    });
+
+    return (
+      <MockPanelProvider
+        contextOverrides={{
+          slices: mockSlices,
+          currentScope: {
+            type: 'repository',
+            workspace: {
+              name: 'my-workspace',
+              path: '/Users/developer/my-workspace',
+            },
+            repository: {
+              name: 'project-with-workflow',
+              path: '/Users/developer/project-with-workflow',
+            },
+          },
+        }}
+      >
+        {(props) => <QualityHexagonPanel {...props} />}
+      </MockPanelProvider>
+    );
+  },
+  parameters: {
+    docs: {
+      description: {
+        story: 'Shows the waiting state when the Quality Lens workflow is installed but no data has been collected yet.',
+      },
+    },
+  },
+};
