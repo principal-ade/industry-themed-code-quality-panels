@@ -5,6 +5,14 @@ import type { QualityMetrics } from '@principal-ai/codebase-composition';
 
 export type { QualityMetrics };
 export type QualityTier = 'none' | 'bronze' | 'silver' | 'gold' | 'platinum';
+export type MetricKey = 'types' | 'documentation' | 'tests' | 'deadCode' | 'formatting' | 'linting';
+
+export interface VertexHoverInfo {
+  key: MetricKey;
+  label: string;
+  value: number;
+  color: string;
+}
 
 interface QualityHexagonProps {
   metrics: QualityMetrics;
@@ -13,6 +21,9 @@ interface QualityHexagonProps {
   showLabels?: boolean;
   showValues?: boolean;
   className?: string;
+  onVertexHover?: (info: VertexHoverInfo) => void;
+  onVertexLeave?: () => void;
+  onVertexClick?: (info: VertexHoverInfo) => void;
 }
 
 // Helper to extract theme colors
@@ -86,7 +97,10 @@ export function QualityHexagon({
   theme,
   showLabels = false,
   showValues = false,
-  className
+  className,
+  onVertexHover,
+  onVertexLeave,
+  onVertexClick,
 }: QualityHexagonProps) {
   const themeColors = getThemeColors(theme);
   const colors = themeColors.tierColors[tier] ?? themeColors.tierColors.none;
@@ -178,8 +192,9 @@ export function QualityHexagon({
       />
 
       {/* Vertex dots */}
-      {metricConfig.map(({ key, angle }) => {
-        let value = metrics[key as keyof QualityMetrics];
+      {metricConfig.map(({ key, label, color, angle }) => {
+        const rawValue = metrics[key as keyof QualityMetrics];
+        let value = rawValue;
         // Invert dead code metric for display
         if (key === 'deadCode') {
           value = 100 - value;
@@ -187,8 +202,37 @@ export function QualityHexagon({
         const point = calculateMetricPoint(center, radius, angle, 100);
         const dataPoint = calculateMetricPoint(center, radius, angle, value);
 
+        const vertexInfo: VertexHoverInfo = {
+          key: key as MetricKey,
+          label,
+          value: rawValue,
+          color,
+        };
+
+        const handleMouseEnter = () => {
+          onVertexHover?.(vertexInfo);
+        };
+
+        const handleClick = (e: React.MouseEvent) => {
+          e.stopPropagation();
+          onVertexClick?.(vertexInfo);
+        };
+
         return (
-          <g key={key}>
+          <g
+            key={key}
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={onVertexLeave}
+            onClick={handleClick}
+            style={{ cursor: (onVertexHover || onVertexClick) ? 'pointer' : 'default' }}
+          >
+            {/* Larger invisible hit area for easier hovering */}
+            <circle
+              cx={point.x}
+              cy={point.y}
+              r={dotSize * 2.5}
+              fill="transparent"
+            />
             {/* Outer vertex marker */}
             <circle
               cx={point.x}
