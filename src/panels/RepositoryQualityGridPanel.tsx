@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider, useTheme } from '@principal-ade/industry-theme';
+import { useTheme } from '@principal-ade/industry-theme';
 import type { PanelComponentProps } from '../types';
 import type { QualityMetrics } from '@principal-ai/codebase-composition';
 import {
@@ -202,10 +202,4 @@ const RepositoryQualityGridPanelContent: React.FC<PanelComponentProps> = ({
  * RepositoryQualityGridPanel - A panel for visualizing quality metrics
  * across multiple repositories in a flat grid layout.
  */
-export const RepositoryQualityGridPanel: React.FC<PanelComponentProps> = (props) => {
-  return (
-    <ThemeProvider>
-      <RepositoryQualityGridPanelContent {...props} />
-    </ThemeProvider>
-  );
-};
+export const RepositoryQualityGridPanel = RepositoryQualityGridPanelContent;

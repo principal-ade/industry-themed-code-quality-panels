@@ -1,4 +1,5 @@
 import React from 'react';
+import { ThemeProvider } from '@principal-ade/industry-theme';
 import type {
   PanelComponentProps,
   PanelContextValue,
@@ -273,9 +274,11 @@ export const MockPanelProvider: React.FC<{
   const events = createMockEvents();
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
-      {children({ context, actions, events })}
-    </div>
+    <ThemeProvider>
+      <div style={{ height: '100vh', width: '100%' }}>
+        {children({ context, actions, events })}
+      </div>
+    </ThemeProvider>
   );
 };
 

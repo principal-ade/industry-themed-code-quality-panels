@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { ThemeProvider } from '@principal-ade/industry-theme';
 import { RepositoryQualityGridPanel } from './RepositoryQualityGridPanel';
 import { createMockPanelProps } from '../mocks/panelContext';
 
@@ -31,9 +32,11 @@ export const Default: Story = {
     ...createMockPanelProps(),
   },
   render: (args) => (
-    <div style={{ height: '100vh', width: '100%' }}>
-      <RepositoryQualityGridPanel {...args} />
-    </div>
+    <ThemeProvider>
+      <div style={{ height: '100vh', width: '100%' }}>
+        <RepositoryQualityGridPanel {...args} />
+      </div>
+    </ThemeProvider>
   ),
 };
 
@@ -42,9 +45,11 @@ export const InContainer: Story = {
     ...createMockPanelProps(),
   },
   render: (args) => (
-    <div style={{ height: 600, width: 800, border: '1px solid #333' }}>
-      <RepositoryQualityGridPanel {...args} />
-    </div>
+    <ThemeProvider>
+      <div style={{ height: 600, width: 800, border: '1px solid #333' }}>
+        <RepositoryQualityGridPanel {...args} />
+      </div>
+    </ThemeProvider>
   ),
   parameters: {
     docs: {

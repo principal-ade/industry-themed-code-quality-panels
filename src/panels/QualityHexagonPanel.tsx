@@ -1,6 +1,6 @@
 import React from 'react';
 import { Hexagon } from 'lucide-react';
-import { ThemeProvider, useTheme } from '@principal-ade/industry-theme';
+import { useTheme } from '@principal-ade/industry-theme';
 import type { PanelComponentProps } from '../types';
 import type { QualityMetrics } from '@principal-ai/codebase-composition';
 import {
@@ -248,10 +248,4 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
 /**
  * QualityHexagonPanel - A panel for visualizing code quality metrics
  */
-export const QualityHexagonPanel: React.FC<PanelComponentProps> = (props) => {
-  return (
-    <ThemeProvider>
-      <QualityHexagonPanelContent {...props} />
-    </ThemeProvider>
-  );
-};
+export const QualityHexagonPanel = QualityHexagonPanelContent;
