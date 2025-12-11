@@ -1,5 +1,6 @@
 import React from 'react';
-import { useTheme } from '@principal-ade/industry-theme';
+import { Terminal, Copy, Check, ChevronRight, Hexagon } from 'lucide-react';
+import { useTheme, type Theme } from '@principal-ade/industry-theme';
 import type { PanelComponentProps } from '../types';
 import type { QualityMetrics } from '@principal-ai/codebase-composition';
 import {
@@ -9,52 +10,245 @@ import {
   type VertexHoverInfo,
 } from '../components/RepositoryQualityGrid';
 
-// Mock data for demonstration
-const mockRepositories: RepositoryQualityItem[] = [
-  {
-    id: 'platform',
-    name: 'platform',
-    packages: [
-      {
-        name: '@org/core',
-        version: '2.0.0',
-        metrics: { tests: 94, deadCode: 4, linting: 98, formatting: 100, types: 97, documentation: 90 },
-      },
-      {
-        name: '@org/ui-components',
-        version: '2.0.0',
-        metrics: { tests: 85, deadCode: 8, linting: 95, formatting: 98, types: 92, documentation: 80 },
-      },
-      {
-        name: '@org/hooks',
-        version: '2.0.0',
-        metrics: { tests: 88, deadCode: 6, linting: 96, formatting: 100, types: 94, documentation: 85 },
-      },
-    ],
-  },
-  {
-    id: 'backend',
-    name: 'backend-services',
-    packages: [
-      {
-        name: 'backend-services',
-        version: '1.5.0',
-        metrics: { tests: 80, deadCode: 15, linting: 90, formatting: 95, types: 85, documentation: 72 },
-      },
-    ],
-  },
-  {
-    id: 'docs',
-    name: 'documentation-site',
-    packages: [
-      {
-        name: 'documentation-site',
-        version: '1.0.0',
-        metrics: { tests: 45, deadCode: 25, linting: 75, formatting: 85, types: 60, documentation: 95 },
-      },
-    ],
-  },
-];
+/**
+ * Copyable command line component
+ */
+const CommandLine: React.FC<{
+  command: string;
+  theme: Theme;
+}> = ({ command, theme }) => {
+  const [copied, setCopied] = React.useState(false);
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(command);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      console.log('Copy:', command);
+    }
+  };
+
+  return (
+    <div
+      style={{
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        gap: 12,
+        padding: '10px 14px',
+        borderRadius: 6,
+        backgroundColor: theme.colors.background,
+        border: `1px solid ${theme.colors.border}`,
+        fontFamily: 'monospace',
+        fontSize: 13,
+      }}
+    >
+      <code style={{ color: theme.colors.text }}>{command}</code>
+      <button
+        onClick={handleCopy}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          padding: 4,
+          border: 'none',
+          backgroundColor: 'transparent',
+          color: theme.colors.textMuted,
+          cursor: 'pointer',
+        }}
+        title="Copy command"
+      >
+        {copied ? (
+          <Check size={16} color={theme.colors.success} />
+        ) : (
+          <Copy size={16} />
+        )}
+      </button>
+    </div>
+  );
+};
+
+/**
+ * Empty state for the repository quality grid
+ */
+const RepositoryQualityEmptyState: React.FC<{ theme: Theme }> = ({ theme }) => {
+  return (
+    <div
+      style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        padding: 40,
+        gap: 24,
+        height: '100%',
+        minHeight: 400,
+      }}
+    >
+      {/* Icon */}
+      <div
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          width: 64,
+          height: 64,
+          borderRadius: 16,
+          backgroundColor: theme.colors.surface,
+          border: `1px solid ${theme.colors.border}`,
+        }}
+      >
+        <Hexagon size={32} color={theme.colors.textMuted} />
+      </div>
+
+      {/* Title and description */}
+      <div style={{ textAlign: 'center', maxWidth: 400 }}>
+        <h3
+          style={{
+            margin: '0 0 8px 0',
+            fontSize: 18,
+            fontWeight: 600,
+            color: theme.colors.text,
+          }}
+        >
+          No Quality Metrics
+        </h3>
+        <p
+          style={{
+            margin: 0,
+            fontSize: 14,
+            color: theme.colors.textMuted,
+            lineHeight: 1.5,
+          }}
+        >
+          Configure the Quality Lens GitHub Action on your repositories to track
+          code quality metrics across your projects.
+        </p>
+      </div>
+
+      {/* Setup instructions */}
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 16,
+          padding: 20,
+          borderRadius: 8,
+          backgroundColor: theme.colors.surface,
+          border: `1px solid ${theme.colors.border}`,
+          width: '100%',
+          maxWidth: 400,
+        }}
+      >
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 10,
+            marginBottom: 4,
+          }}
+        >
+          <Terminal size={20} color={theme.colors.text} />
+          <h4
+            style={{
+              margin: 0,
+              fontSize: 15,
+              fontWeight: 600,
+              color: theme.colors.text,
+            }}
+          >
+            Get Started
+          </h4>
+        </div>
+
+        {/* Step 1 */}
+        <div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              marginBottom: 8,
+              fontSize: 13,
+              color: theme.colors.textMuted,
+            }}
+          >
+            <span
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 20,
+                height: 20,
+                borderRadius: '50%',
+                backgroundColor: theme.colors.primary,
+                color: theme.colors.background,
+                fontSize: 11,
+                fontWeight: 600,
+              }}
+            >
+              1
+            </span>
+            <span>Install the CLI</span>
+          </div>
+          <CommandLine
+            command="npm install -g @principal-ai/quality-lens-cli"
+            theme={theme}
+          />
+        </div>
+
+        {/* Step 2 */}
+        <div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+              marginBottom: 8,
+              fontSize: 13,
+              color: theme.colors.textMuted,
+            }}
+          >
+            <span
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                width: 20,
+                height: 20,
+                borderRadius: '50%',
+                backgroundColor: theme.colors.primary,
+                color: theme.colors.background,
+                fontSize: 11,
+                fontWeight: 600,
+              }}
+            >
+              2
+            </span>
+            <span>Initialize in each repository</span>
+          </div>
+          <CommandLine command="quality-lens init" theme={theme} />
+        </div>
+
+        {/* Next steps hint */}
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 6,
+            paddingTop: 8,
+            fontSize: 13,
+            color: theme.colors.textMuted,
+          }}
+        >
+          <ChevronRight size={14} />
+          <span>Commit, push, and quality data will appear after CI runs</span>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 // Repository quality data from slice
 interface RepositoryQualityData {
@@ -85,7 +279,6 @@ const RepositoryQualityGridPanelContent: React.FC<PanelComponentProps> = ({
 
   // Get repositories quality data from context if available
   const qualitySlice = context.getSlice<RepositoriesQualitySliceData>('repositoriesQuality');
-  const hasQualitySlice = context.hasSlice('repositoriesQuality');
   const isLoading = qualitySlice?.loading ?? false;
 
   // Determine repositories to display
@@ -93,13 +286,8 @@ const RepositoryQualityGridPanelContent: React.FC<PanelComponentProps> = ({
     if (qualitySlice?.data?.repositories) {
       return qualitySlice.data.repositories;
     }
-    if (hasQualitySlice) {
-      // Slice exists but no data yet
-      return [];
-    }
-    // No slice - use mock for demo
-    return mockRepositories;
-  }, [qualitySlice?.data?.repositories, hasQualitySlice]);
+    return [];
+  }, [qualitySlice?.data?.repositories]);
 
   // Handle item click
   const handleItemClick = (item: FlatGridItem) => {
@@ -175,15 +363,7 @@ const RepositoryQualityGridPanelContent: React.FC<PanelComponentProps> = ({
           Loading repository quality metrics...
         </div>
       ) : repositories.length === 0 ? (
-        <div
-          style={{
-            padding: 40,
-            textAlign: 'center',
-            color: theme.colors.textMuted,
-          }}
-        >
-          No repositories with quality metrics found.
-        </div>
+        <RepositoryQualityEmptyState theme={theme} />
       ) : (
         <RepositoryQualityGrid
           repositories={repositories}
