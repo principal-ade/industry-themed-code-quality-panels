@@ -1,5 +1,5 @@
 import React from 'react';
-import { Terminal, Copy, Check, ChevronRight } from 'lucide-react';
+import { Terminal, Copy, Check, ChevronRight, Zap, GitBranch, Info } from 'lucide-react';
 import type { Theme } from '@principal-ade/industry-theme';
 
 interface QualityEmptyStateProps {
@@ -32,7 +32,8 @@ export function checkFileExistsInTree(
 const CommandLine: React.FC<{
   command: string;
   theme: Theme;
-}> = ({ command, theme }) => {
+  label?: string;
+}> = ({ command, theme, label }) => {
   const [copied, setCopied] = React.useState(false);
 
   const handleCopy = async () => {
@@ -46,41 +47,94 @@ const CommandLine: React.FC<{
   };
 
   return (
-    <div
-      style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        gap: 12,
-        padding: '10px 14px',
-        borderRadius: 6,
-        backgroundColor: theme.colors.background,
-        border: `1px solid ${theme.colors.border}`,
-        fontFamily: 'monospace',
-        fontSize: 13,
-      }}
-    >
-      <code style={{ color: theme.colors.text }}>{command}</code>
-      <button
-        onClick={handleCopy}
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+      {label && (
+        <span style={{ fontSize: 12, color: theme.colors.textMuted }}>{label}</span>
+      )}
+      <div
         style={{
           display: 'flex',
           alignItems: 'center',
-          justifyContent: 'center',
-          padding: 4,
-          border: 'none',
-          backgroundColor: 'transparent',
-          color: theme.colors.textMuted,
-          cursor: 'pointer',
+          justifyContent: 'space-between',
+          gap: 12,
+          padding: '10px 14px',
+          borderRadius: 6,
+          backgroundColor: theme.colors.background,
+          border: `1px solid ${theme.colors.border}`,
+          fontFamily: 'monospace',
+          fontSize: 13,
         }}
-        title="Copy command"
       >
-        {copied ? (
-          <Check size={16} color={theme.colors.success} />
-        ) : (
-          <Copy size={16} />
-        )}
-      </button>
+        <code style={{ color: theme.colors.text }}>{command}</code>
+        <button
+          onClick={handleCopy}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            padding: 4,
+            border: 'none',
+            backgroundColor: 'transparent',
+            color: theme.colors.textMuted,
+            cursor: 'pointer',
+          }}
+          title="Copy command"
+        >
+          {copied ? (
+            <Check size={16} color={theme.colors.success} />
+          ) : (
+            <Copy size={16} />
+          )}
+        </button>
+      </div>
+    </div>
+  );
+};
+
+/**
+ * Mini hexagon preview showing what metrics are tracked
+ */
+const MetricsPreview: React.FC<{ theme: Theme }> = ({ theme }) => {
+  const metrics = [
+    { key: 'tests', label: 'Tests', description: 'Test coverage & pass rate', icon: '🧪' },
+    { key: 'linting', label: 'Linting', description: 'ESLint code quality', icon: '📝' },
+    { key: 'types', label: 'Types', description: 'TypeScript type safety', icon: '🔷' },
+    { key: 'formatting', label: 'Formatting', description: 'Prettier code style', icon: '✨' },
+    { key: 'deadCode', label: 'Dead Code', description: 'Unused exports & deps', icon: '🧹' },
+    { key: 'documentation', label: 'Docs', description: 'Code documentation', icon: '📚' },
+  ];
+
+  return (
+    <div
+      style={{
+        display: 'grid',
+        gridTemplateColumns: 'repeat(2, 1fr)',
+        gap: 8,
+        padding: 12,
+        borderRadius: 8,
+        backgroundColor: theme.colors.surface,
+        border: `1px solid ${theme.colors.border}`,
+      }}
+    >
+      {metrics.map((m) => (
+        <div
+          key={m.key}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            gap: 8,
+            padding: '6px 8px',
+            borderRadius: 4,
+            fontSize: 12,
+          }}
+        >
+          <span style={{ fontSize: 14 }}>{m.icon}</span>
+          <div style={{ display: 'flex', flexDirection: 'column' }}>
+            <span style={{ fontWeight: 500, color: theme.colors.text }}>{m.label}</span>
+            <span style={{ fontSize: 11, color: theme.colors.textMuted }}>{m.description}</span>
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
@@ -92,6 +146,8 @@ export const QualityEmptyState: React.FC<QualityEmptyStateProps> = ({
   theme,
   hasWorkflow,
 }) => {
+  const [showAdvanced, setShowAdvanced] = React.useState(false);
+
   if (hasWorkflow) {
     // Workflow exists but no data yet
     return (
@@ -104,17 +160,6 @@ export const QualityEmptyState: React.FC<QualityEmptyStateProps> = ({
           width: '100%',
         }}
       >
-        <p
-          style={{
-            margin: 0,
-            fontSize: 14,
-            color: theme.colors.textMuted,
-            lineHeight: 1.5,
-          }}
-        >
-          Quality metrics will appear here after your next CI run completes.
-        </p>
-
         <div
           style={{
             display: 'flex',
@@ -130,11 +175,44 @@ export const QualityEmptyState: React.FC<QualityEmptyStateProps> = ({
           <Check size={16} />
           <span>Workflow detected at {WORKFLOW_FILE_PATH}</span>
         </div>
+
+        <p
+          style={{
+            margin: 0,
+            fontSize: 14,
+            color: theme.colors.textMuted,
+            lineHeight: 1.5,
+          }}
+        >
+          Quality metrics will appear here after your workflow runs. Push a commit to trigger it, or check the Actions tab for status.
+        </p>
+
+        <MetricsPreview theme={theme} />
+
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: 8,
+            padding: '10px 14px',
+            borderRadius: 6,
+            backgroundColor: `${theme.colors.warning}10`,
+            fontSize: 12,
+            color: theme.colors.textMuted,
+          }}
+        >
+          <Info size={14} style={{ flexShrink: 0, marginTop: 2 }} color={theme.colors.warning} />
+          <div>
+            <strong style={{ color: theme.colors.text }}>Using private npm packages?</strong>
+            <br />
+            Add <code style={{ backgroundColor: theme.colors.background, padding: '1px 4px', borderRadius: 3 }}>NPM_TOKEN</code> to your repository secrets and ensure the workflow has access to it.
+          </div>
+        </div>
       </div>
     );
   }
 
-  // No workflow - show CLI setup instructions
+  // No workflow - show setup instructions
   return (
     <div
       style={{
@@ -145,26 +223,28 @@ export const QualityEmptyState: React.FC<QualityEmptyStateProps> = ({
         width: '100%',
       }}
     >
-      {/* Description */}
-      <p
-        style={{
-          margin: 0,
-          fontSize: 14,
-          color: theme.colors.textMuted,
-          lineHeight: 1.5,
-        }}
-      >
-        Track your code quality with automated analysis of tests, linting,
-        types, formatting, dead code, and documentation.
-      </p>
+      {/* What you'll get */}
+      <div>
+        <h4
+          style={{
+            margin: '0 0 12px 0',
+            fontSize: 14,
+            fontWeight: 600,
+            color: theme.colors.text,
+          }}
+        >
+          Track 6 quality dimensions
+        </h4>
+        <MetricsPreview theme={theme} />
+      </div>
 
-      {/* CLI Setup Steps */}
+      {/* Quick Start */}
       <div
         style={{
           display: 'flex',
           flexDirection: 'column',
-          gap: 16,
-          padding: 20,
+          gap: 12,
+          padding: 16,
           borderRadius: 8,
           backgroundColor: theme.colors.surface,
           border: `1px solid ${theme.colors.border}`,
@@ -174,140 +254,149 @@ export const QualityEmptyState: React.FC<QualityEmptyStateProps> = ({
           style={{
             display: 'flex',
             alignItems: 'center',
-            gap: 10,
-            marginBottom: 4,
+            gap: 8,
           }}
         >
-          <Terminal size={20} color={theme.colors.text} />
+          <Zap size={18} color={theme.colors.primary} />
           <h4
             style={{
               margin: 0,
-              fontSize: 15,
+              fontSize: 14,
               fontWeight: 600,
               color: theme.colors.text,
             }}
           >
-            Get Started
+            Quick Start
           </h4>
         </div>
 
-        {/* Step 1 */}
-        <div>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-              marginBottom: 8,
-              fontSize: 13,
-              color: theme.colors.textMuted,
-            }}
-          >
-            <span
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: 20,
-                height: 20,
-                borderRadius: '50%',
-                backgroundColor: theme.colors.primary,
-                color: theme.colors.background,
-                fontSize: 11,
-                fontWeight: 600,
-              }}
-            >
-              1
-            </span>
-            <span>Install the CLI</span>
-          </div>
-          <CommandLine
-            command="npm install -g @principal-ai/quality-lens-cli"
-            theme={theme}
-          />
-        </div>
+        <p
+          style={{
+            margin: 0,
+            fontSize: 13,
+            color: theme.colors.textMuted,
+            lineHeight: 1.5,
+          }}
+        >
+          Run this in your project directory to set up automated quality tracking:
+        </p>
 
-        {/* Step 2 */}
-        <div>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-              marginBottom: 8,
-              fontSize: 13,
-              color: theme.colors.textMuted,
-            }}
-          >
-            <span
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: 20,
-                height: 20,
-                borderRadius: '50%',
-                backgroundColor: theme.colors.primary,
-                color: theme.colors.background,
-                fontSize: 11,
-                fontWeight: 600,
-              }}
-            >
-              2
-            </span>
-            <span>Check what quality tools are available</span>
-          </div>
-          <CommandLine command="quality-lens list" theme={theme} />
-        </div>
+        <CommandLine
+          command="npx @principal-ai/quality-lens-cli init"
+          theme={theme}
+        />
 
-        {/* Step 3 */}
-        <div>
-          <div
-            style={{
-              display: 'flex',
-              alignItems: 'center',
-              gap: 8,
-              marginBottom: 8,
-              fontSize: 13,
-              color: theme.colors.textMuted,
-            }}
-          >
-            <span
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                width: 20,
-                height: 20,
-                borderRadius: '50%',
-                backgroundColor: theme.colors.primary,
-                color: theme.colors.background,
-                fontSize: 11,
-                fontWeight: 600,
-              }}
-            >
-              3
-            </span>
-            <span>Set up the GitHub Action</span>
-          </div>
-          <CommandLine command="quality-lens init" theme={theme} />
-        </div>
-
-        {/* Next steps hint */}
         <div
           style={{
             display: 'flex',
             alignItems: 'center',
             gap: 6,
-            paddingTop: 8,
-            fontSize: 13,
+            fontSize: 12,
             color: theme.colors.textMuted,
           }}
         >
-          <ChevronRight size={14} />
-          <span>Then commit and push to start tracking quality</span>
+          <GitBranch size={14} />
+          <span>Then commit and push to start tracking</span>
         </div>
       </div>
+
+      {/* Advanced Options Toggle */}
+      <button
+        onClick={() => setShowAdvanced(!showAdvanced)}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 6,
+          padding: 0,
+          border: 'none',
+          backgroundColor: 'transparent',
+          color: theme.colors.textMuted,
+          fontSize: 13,
+          cursor: 'pointer',
+        }}
+      >
+        <ChevronRight
+          size={14}
+          style={{
+            transform: showAdvanced ? 'rotate(90deg)' : 'none',
+            transition: 'transform 0.2s',
+          }}
+        />
+        <span>{showAdvanced ? 'Hide' : 'Show'} additional options</span>
+      </button>
+
+      {/* Advanced Options */}
+      {showAdvanced && (
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            gap: 16,
+            padding: 16,
+            borderRadius: 8,
+            backgroundColor: theme.colors.surface,
+            border: `1px solid ${theme.colors.border}`,
+          }}
+        >
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
+            }}
+          >
+            <Terminal size={18} color={theme.colors.text} />
+            <h4
+              style={{
+                margin: 0,
+                fontSize: 14,
+                fontWeight: 600,
+                color: theme.colors.text,
+              }}
+            >
+              CLI Commands
+            </h4>
+          </div>
+
+          <CommandLine
+            command="npx @principal-ai/quality-lens-cli list"
+            theme={theme}
+            label="See available quality tools in your project"
+          />
+
+          <CommandLine
+            command="npx @principal-ai/quality-lens-cli run . --install"
+            theme={theme}
+            label="Run quality checks locally (auto-installs missing tools)"
+          />
+
+          <CommandLine
+            command="npm install -g @principal-ai/quality-lens-cli"
+            theme={theme}
+            label="Install globally for faster repeated use"
+          />
+
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: 8,
+              padding: '10px 14px',
+              borderRadius: 6,
+              backgroundColor: `${theme.colors.warning}10`,
+              fontSize: 12,
+              color: theme.colors.textMuted,
+            }}
+          >
+            <Info size={14} style={{ flexShrink: 0, marginTop: 2 }} color={theme.colors.warning} />
+            <div>
+              <strong style={{ color: theme.colors.text }}>Private npm packages?</strong>
+              <br />
+              If your project uses private @org packages, add <code style={{ backgroundColor: theme.colors.background, padding: '1px 4px', borderRadius: 3 }}>NPM_TOKEN</code> to your GitHub repository secrets under Settings → Secrets → Actions, and set the workflow environment if needed.
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
