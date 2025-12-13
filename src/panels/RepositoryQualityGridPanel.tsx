@@ -123,7 +123,9 @@ const RepositoryQualityGridPanelContent: React.FC<PanelComponentProps> = ({
           Loading repository quality metrics...
         </div>
       ) : repositories.length === 0 ? (
-        <QualityEmptyState theme={theme} hasWorkflow={false} />
+        <div style={{ padding: 20 }}>
+          <QualityEmptyState theme={theme} hasWorkflow={false} />
+        </div>
       ) : (
         <RepositoryQualityGrid
           repositories={repositories}
