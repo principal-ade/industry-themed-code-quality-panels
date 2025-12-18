@@ -34,11 +34,11 @@ function getThemeColors(theme: Theme) {
     textColor: theme.colors.text,
     scoreColor: theme.colors.text,
     tierColors: {
-      none: { fill: theme.colors.muted, stroke: theme.colors.border, bg: theme.colors.backgroundLight },
-      bronze: { fill: theme.colors.warning, stroke: theme.colors.warning, bg: theme.colors.backgroundLight },
-      silver: { fill: theme.colors.secondary, stroke: theme.colors.secondary, bg: theme.colors.backgroundLight },
-      gold: { fill: theme.colors.accent, stroke: theme.colors.accent, bg: theme.colors.backgroundLight },
-      platinum: { fill: theme.colors.primary, stroke: theme.colors.primary, bg: theme.colors.backgroundLight }
+      none: { fill: '#808080', stroke: '#808080', bg: theme.colors.backgroundLight },
+      bronze: { fill: '#CD7F32', stroke: '#CD7F32', bg: theme.colors.backgroundLight },
+      silver: { fill: '#C0C0C0', stroke: '#C0C0C0', bg: theme.colors.backgroundLight },
+      gold: { fill: '#FFD700', stroke: '#FFD700', bg: theme.colors.backgroundLight },
+      platinum: { fill: '#E5E4E2', stroke: '#E5E4E2', bg: theme.colors.backgroundLight }
     },
     metricColors: {
       types: theme.colors.warning,
@@ -56,14 +56,24 @@ function getThemeColors(theme: Theme) {
   };
 }
 
+// Get color based on value (good/medium/poor)
+function getValueColor(value: number, key: string): string {
+  // For deadCode, lower is better (invert the logic)
+  const effectiveValue = key === 'deadCode' ? 100 - value : value;
+
+  if (effectiveValue >= 80) return '#2E7D32'; // forest green
+  if (effectiveValue >= 60) return '#E6A700'; // amber
+  return '#C62828'; // crimson
+}
+
 // Metrics ordered clockwise from top-left
 const getMetricConfig = (themeColors: ReturnType<typeof getThemeColors>) => [
-  { key: 'types', label: 'Types', color: themeColors.metricColors.types, angle: -120 },
-  { key: 'documentation', label: 'Docs', color: themeColors.metricColors.documentation, angle: -60 },
-  { key: 'tests', label: 'Tests', color: themeColors.metricColors.tests, angle: 0 },
-  { key: 'deadCode', label: 'Dead Code', color: themeColors.metricColors.deadCode, angle: 60 },
-  { key: 'formatting', label: 'Format', color: themeColors.metricColors.formatting, angle: 120 },
-  { key: 'linting', label: 'Linting', color: themeColors.metricColors.linting, angle: 180 }
+  { key: 'formatting', label: 'Format', color: themeColors.metricColors.formatting, angle: -120 },
+  { key: 'linting', label: 'Linting', color: themeColors.metricColors.linting, angle: -60 },
+  { key: 'types', label: 'Types', color: themeColors.metricColors.types, angle: 0 },
+  { key: 'tests', label: 'Tests', color: themeColors.metricColors.tests, angle: 60 },
+  { key: 'deadCode', label: 'Dead Code', color: themeColors.metricColors.deadCode, angle: 120 },
+  { key: 'documentation', label: 'Docs', color: themeColors.metricColors.documentation, angle: 180 }
 ] as const;
 
 function calculateHexagonPoints(center: number, radius: number, metricConfig: ReturnType<typeof getMetricConfig>): string {
@@ -468,9 +478,8 @@ export function QualityHexagonDetailed({
         </div>
 
         <div style={{ flex: '1 1 200px', minWidth: 200, display: 'flex', flexDirection: 'column', gap: 8, padding: '8px 24px' }}>
-          {metricConfig.map(({ key, label, color }) => {
+          {metricConfig.map(({ key, label }) => {
             const value = metrics[key as keyof QualityMetrics];
-            const displayValue = value;
 
             return (
               <div key={key} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
@@ -483,9 +492,9 @@ export function QualityHexagonDetailed({
                 <span style={{
                   fontSize: 14,
                   fontWeight: 500,
-                  color: color,
+                  color: getValueColor(value, key),
                 }}>
-                  {displayValue}%
+                  {value}%
                 </span>
               </div>
             );
@@ -499,9 +508,14 @@ export function QualityHexagonDetailed({
 interface QualityHexagonExpandableProps extends Pick<QualityHexagonProps, 'metrics' | 'tier' | 'theme' | 'className'> {
   packageName?: string;
   packageVersion?: string;
+  packagePath?: string;
   onRefresh?: () => void;
   isRefreshing?: boolean;
   defaultExpanded?: boolean;
+  /** Callback when the hexagon is expanded/collapsed */
+  onExpandChange?: (expanded: boolean, info: { packageName?: string; packagePath?: string }) => void;
+  /** Callback when a metric row is clicked */
+  onMetricClick?: (metric: MetricKey) => void;
 }
 
 export function QualityHexagonExpandable({
@@ -511,11 +525,20 @@ export function QualityHexagonExpandable({
   className,
   packageName,
   packageVersion,
+  packagePath,
   onRefresh,
   isRefreshing = false,
   defaultExpanded = false,
+  onExpandChange,
+  onMetricClick,
 }: QualityHexagonExpandableProps) {
   const [expanded, setExpanded] = React.useState(defaultExpanded);
+
+  const handleToggleExpand = React.useCallback(() => {
+    const newExpanded = !expanded;
+    setExpanded(newExpanded);
+    onExpandChange?.(newExpanded, { packageName, packagePath });
+  }, [expanded, onExpandChange, packageName, packagePath]);
   const themeColors = getThemeColors(theme);
   const colors = themeColors.tierColors[tier] ?? themeColors.tierColors.none;
   const metricConfig = getMetricConfig(themeColors);
@@ -622,7 +645,7 @@ export function QualityHexagonExpandable({
 
       {/* Clickable hexagon */}
       <div
-        onClick={() => setExpanded(!expanded)}
+        onClick={handleToggleExpand}
         style={{
           cursor: 'pointer',
           display: 'flex',
@@ -658,11 +681,36 @@ export function QualityHexagonExpandable({
             borderTop: `1px solid ${theme.colors.border}`,
             marginTop: 8,
           }}>
-            {metricConfig.map(({ key, label, color }) => {
+            {metricConfig.map(({ key, label }) => {
               const value = metrics[key as keyof QualityMetrics];
 
               return (
-                <div key={key} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: 12 }}>
+                <div
+                  key={key}
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    onMetricClick?.(key as MetricKey);
+                  }}
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: 12,
+                    cursor: onMetricClick ? 'pointer' : 'default',
+                    padding: '4px 8px',
+                    margin: '0 -8px',
+                    borderRadius: 4,
+                    transition: 'background-color 0.15s ease',
+                  }}
+                  onMouseEnter={(e) => {
+                    if (onMetricClick) {
+                      e.currentTarget.style.backgroundColor = theme.colors.surface;
+                    }
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.backgroundColor = 'transparent';
+                  }}
+                >
                   <span style={{
                     fontSize: 14,
                     color: theme.colors.textMuted,
@@ -672,7 +720,7 @@ export function QualityHexagonExpandable({
                   <span style={{
                     fontSize: 14,
                     fontWeight: 500,
-                    color: color,
+                    color: getValueColor(value, key),
                   }}>
                     {value}%
                   </span>
@@ -685,7 +733,7 @@ export function QualityHexagonExpandable({
 
       {/* Expand/collapse indicator */}
       <div
-        onClick={() => setExpanded(!expanded)}
+        onClick={handleToggleExpand}
         style={{
           display: 'flex',
           justifyContent: 'center',

@@ -7,12 +7,12 @@ import { QualityHexagon, calculateQualityTier, type QualityTier, type VertexHove
 export type { VertexHoverInfo, MetricKey };
 
 const METRIC_OPTIONS: Array<{ key: MetricKey; label: string }> = [
-  { key: 'types', label: 'Types' },
-  { key: 'documentation', label: 'Docs' },
-  { key: 'tests', label: 'Tests' },
-  { key: 'deadCode', label: 'Dead Code' },
   { key: 'formatting', label: 'Format' },
   { key: 'linting', label: 'Linting' },
+  { key: 'types', label: 'Types' },
+  { key: 'tests', label: 'Tests' },
+  { key: 'deadCode', label: 'Dead Code' },
+  { key: 'documentation', label: 'Docs' },
 ];
 
 /**
@@ -51,6 +51,8 @@ export interface FlatGridItem {
   repositoryId: string;
   /** Repository name */
   repositoryName: string;
+  /** Repository path (for filtering in other panels) */
+  repositoryPath?: string;
   /** Package name */
   packageName: string;
   /** Optional version */
@@ -107,6 +109,7 @@ function flattenRepositories(repositories: RepositoryQualityItem[]): FlatGridIte
         key: `${repo.id}:${pkg.name}`,
         repositoryId: repo.id,
         repositoryName: repo.name,
+        repositoryPath: repo.path,
         packageName: pkg.name,
         version: pkg.version,
         metrics: pkg.metrics,
@@ -157,13 +160,13 @@ function formatLabel(
  * Individual grid item component
  */
 // Get color based on value (good/medium/poor)
-function getValueColor(value: number, key: MetricKey, theme: Theme): string {
+function getValueColor(value: number, key: MetricKey): string {
   // For deadCode, lower is better (invert the logic)
   const effectiveValue = key === 'deadCode' ? 100 - value : value;
 
-  if (effectiveValue >= 80) return theme.colors.success;
-  if (effectiveValue >= 60) return theme.colors.warning;
-  return theme.colors.error;
+  if (effectiveValue >= 80) return '#2E7D32'; // forest green
+  if (effectiveValue >= 60) return '#E6A700'; // amber
+  return '#C62828'; // crimson
 }
 
 export function RepositoryQualityGridItem({
@@ -180,11 +183,11 @@ export function RepositoryQualityGridItem({
   const label = formatLabel(item, showRepositoryName, isSameAsRepo);
 
   const tierColors: Record<QualityTier, string> = {
-    none: theme.colors.muted,
-    bronze: theme.colors.warning,
-    silver: theme.colors.secondary,
-    gold: theme.colors.accent,
-    platinum: theme.colors.primary,
+    none: '#808080',
+    bronze: '#CD7F32',
+    silver: '#C0C0C0',
+    gold: '#FFD700',
+    platinum: '#E5E4E2',
   };
 
   // Get the display info - either from selected metric or hovered vertex
@@ -196,7 +199,7 @@ export function RepositoryQualityGridItem({
         return {
           label: option.label,
           value,
-          valueColor: getValueColor(value, selectedMetric, theme),
+          valueColor: getValueColor(value, selectedMetric),
         };
       }
     }
@@ -204,11 +207,11 @@ export function RepositoryQualityGridItem({
       return {
         label: hoveredVertex.label,
         value: hoveredVertex.value,
-        valueColor: getValueColor(hoveredVertex.value, hoveredVertex.key, theme),
+        valueColor: getValueColor(hoveredVertex.value, hoveredVertex.key),
       };
     }
     return null;
-  }, [selectedMetric, hoveredVertex, item.metrics, theme]);
+  }, [selectedMetric, hoveredVertex, item.metrics]);
 
   return (
     <div
@@ -369,11 +372,11 @@ export function RepositoryQualityGrid({
   }, [items, selectedMetric]);
 
   const tierColors: Record<QualityTier, string> = {
-    none: theme.colors.muted,
-    bronze: theme.colors.warning,
-    silver: theme.colors.secondary,
-    gold: theme.colors.accent,
-    platinum: theme.colors.primary,
+    none: '#808080',
+    bronze: '#CD7F32',
+    silver: '#C0C0C0',
+    gold: '#FFD700',
+    platinum: '#E5E4E2',
   };
 
   const tierLabels: Record<QualityTier, string> = {

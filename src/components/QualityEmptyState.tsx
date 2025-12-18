@@ -1,5 +1,19 @@
 import React from 'react';
-import { Terminal, Copy, Check, ChevronRight, Zap, GitBranch, Info } from 'lucide-react';
+import {
+  Terminal,
+  Copy,
+  Check,
+  ChevronRight,
+  Zap,
+  GitBranch,
+  Info,
+  FlaskConical,
+  FileSearch,
+  Braces,
+  Sparkles,
+  Trash2,
+  BookOpen,
+} from 'lucide-react';
 import type { Theme } from '@principal-ade/industry-theme';
 
 interface QualityEmptyStateProps {
@@ -96,12 +110,12 @@ const CommandLine: React.FC<{
  */
 const MetricsPreview: React.FC<{ theme: Theme }> = ({ theme }) => {
   const metrics = [
-    { key: 'tests', label: 'Tests', description: 'Test coverage & pass rate', icon: '🧪' },
-    { key: 'linting', label: 'Linting', description: 'ESLint code quality', icon: '📝' },
-    { key: 'types', label: 'Types', description: 'TypeScript type safety', icon: '🔷' },
-    { key: 'formatting', label: 'Formatting', description: 'Prettier code style', icon: '✨' },
-    { key: 'deadCode', label: 'Dead Code', description: 'Unused exports & deps', icon: '🧹' },
-    { key: 'documentation', label: 'Docs', description: 'Code documentation', icon: '📚' },
+    { key: 'formatting', label: 'Formatting', description: 'Prettier code style', Icon: Sparkles },
+    { key: 'linting', label: 'Linting', description: 'ESLint code quality', Icon: FileSearch },
+    { key: 'types', label: 'Types', description: 'TypeScript type safety', Icon: Braces },
+    { key: 'tests', label: 'Tests', description: 'Test coverage & pass rate', Icon: FlaskConical },
+    { key: 'deadCode', label: 'Dead Code', description: 'Unused exports & deps', Icon: Trash2 },
+    { key: 'documentation', label: 'Docs', description: 'Code documentation', Icon: BookOpen },
   ];
 
   return (
@@ -128,7 +142,7 @@ const MetricsPreview: React.FC<{ theme: Theme }> = ({ theme }) => {
             fontSize: 12,
           }}
         >
-          <span style={{ fontSize: 14 }}>{m.icon}</span>
+          <m.Icon size={14} color={theme.colors.textMuted} />
           <div style={{ display: 'flex', flexDirection: 'column' }}>
             <span style={{ fontWeight: 500, color: theme.colors.text }}>{m.label}</span>
             <span style={{ fontSize: 11, color: theme.colors.textMuted }}>{m.description}</span>

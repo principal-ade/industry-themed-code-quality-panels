@@ -37,6 +37,7 @@ const mockPackages: Array<{
 // Package quality data shape from slice
 interface PackageQuality {
   name: string;
+  path?: string;
   version?: string;
   metrics: QualityMetrics;
 }
@@ -46,6 +47,16 @@ interface QualitySliceData {
   packages: PackageQuality[];
   lastUpdated: string;
 }
+
+// Metric to colorMode mapping for File City
+const METRIC_TO_COLOR_MODE: Record<string, string> = {
+  types: 'typescript',
+  documentation: 'alexandria',
+  tests: 'coverage',
+  deadCode: 'knip',
+  formatting: 'prettier',
+  linting: 'eslint',
+};
 
 /**
  * QualityHexagonPanelContent - Internal component that uses theme
@@ -128,11 +139,11 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
 
   // Tier colors for display
   const tierColors: Record<QualityTier, string> = {
-    none: theme.colors.muted,
-    bronze: theme.colors.warning,
-    silver: theme.colors.secondary,
-    gold: theme.colors.accent,
-    platinum: theme.colors.primary,
+    none: '#808080',
+    bronze: '#CD7F32',
+    silver: '#C0C0C0',
+    gold: '#FFD700',
+    platinum: '#E5E4E2',
   };
 
   // Calculate overall tier from all packages
@@ -159,23 +170,26 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
         color: theme.colors.text,
         overflowY: 'auto',
         boxSizing: 'border-box',
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
-      <div
-        style={{
-          padding: 20,
-          display: 'flex',
-          flexDirection: 'column',
-          gap: 16,
-        }}
-      >
       {/* Header */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
-        <Hexagon size={24} color={tierColors[overallTier]} />
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 12,
+        height: 40,
+        flexShrink: 0,
+        padding: '0 16px',
+        borderBottom: `1px solid ${theme.colors.border}`,
+        boxSizing: 'border-box',
+      }}>
+        <Hexagon size={20} color={tierColors[overallTier]} />
         <h2
           style={{
             margin: 0,
-            fontSize: 20,
+            fontSize: 14,
             fontWeight: 600,
             color: theme.colors.text,
           }}
@@ -188,11 +202,11 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
             display: 'inline-flex',
             alignItems: 'center',
             justifyContent: 'center',
-            width: 18,
-            height: 18,
+            width: 16,
+            height: 16,
             borderRadius: '50%',
             border: `1px solid ${theme.colors.border}`,
-            fontSize: 12,
+            fontSize: 11,
             color: theme.colors.textMuted,
             cursor: 'help',
           }}
@@ -201,7 +215,7 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
         </span>
         {packages.length > 1 && (
           <span style={{
-            fontSize: 14,
+            fontSize: 13,
             color: theme.colors.textMuted,
           }}>
             {packages.length} packages
@@ -209,6 +223,17 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
         )}
       </div>
 
+      {/* Content */}
+      <div
+        style={{
+          padding: 16,
+          display: 'flex',
+          flexDirection: 'column',
+          gap: 16,
+          flex: 1,
+          minHeight: 0,
+        }}
+      >
       {/* Quality Hexagons for each package */}
       <div style={{ display: 'flex', flexWrap: 'wrap', gap: 16, minHeight: 0 }}>
         {isLoading ? (
@@ -227,6 +252,10 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
         ) : (
           packages.map((pkg) => {
             const tier = calculateQualityTier(pkg.metrics);
+            // Use package path from slice data
+            // For single-package repos, path is empty string (root)
+            // For monorepos, path would be like "packages/core"
+            const packagePath = pkg.path ?? '';
             return (
               <QualityHexagonExpandable
                 key={pkg.name}
@@ -235,6 +264,32 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
                 theme={theme}
                 packageName={pkg.name}
                 packageVersion={pkg.version}
+                packagePath={packagePath}
+                onExpandChange={(expanded, info) => {
+                  // Emit package:select event for cross-panel filtering
+                  // When expanded, select this package; when collapsed, deselect
+                  events.emit({
+                    type: 'package:select',
+                    source: 'principal-ade.quality-hexagon-panel',
+                    timestamp: Date.now(),
+                    payload: expanded ? {
+                      packagePath: info.packagePath ?? '',
+                      packageName: info.packageName,
+                    } : null,
+                  });
+                }}
+                onMetricClick={(metric) => {
+                  // Emit colorMode event for File City
+                  const colorMode = METRIC_TO_COLOR_MODE[metric];
+                  if (colorMode) {
+                    events.emit({
+                      type: 'quality:colorMode:select',
+                      source: 'principal-ade.quality-hexagon-panel',
+                      timestamp: Date.now(),
+                      payload: { colorMode },
+                    });
+                  }
+                }}
               />
             );
           })

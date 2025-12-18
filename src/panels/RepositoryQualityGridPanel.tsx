@@ -37,6 +37,9 @@ const RepositoryQualityGridPanelContent: React.FC<PanelComponentProps> = ({
 }) => {
   const { theme } = useTheme();
 
+  // Track currently selected item for toggle behavior
+  const [selectedItemKey, setSelectedItemKey] = React.useState<string | null>(null);
+
   // Get repositories quality data from context if available
   const qualitySlice = context.getSlice<RepositoriesQualitySliceData>('repositoriesQuality');
   const isLoading = qualitySlice?.loading ?? false;
@@ -51,17 +54,33 @@ const RepositoryQualityGridPanelContent: React.FC<PanelComponentProps> = ({
 
   // Handle item click
   const handleItemClick = (item: FlatGridItem) => {
+    const isDeselecting = selectedItemKey === item.key;
+
     events.emit({
       type: 'principal-ade.repository-quality-grid:item:click',
       source: 'principal-ade.repository-quality-grid-panel',
       timestamp: Date.now(),
-      payload: {
+      payload: isDeselecting ? null : {
         repositoryId: item.repositoryId,
         repositoryName: item.repositoryName,
         packageName: item.packageName,
         tier: item.tier,
       },
     });
+
+    // Emit package:select event for cross-panel filtering (e.g., File City)
+    // Clicking the same item again deselects (sends null payload)
+    events.emit({
+      type: 'package:select',
+      source: 'principal-ade.repository-quality-grid-panel',
+      timestamp: Date.now(),
+      payload: isDeselecting ? null : (item.repositoryPath ? {
+        packagePath: item.repositoryPath,
+        packageName: item.packageName,
+      } : null),
+    });
+
+    setSelectedItemKey(isDeselecting ? null : item.key);
   };
 
   // Handle vertex click
