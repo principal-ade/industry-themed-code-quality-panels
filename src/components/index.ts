@@ -23,3 +23,16 @@ export {
   type PackageQualityItem,
   type FlatGridItem,
 } from './RepositoryQualityGrid';
+
+export {
+  QualityMetricsList,
+  QualityMetricsListCompact,
+  type MetricListItem,
+} from './QualityMetricsList';
+
+export {
+  LensDataDebugPanel,
+  type FormattedResults,
+  type LensResult,
+  type Issue,
+} from './LensDataDebugPanel';

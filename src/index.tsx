@@ -1,5 +1,6 @@
 import { QualityHexagonPanel } from './panels/QualityHexagonPanel';
 import { RepositoryQualityGridPanel } from './panels/RepositoryQualityGridPanel';
+import { LensDataDebugPanel } from './panels/LensDataDebugPanel';
 import type { PanelDefinition, PanelContextValue } from './types';
 
 /**
@@ -62,6 +63,35 @@ export const panels: PanelDefinition[] = [
       console.log('Repository Quality Grid Panel unmounting');
     },
   },
+  {
+    metadata: {
+      id: 'principal-ade.lens-data-debug-panel',
+      name: 'Lens Data Debug',
+      icon: '🐛',
+      version: '0.1.0',
+      author: 'Principal ADE',
+      description:
+        'Debug panel for inspecting raw lens results from quality-lens-cli. Shows package breakdown, lens results with pass/fail status, and files with issues.',
+      slices: ['lensResults'],
+      tools: [],
+    },
+    component: LensDataDebugPanel,
+
+    onMount: async (context: PanelContextValue) => {
+      console.log(
+        'Lens Data Debug Panel mounted',
+        context.currentScope.repository?.path
+      );
+
+      if (context.hasSlice('lensResults') && !context.isSliceLoading('lensResults')) {
+        await context.refresh('repository', 'lensResults');
+      }
+    },
+
+    onUnmount: async (_context: PanelContextValue) => {
+      console.log('Lens Data Debug Panel unmounting');
+    },
+  },
 ];
 
 /**
@@ -98,3 +128,18 @@ export {
 // Export panels
 export { QualityHexagonPanel } from './panels/QualityHexagonPanel';
 export { RepositoryQualityGridPanel } from './panels/RepositoryQualityGridPanel';
+export { LensDataDebugPanel } from './panels/LensDataDebugPanel';
+
+// Export debug components
+export {
+  LensDataDebugPanel as LensDataDebugComponent,
+  type FormattedResults,
+  type LensResult,
+  type Issue,
+} from './components';
+
+// Export metrics list components
+export {
+  QualityMetricsList,
+  QualityMetricsListCompact,
+} from './components';
