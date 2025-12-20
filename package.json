@@ -1,20 +1,20 @@
 {
   "name": "@principal-ade/code-quality-panels",
-  "version": "0.1.17",
+  "version": "0.1.18",
   "description": "Code quality visualization panels including QualityHexagon components",
   "type": "module",
   "main": "dist/panels.bundle.js",
   "module": "dist/panels.bundle.js",
-  "types": "dist/index.d.ts",
+  "types": "dist/src/index.d.ts",
   "exports": {
     ".": {
-      "types": "./dist/index.d.ts",
+      "types": "./dist/src/index.d.ts",
       "import": "./dist/panels.bundle.js",
       "require": "./dist/panels.bundle.js",
       "default": "./dist/panels.bundle.js"
     },
     "./tools": {
-      "types": "./dist/tools/index.d.ts",
+      "types": "./dist/src/tools/index.d.ts",
       "import": "./dist/tools.bundle.js",
       "require": "./dist/tools.bundle.js",
       "default": "./dist/tools.bundle.js"
