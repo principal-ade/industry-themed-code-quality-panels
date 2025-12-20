@@ -1,6 +1,6 @@
 {
   "name": "@principal-ade/code-quality-panels",
-  "version": "0.1.16",
+  "version": "0.1.17",
   "description": "Code quality visualization panels including QualityHexagon components",
   "type": "module",
   "main": "dist/panels.bundle.js",
