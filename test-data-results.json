@@ -1,0 +1,4586 @@
+{
+  "metadata": {
+    "timestamp": "2025-12-19T17:09:05.173Z",
+    "version": "1.0.0",
+    "totalPackages": 1,
+    "totalLenses": 8,
+    "git": {
+      "commit": "11c453adb9b708ca051404bad185da6c8f152453",
+      "branch": "main",
+      "repository": "principal-ai/codebase-quality-lens-cli"
+    }
+  },
+  "results": [
+    {
+      "package": {
+        "name": "@principal-ai/quality-lens-cli",
+        "path": ""
+      },
+      "lens": {
+        "id": "eslint",
+        "command": "lint"
+      },
+      "execution": {
+        "success": true,
+        "exitCode": 1,
+        "duration": 4017,
+        "timestamp": 1766164124208
+      },
+      "issues": [
+        {
+          "file": "src/cli.ts",
+          "line": 34,
+          "column": 45,
+          "endLine": 34,
+          "endColumn": 49,
+          "severity": "error",
+          "message": "'any' overrides all other types in this union type.",
+          "rule": "@typescript-eslint/no-redundant-type-constituents",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 36,
+          "column": 19,
+          "endLine": 36,
+          "endColumn": 35,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 36,
+          "column": 19,
+          "endLine": 36,
+          "endColumn": 35,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 37,
+          "column": 17,
+          "endLine": 37,
+          "endColumn": 33,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 37,
+          "column": 17,
+          "endLine": 37,
+          "endColumn": 33,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 38,
+          "column": 17,
+          "endLine": 38,
+          "endColumn": 31,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 38,
+          "column": 17,
+          "endLine": 38,
+          "endColumn": 31,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 39,
+          "column": 17,
+          "endLine": 39,
+          "endColumn": 31,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 39,
+          "column": 17,
+          "endLine": 39,
+          "endColumn": 31,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 40,
+          "column": 23,
+          "endLine": 40,
+          "endColumn": 43,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 40,
+          "column": 23,
+          "endLine": 40,
+          "endColumn": 43,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 41,
+          "column": 22,
+          "endLine": 41,
+          "endColumn": 42,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 41,
+          "column": 22,
+          "endLine": 41,
+          "endColumn": 42,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 42,
+          "column": 16,
+          "endLine": 42,
+          "endColumn": 36,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 42,
+          "column": 16,
+          "endLine": 42,
+          "endColumn": 36,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 43,
+          "column": 17,
+          "endLine": 43,
+          "endColumn": 31,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 43,
+          "column": 17,
+          "endLine": 43,
+          "endColumn": 31,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 44,
+          "column": 21,
+          "endLine": 44,
+          "endColumn": 39,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 44,
+          "column": 21,
+          "endLine": 44,
+          "endColumn": 39,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 45,
+          "column": 19,
+          "endLine": 45,
+          "endColumn": 37,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 45,
+          "column": 19,
+          "endLine": 45,
+          "endColumn": 37,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 46,
+          "column": 23,
+          "endLine": 46,
+          "endColumn": 43,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 46,
+          "column": 23,
+          "endLine": 46,
+          "endColumn": 43,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 47,
+          "column": 17,
+          "endLine": 47,
+          "endColumn": 37,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 47,
+          "column": 17,
+          "endLine": 47,
+          "endColumn": 37,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 63,
+          "column": 4,
+          "endLine": 63,
+          "endColumn": 14,
+          "severity": "error",
+          "message": "'any' overrides all other types in this union type.",
+          "rule": "@typescript-eslint/no-redundant-type-constituents",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 64,
+          "column": 9,
+          "endLine": 64,
+          "endColumn": 41,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 71,
+          "column": 5,
+          "endLine": 71,
+          "endColumn": 19,
+          "severity": "error",
+          "message": "Unsafe call of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 71,
+          "column": 10,
+          "endLine": 71,
+          "endColumn": 19,
+          "severity": "error",
+          "message": "Unsafe member access .configure on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 91,
+          "column": 11,
+          "endLine": 91,
+          "endColumn": 45,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 91,
+          "column": 20,
+          "endLine": 91,
+          "endColumn": 30,
+          "severity": "error",
+          "message": "Unsafe call of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 91,
+          "column": 25,
+          "endLine": 91,
+          "endColumn": 30,
+          "severity": "error",
+          "message": "Unsafe member access .parse on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 92,
+          "column": 11,
+          "endLine": 92,
+          "endColumn": 39,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 92,
+          "column": 20,
+          "endLine": 92,
+          "endColumn": 31,
+          "severity": "error",
+          "message": "Unsafe call of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 92,
+          "column": 25,
+          "endLine": 92,
+          "endColumn": 31,
+          "severity": "error",
+          "message": "Unsafe member access .format on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 685,
+          "column": 19,
+          "endLine": 691,
+          "endColumn": 14,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 702,
+          "column": 15,
+          "endLine": 702,
+          "endColumn": 25,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 39,
+          "column": 13,
+          "endLine": 39,
+          "endColumn": 49,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 39,
+          "column": 31,
+          "endLine": 39,
+          "endColumn": 34,
+          "severity": "error",
+          "message": "Unsafe member access .env on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 40,
+          "column": 13,
+          "endLine": 40,
+          "endColumn": 38,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 41,
+          "column": 23,
+          "endLine": 41,
+          "endColumn": 37,
+          "severity": "error",
+          "message": "Unsafe member access ['NODE_OPTIONS'] on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 42,
+          "column": 23,
+          "endLine": 42,
+          "endColumn": 40,
+          "severity": "error",
+          "message": "Unsafe member access ['TS_NODE_PROJECT'] on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 43,
+          "column": 23,
+          "endLine": 43,
+          "endColumn": 47,
+          "severity": "error",
+          "message": "Unsafe member access ['TS_NODE_TRANSPILE_ONLY'] on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 46,
+          "column": 9,
+          "endLine": 46,
+          "endColumn": 25,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 46,
+          "column": 22,
+          "endLine": 46,
+          "endColumn": 25,
+          "severity": "error",
+          "message": "Unsafe member access .cwd on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 47,
+          "column": 9,
+          "endLine": 47,
+          "endColumn": 22,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 65,
+          "column": 19,
+          "endLine": 65,
+          "endColumn": 26,
+          "severity": "error",
+          "message": "Unsafe member access .timeout on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 68,
+          "column": 12,
+          "endLine": 68,
+          "endColumn": 27,
+          "severity": "error",
+          "message": "Unsafe argument of type `any` assigned to a parameter of type `number | undefined`.",
+          "rule": "@typescript-eslint/no-unsafe-argument",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 68,
+          "column": 20,
+          "endLine": 68,
+          "endColumn": 27,
+          "severity": "error",
+          "message": "Unsafe member access .timeout on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 107,
+          "column": 11,
+          "endLine": 107,
+          "endColumn": 47,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 107,
+          "column": 29,
+          "endLine": 107,
+          "endColumn": 32,
+          "severity": "error",
+          "message": "Unsafe member access .env on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 108,
+          "column": 11,
+          "endLine": 108,
+          "endColumn": 36,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 109,
+          "column": 21,
+          "endLine": 109,
+          "endColumn": 35,
+          "severity": "error",
+          "message": "Unsafe member access ['NODE_OPTIONS'] on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 110,
+          "column": 21,
+          "endLine": 110,
+          "endColumn": 38,
+          "severity": "error",
+          "message": "Unsafe member access ['TS_NODE_PROJECT'] on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 111,
+          "column": 21,
+          "endLine": 111,
+          "endColumn": 45,
+          "severity": "error",
+          "message": "Unsafe member access ['TS_NODE_TRANSPILE_ONLY'] on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 114,
+          "column": 7,
+          "endLine": 114,
+          "endColumn": 23,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 114,
+          "column": 20,
+          "endLine": 114,
+          "endColumn": 23,
+          "severity": "error",
+          "message": "Unsafe member access .cwd on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 115,
+          "column": 7,
+          "endLine": 115,
+          "endColumn": 20,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 176,
+          "column": 13,
+          "endLine": 178,
+          "endColumn": 9,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 179,
+          "column": 21,
+          "endLine": 179,
+          "endColumn": 29,
+          "severity": "error",
+          "message": "Unsafe member access .exitCode on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "line": 29,
+          "column": 33,
+          "endLine": 29,
+          "endColumn": 39,
+          "severity": "error",
+          "message": "Unsafe member access .issues on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "line": 30,
+          "column": 31,
+          "endLine": 30,
+          "endColumn": 37,
+          "severity": "error",
+          "message": "Unsafe member access .issues on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "line": 32,
+          "column": 17,
+          "endLine": 34,
+          "endColumn": 19,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "line": 32,
+          "column": 30,
+          "endLine": 32,
+          "endColumn": 63,
+          "severity": "error",
+          "message": "Unsafe call of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "line": 32,
+          "column": 50,
+          "endLine": 32,
+          "endColumn": 56,
+          "severity": "error",
+          "message": "Unsafe member access .issues on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "line": 33,
+          "column": 29,
+          "endLine": 33,
+          "endColumn": 37,
+          "severity": "error",
+          "message": "Unsafe member access .severity on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "line": 34,
+          "column": 13,
+          "endLine": 34,
+          "endColumn": 19,
+          "severity": "error",
+          "message": "Unsafe member access .length on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "line": 35,
+          "column": 17,
+          "endLine": 37,
+          "endColumn": 19,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "line": 35,
+          "column": 32,
+          "endLine": 35,
+          "endColumn": 65,
+          "severity": "error",
+          "message": "Unsafe call of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "line": 35,
+          "column": 52,
+          "endLine": 35,
+          "endColumn": 58,
+          "severity": "error",
+          "message": "Unsafe member access .issues on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "line": 36,
+          "column": 29,
+          "endLine": 36,
+          "endColumn": 37,
+          "severity": "error",
+          "message": "Unsafe member access .severity on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "line": 37,
+          "column": 13,
+          "endLine": 37,
+          "endColumn": 19,
+          "severity": "error",
+          "message": "Unsafe member access .length on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 212,
+          "column": 5,
+          "endLine": 212,
+          "endColumn": 23,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 212,
+          "column": 18,
+          "endLine": 212,
+          "endColumn": 22,
+          "severity": "error",
+          "message": "Unsafe member access .file on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 284,
+          "column": 13,
+          "endLine": 284,
+          "endColumn": 55,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 284,
+          "column": 49,
+          "endLine": 284,
+          "endColumn": 55,
+          "severity": "error",
+          "message": "Unsafe member access .issues on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 285,
+          "column": 29,
+          "endLine": 285,
+          "endColumn": 35,
+          "severity": "error",
+          "message": "Unsafe member access .length on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 317,
+          "column": 17,
+          "endLine": 321,
+          "endColumn": 12,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 335,
+          "column": 13,
+          "endLine": 342,
+          "endColumn": 14,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 338,
+          "column": 15,
+          "endLine": 341,
+          "endColumn": 16,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 339,
+          "column": 42,
+          "endLine": 339,
+          "endColumn": 49,
+          "severity": "error",
+          "message": "Unsafe member access .metrics on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 366,
+          "column": 19,
+          "endLine": 366,
+          "endColumn": 75,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 366,
+          "column": 63,
+          "endLine": 366,
+          "endColumn": 69,
+          "severity": "error",
+          "message": "Unsafe member access .issues on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 367,
+          "column": 44,
+          "endLine": 367,
+          "endColumn": 61,
+          "severity": "error",
+          "message": "Unsafe spread of an `any` value in an array.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 373,
+          "column": 17,
+          "endLine": 380,
+          "endColumn": 18,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 376,
+          "column": 19,
+          "endLine": 379,
+          "endColumn": 20,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 377,
+          "column": 48,
+          "endLine": 377,
+          "endColumn": 55,
+          "severity": "error",
+          "message": "Unsafe member access .metrics on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 397,
+          "column": 13,
+          "endLine": 397,
+          "endColumn": 58,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 415,
+          "column": 15,
+          "endLine": 415,
+          "endColumn": 46,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 437,
+          "column": 13,
+          "endLine": 437,
+          "endColumn": 66,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 437,
+          "column": 24,
+          "endLine": 437,
+          "endColumn": 51,
+          "severity": "error",
+          "message": "Unsafe call of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 437,
+          "column": 30,
+          "endLine": 437,
+          "endColumn": 38,
+          "severity": "error",
+          "message": "Unsafe member access .severity on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 460,
+          "column": 22,
+          "endLine": 460,
+          "endColumn": 29,
+          "severity": "error",
+          "message": "'any' overrides all other types in this union type.",
+          "rule": "@typescript-eslint/no-redundant-type-constituents",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 463,
+          "column": 11,
+          "endLine": 463,
+          "endColumn": 60,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 466,
+          "column": 26,
+          "endLine": 466,
+          "endColumn": 32,
+          "severity": "error",
+          "message": "Unsafe member access .custom on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 467,
+          "column": 7,
+          "endLine": 467,
+          "endColumn": 49,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 467,
+          "column": 18,
+          "endLine": 467,
+          "endColumn": 24,
+          "severity": "error",
+          "message": "Unsafe member access .custom on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 467,
+          "column": 43,
+          "endLine": 467,
+          "endColumn": 49,
+          "severity": "error",
+          "message": "Unsafe member access .custom on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 469,
+          "column": 26,
+          "endLine": 469,
+          "endColumn": 39,
+          "severity": "error",
+          "message": "Unsafe member access .executionTime on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 470,
+          "column": 7,
+          "endLine": 470,
+          "endColumn": 63,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 470,
+          "column": 18,
+          "endLine": 470,
+          "endColumn": 31,
+          "severity": "error",
+          "message": "Unsafe member access .executionTime on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 470,
+          "column": 50,
+          "endLine": 470,
+          "endColumn": 63,
+          "severity": "error",
+          "message": "Unsafe member access .executionTime on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 485,
+          "column": 34,
+          "endLine": 485,
+          "endColumn": 46,
+          "severity": "error",
+          "message": "Unsafe member access .qualityScore on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 486,
+          "column": 32,
+          "endLine": 486,
+          "endColumn": 44,
+          "severity": "error",
+          "message": "Unsafe member access .qualityScore on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 487,
+          "column": 32,
+          "endLine": 487,
+          "endColumn": 44,
+          "severity": "error",
+          "message": "Unsafe member access .qualityScore on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 489,
+          "column": 7,
+          "endLine": 489,
+          "endColumn": 52,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 489,
+          "column": 39,
+          "endLine": 489,
+          "endColumn": 51,
+          "severity": "error",
+          "message": "Unsafe member access .qualityScore on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 498,
+          "column": 11,
+          "endLine": 498,
+          "endColumn": 59,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 498,
+          "column": 47,
+          "endLine": 498,
+          "endColumn": 53,
+          "severity": "error",
+          "message": "Unsafe member access .issues on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 501,
+          "column": 16,
+          "endLine": 501,
+          "endColumn": 22,
+          "severity": "error",
+          "message": "Unsafe member access .length on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 506,
+          "column": 37,
+          "endLine": 506,
+          "endColumn": 62,
+          "severity": "error",
+          "message": "Unsafe argument of type `any` assigned to a parameter of type `Iterable<unknown> | null | undefined`.",
+          "rule": "@typescript-eslint/no-unsafe-argument",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 506,
+          "column": 37,
+          "endLine": 506,
+          "endColumn": 47,
+          "severity": "error",
+          "message": "Unsafe call of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 506,
+          "column": 44,
+          "endLine": 506,
+          "endColumn": 47,
+          "severity": "error",
+          "message": "Unsafe member access .map on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 506,
+          "column": 55,
+          "endLine": 506,
+          "endColumn": 61,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 506,
+          "column": 57,
+          "endLine": 506,
+          "endColumn": 61,
+          "severity": "error",
+          "message": "Unsafe member access .file on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 515,
+          "column": 13,
+          "endLine": 516,
+          "endColumn": 63,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 516,
+          "column": 36,
+          "endLine": 516,
+          "endColumn": 43,
+          "severity": "error",
+          "message": "Unsafe member access .metrics on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 558,
+          "column": 19,
+          "endLine": 558,
+          "endColumn": 28,
+          "severity": "error",
+          "message": "Unsafe member access [dimension] on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 559,
+          "column": 21,
+          "endLine": 559,
+          "endColumn": 30,
+          "severity": "error",
+          "message": "Unsafe member access [dimension] on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 561,
+          "column": 26,
+          "endLine": 561,
+          "endColumn": 44,
+          "severity": "error",
+          "message": "Unsafe argument of type `QualityHexagonMetrics` assigned to a parameter of type `number`.",
+          "rule": "@typescript-eslint/no-unsafe-argument",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 561,
+          "column": 34,
+          "endLine": 561,
+          "endColumn": 43,
+          "severity": "error",
+          "message": "Unsafe member access [dimension] on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 563,
+          "column": 19,
+          "endLine": 563,
+          "endColumn": 28,
+          "severity": "error",
+          "message": "Unsafe member access [dimension] on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 563,
+          "column": 41,
+          "endLine": 563,
+          "endColumn": 59,
+          "severity": "error",
+          "message": "Unsafe argument of type `QualityHexagonMetrics` assigned to a parameter of type `number`.",
+          "rule": "@typescript-eslint/no-unsafe-argument",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 563,
+          "column": 49,
+          "endLine": 563,
+          "endColumn": 58,
+          "severity": "error",
+          "message": "Unsafe member access [dimension] on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 574,
+          "column": 29,
+          "endLine": 574,
+          "endColumn": 40,
+          "severity": "error",
+          "message": "'any' overrides all other types in this union type.",
+          "rule": "@typescript-eslint/no-redundant-type-constituents",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 579,
+          "column": 16,
+          "endLine": 579,
+          "endColumn": 22,
+          "severity": "error",
+          "message": "Unsafe member access .commit on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 586,
+          "column": 18,
+          "endLine": 586,
+          "endColumn": 24,
+          "severity": "error",
+          "message": "Unsafe member access .branch on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 588,
+          "column": 18,
+          "endLine": 588,
+          "endColumn": 24,
+          "severity": "error",
+          "message": "Unsafe member access .branch on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 593,
+          "column": 16,
+          "endLine": 593,
+          "endColumn": 26,
+          "severity": "error",
+          "message": "Unsafe member access .repository on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 597,
+          "column": 21,
+          "endLine": 597,
+          "endColumn": 29,
+          "severity": "error",
+          "message": "Unsafe argument of type `GitMetadata` assigned to a parameter of type `{}`.",
+          "rule": "@typescript-eslint/no-unsafe-argument",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 635,
+          "column": 9,
+          "endLine": 635,
+          "endColumn": 58,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 643,
+          "column": 11,
+          "endLine": 643,
+          "endColumn": 46,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 652,
+          "column": 7,
+          "endLine": 658,
+          "endColumn": 8,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 657,
+          "column": 30,
+          "endLine": 657,
+          "endColumn": 46,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 674,
+          "column": 9,
+          "endLine": 674,
+          "endColumn": 51,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 674,
+          "column": 39,
+          "endLine": 674,
+          "endColumn": 45,
+          "severity": "error",
+          "message": "Unsafe member access .issues on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 675,
+          "column": 9,
+          "endLine": 675,
+          "endColumn": 53,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 675,
+          "column": 40,
+          "endLine": 675,
+          "endColumn": 47,
+          "severity": "error",
+          "message": "Unsafe member access .metrics on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 676,
+          "column": 9,
+          "endLine": 676,
+          "endColumn": 49,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 676,
+          "column": 41,
+          "endLine": 676,
+          "endColumn": 49,
+          "severity": "error",
+          "message": "Unsafe member access .coverage on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 677,
+          "column": 9,
+          "endLine": 677,
+          "endColumn": 55,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 677,
+          "column": 44,
+          "endLine": 677,
+          "endColumn": 55,
+          "severity": "error",
+          "message": "Unsafe member access .fileMetrics on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 92,
+          "column": 11,
+          "endLine": 92,
+          "endColumn": 53,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 92,
+          "column": 24,
+          "endLine": 92,
+          "endColumn": 53,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 96,
+          "column": 11,
+          "endLine": 96,
+          "endColumn": 49,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 96,
+          "column": 22,
+          "endLine": 96,
+          "endColumn": 49,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 100,
+          "column": 11,
+          "endLine": 100,
+          "endColumn": 55,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 100,
+          "column": 25,
+          "endLine": 100,
+          "endColumn": 55,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 104,
+          "column": 11,
+          "endLine": 104,
+          "endColumn": 53,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 104,
+          "column": 24,
+          "endLine": 104,
+          "endColumn": 53,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 115,
+          "column": 11,
+          "endLine": 115,
+          "endColumn": 57,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 115,
+          "column": 26,
+          "endLine": 115,
+          "endColumn": 57,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 120,
+          "column": 11,
+          "endLine": 120,
+          "endColumn": 55,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 120,
+          "column": 27,
+          "endLine": 120,
+          "endColumn": 55,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 121,
+          "column": 5,
+          "endLine": 121,
+          "endColumn": 26,
+          "severity": "error",
+          "message": "Unsafe call of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 121,
+          "column": 19,
+          "endLine": 121,
+          "endColumn": 26,
+          "severity": "error",
+          "message": "Unsafe member access .setMode on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 125,
+          "column": 11,
+          "endLine": 125,
+          "endColumn": 57,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 125,
+          "column": 29,
+          "endLine": 125,
+          "endColumn": 57,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 126,
+          "column": 5,
+          "endLine": 126,
+          "endColumn": 28,
+          "severity": "error",
+          "message": "Unsafe call of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 126,
+          "column": 21,
+          "endLine": 126,
+          "endColumn": 28,
+          "severity": "error",
+          "message": "Unsafe member access .setMode on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 130,
+          "column": 11,
+          "endLine": 130,
+          "endColumn": 47,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 130,
+          "column": 21,
+          "endLine": 130,
+          "endColumn": 47,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 133,
+          "column": 11,
+          "endLine": 133,
+          "endColumn": 61,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 133,
+          "column": 28,
+          "endLine": 133,
+          "endColumn": 61,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 147,
+          "column": 13,
+          "endLine": 147,
+          "endColumn": 46,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 152,
+          "column": 34,
+          "endLine": 152,
+          "endColumn": 41,
+          "severity": "error",
+          "message": "Unsafe member access .scripts on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 170,
+          "column": 14,
+          "endLine": 170,
+          "endColumn": 50,
+          "severity": "warning",
+          "message": "Forbidden non-null assertion.",
+          "rule": "@typescript-eslint/no-non-null-assertion",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 193,
+          "column": 99,
+          "endLine": 193,
+          "endColumn": 103,
+          "severity": "error",
+          "message": "'any' overrides all other types in this union type.",
+          "rule": "@typescript-eslint/no-redundant-type-constituents",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 198,
+          "column": 63,
+          "endLine": 198,
+          "endColumn": 83,
+          "severity": "error",
+          "message": "Unsafe argument of type `any` assigned to a parameter of type `Set<string>`.",
+          "rule": "@typescript-eslint/no-unsafe-argument",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 199,
+          "column": 7,
+          "endLine": 199,
+          "endColumn": 65,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 199,
+          "column": 14,
+          "endLine": 199,
+          "endColumn": 64,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 203,
+          "column": 63,
+          "endLine": 203,
+          "endColumn": 80,
+          "severity": "error",
+          "message": "Unsafe argument of type `any` assigned to a parameter of type `Set<string>`.",
+          "rule": "@typescript-eslint/no-unsafe-argument",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 204,
+          "column": 7,
+          "endLine": 204,
+          "endColumn": 59,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 204,
+          "column": 14,
+          "endLine": 204,
+          "endColumn": 58,
+          "severity": "error",
+          "message": "Unsafe construction of an any type value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 212,
+          "column": 9,
+          "endLine": 212,
+          "endColumn": 52,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 219,
+          "column": 9,
+          "endLine": 219,
+          "endColumn": 52,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 223,
+          "column": 7,
+          "endLine": 223,
+          "endColumn": 46,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 228,
+          "column": 7,
+          "endLine": 228,
+          "endColumn": 50,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 234,
+          "column": 7,
+          "endLine": 234,
+          "endColumn": 52,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 239,
+          "column": 7,
+          "endLine": 239,
+          "endColumn": 54,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 243,
+          "column": 5,
+          "endLine": 243,
+          "endColumn": 50,
+          "severity": "error",
+          "message": "Unsafe return of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-return",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 298,
+          "column": 11,
+          "endLine": 298,
+          "endColumn": 100,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 313,
+          "column": 42,
+          "endLine": 313,
+          "endColumn": 46,
+          "severity": "error",
+          "message": "Unsafe member access .name on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 321,
+          "column": 7,
+          "endLine": 321,
+          "endColumn": 21,
+          "severity": "error",
+          "message": "Unsafe call of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 321,
+          "column": 12,
+          "endLine": 321,
+          "endColumn": 21,
+          "severity": "error",
+          "message": "Unsafe member access .configure on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 333,
+          "column": 13,
+          "endLine": 333,
+          "endColumn": 42,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 333,
+          "column": 32,
+          "endLine": 333,
+          "endColumn": 40,
+          "severity": "error",
+          "message": "Unsafe call of an `any` typed value.",
+          "rule": "@typescript-eslint/no-unsafe-call",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 333,
+          "column": 37,
+          "endLine": 333,
+          "endColumn": 40,
+          "severity": "error",
+          "message": "Unsafe member access .run on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 345,
+          "column": 9,
+          "endLine": 345,
+          "endColumn": 45,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 345,
+          "column": 28,
+          "endLine": 345,
+          "endColumn": 31,
+          "severity": "error",
+          "message": "Unsafe member access .raw on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 346,
+          "column": 9,
+          "endLine": 346,
+          "endColumn": 74,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 346,
+          "column": 28,
+          "endLine": 346,
+          "endColumn": 31,
+          "severity": "error",
+          "message": "Unsafe member access .raw on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 346,
+          "column": 54,
+          "endLine": 346,
+          "endColumn": 59,
+          "severity": "error",
+          "message": "Unsafe member access .error on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 347,
+          "column": 9,
+          "endLine": 347,
+          "endColumn": 19,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 382,
+          "column": 13,
+          "endLine": 382,
+          "endColumn": 73,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 385,
+          "column": 25,
+          "endLine": 385,
+          "endColumn": 33,
+          "severity": "error",
+          "message": "Unsafe member access .exitCode on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 389,
+          "column": 9,
+          "endLine": 389,
+          "endColumn": 34,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 389,
+          "column": 26,
+          "endLine": 389,
+          "endColumn": 34,
+          "severity": "error",
+          "message": "Unsafe member access .exitCode on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 391,
+          "column": 9,
+          "endLine": 391,
+          "endColumn": 30,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 391,
+          "column": 24,
+          "endLine": 391,
+          "endColumn": 30,
+          "severity": "error",
+          "message": "Unsafe member access .stdout on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 392,
+          "column": 9,
+          "endLine": 392,
+          "endColumn": 30,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 392,
+          "column": 24,
+          "endLine": 392,
+          "endColumn": 30,
+          "severity": "error",
+          "message": "Unsafe member access .stderr on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 447,
+          "column": 20,
+          "endLine": 447,
+          "endColumn": 23,
+          "severity": "error",
+          "message": "Unsafe member access .raw on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 448,
+          "column": 7,
+          "endLine": 448,
+          "endColumn": 41,
+          "severity": "error",
+          "message": "Unsafe assignment of an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-assignment",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 448,
+          "column": 29,
+          "endLine": 448,
+          "endColumn": 32,
+          "severity": "error",
+          "message": "Unsafe member access .raw on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 451,
+          "column": 25,
+          "endLine": 451,
+          "endColumn": 30,
+          "severity": "error",
+          "message": "Unsafe member access .error on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 456,
+          "column": 18,
+          "endLine": 456,
+          "endColumn": 25,
+          "severity": "error",
+          "message": "Unsafe member access .metrics on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 457,
+          "column": 18,
+          "endLine": 457,
+          "endColumn": 25,
+          "severity": "error",
+          "message": "Unsafe member access .metrics on an `any` value.",
+          "rule": "@typescript-eslint/no-unsafe-member-access",
+          "source": "eslint",
+          "category": "typescript"
+        }
+      ],
+      "metrics": {
+        "filesAnalyzed": 6,
+        "totalIssues": 208,
+        "issuesBySeverity": {
+          "error": 207,
+          "warning": 1,
+          "info": 0,
+          "hint": 0
+        },
+        "executionTime": 0,
+        "custom": {
+          "filesWithIssues": 5,
+          "fixableErrors": 0,
+          "fixableWarnings": 0,
+          "totalFixable": 0
+        }
+      },
+      "fileMetrics": [
+        {
+          "file": "src/cli.ts",
+          "score": 0,
+          "issueCount": 37,
+          "errorCount": 37,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0,
+          "categories": {
+            "typescript": 37
+          }
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "score": 0,
+          "issueCount": 23,
+          "errorCount": 23,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0,
+          "categories": {
+            "typescript": 23
+          }
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "score": 0,
+          "issueCount": 12,
+          "errorCount": 12,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0,
+          "categories": {
+            "typescript": 12
+          }
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "score": 0,
+          "issueCount": 70,
+          "errorCount": 70,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0,
+          "categories": {
+            "typescript": 70
+          }
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "score": 0,
+          "issueCount": 66,
+          "errorCount": 65,
+          "warningCount": 1,
+          "infoCount": 0,
+          "hintCount": 0,
+          "categories": {
+            "typescript": 66
+          }
+        },
+        {
+          "file": "src/scanner/RepositoryScanner.ts",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        }
+      ],
+      "qualityContext": {}
+    },
+    {
+      "package": {
+        "name": "@principal-ai/quality-lens-cli",
+        "path": ""
+      },
+      "lens": {
+        "id": "typescript",
+        "command": "typecheck"
+      },
+      "execution": {
+        "success": true,
+        "exitCode": 2,
+        "duration": 2249,
+        "timestamp": 1766164126462
+      },
+      "issues": [],
+      "metrics": {
+        "filesAnalyzed": 0,
+        "totalIssues": 0,
+        "issuesBySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0,
+          "hint": 0
+        },
+        "executionTime": 0,
+        "custom": {
+          "filesWithErrors": 0,
+          "totalErrors": 0,
+          "totalWarnings": 0,
+          "totalSuggestions": 0,
+          "uniqueErrorCodes": 0,
+          "topErrors": []
+        }
+      },
+      "fileMetrics": [],
+      "qualityContext": {}
+    },
+    {
+      "package": {
+        "name": "@principal-ai/quality-lens-cli",
+        "path": ""
+      },
+      "lens": {
+        "id": "knip",
+        "command": "knip"
+      },
+      "execution": {
+        "success": true,
+        "exitCode": 1,
+        "duration": 1399,
+        "timestamp": 1766164127862
+      },
+      "issues": [
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 33,
+          "column": 18,
+          "severity": "info",
+          "message": "Unused type: ToolExecutionRequest",
+          "rule": "unused-type",
+          "source": "knip",
+          "category": "types"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 12,
+          "column": 15,
+          "severity": "info",
+          "message": "Unused type: QualityHexagonMetrics",
+          "rule": "unused-type",
+          "source": "knip",
+          "category": "types"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 12,
+          "column": 38,
+          "severity": "info",
+          "message": "Unused type: GitMetadata",
+          "rule": "unused-type",
+          "source": "knip",
+          "category": "types"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 17,
+          "column": 18,
+          "severity": "info",
+          "message": "Unused type: PackageQualityMetrics",
+          "rule": "unused-type",
+          "source": "knip",
+          "category": "types"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 26,
+          "column": 18,
+          "severity": "info",
+          "message": "Unused type: FormattedResults",
+          "rule": "unused-type",
+          "source": "knip",
+          "category": "types"
+        }
+      ],
+      "metrics": {
+        "filesAnalyzed": 3,
+        "totalIssues": 5,
+        "issuesBySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 5,
+          "hint": 0
+        },
+        "executionTime": 0,
+        "custom": {
+          "unusedFiles": 0,
+          "unusedDependencies": 0,
+          "unusedDevDependencies": 0,
+          "unlistedDependencies": 0,
+          "unresolvedImports": 0,
+          "unusedExports": 0,
+          "unusedTypes": 5,
+          "issuesByCategory": {
+            "types": 5
+          }
+        }
+      },
+      "fileMetrics": [
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "score": 96,
+          "issueCount": 4,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 4,
+          "hintCount": 0,
+          "categories": {
+            "types": 4
+          }
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "types": 1
+          }
+        },
+        {
+          "file": "package.json",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        }
+      ],
+      "qualityContext": {}
+    },
+    {
+      "package": {
+        "name": "@principal-ai/quality-lens-cli",
+        "path": ""
+      },
+      "lens": {
+        "id": "jest",
+        "command": "test"
+      },
+      "execution": {
+        "success": true,
+        "exitCode": 1,
+        "duration": 2969,
+        "timestamp": 1766164130833
+      },
+      "issues": [],
+      "metrics": {
+        "filesAnalyzed": 1,
+        "totalIssues": 0,
+        "issuesBySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0,
+          "hint": 0
+        },
+        "executionTime": 0,
+        "custom": {
+          "totalTests": 0,
+          "passedTests": 0,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "testSuites": 1,
+          "passedSuites": 0,
+          "failedSuites": 1,
+          "passRate": 0,
+          "duration": 0,
+          "slowestTests": [],
+          "snapshot": {
+            "total": 0,
+            "matched": 0,
+            "unmatched": 0,
+            "updated": 0
+          }
+        }
+      },
+      "fileMetrics": [
+        {
+          "file": "test/unit/JsonFormatter.test.ts",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        }
+      ],
+      "qualityContext": {}
+    },
+    {
+      "package": {
+        "name": "@principal-ai/quality-lens-cli",
+        "path": ""
+      },
+      "lens": {
+        "id": "jest",
+        "command": "test:integration"
+      },
+      "execution": {
+        "success": true,
+        "exitCode": 1,
+        "duration": 2751,
+        "timestamp": 1766164133585
+      },
+      "issues": [],
+      "metrics": {
+        "filesAnalyzed": 1,
+        "totalIssues": 0,
+        "issuesBySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 0,
+          "hint": 0
+        },
+        "executionTime": 0,
+        "custom": {
+          "totalTests": 0,
+          "passedTests": 0,
+          "failedTests": 0,
+          "skippedTests": 0,
+          "testSuites": 1,
+          "passedSuites": 0,
+          "failedSuites": 1,
+          "passRate": 0,
+          "duration": 0,
+          "slowestTests": [],
+          "snapshot": {
+            "total": 0,
+            "matched": 0,
+            "unmatched": 0,
+            "updated": 0
+          }
+        }
+      },
+      "fileMetrics": [
+        {
+          "file": "test/unit/JsonFormatter.test.ts",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        }
+      ],
+      "qualityContext": {}
+    },
+    {
+      "package": {
+        "name": "@principal-ai/quality-lens-cli",
+        "path": ""
+      },
+      "lens": {
+        "id": "prettier",
+        "command": "prettier"
+      },
+      "execution": {
+        "success": true,
+        "exitCode": 1,
+        "duration": 1792,
+        "timestamp": 1766164135380
+      },
+      "issues": [
+        {
+          "file": ".principal-views/library.yaml",
+          "line": 1,
+          "column": 1,
+          "severity": "error",
+          "message": "File is not formatted according to Prettier rules",
+          "rule": "prettier",
+          "source": "prettier",
+          "category": "formatting"
+        },
+        {
+          "file": ".privurc.yaml",
+          "line": 1,
+          "column": 1,
+          "severity": "error",
+          "message": "File is not formatted according to Prettier rules",
+          "rule": "prettier",
+          "source": "prettier",
+          "category": "formatting"
+        },
+        {
+          "file": "INVESTIGATION-file-metrics-missing.md",
+          "line": 1,
+          "column": 1,
+          "severity": "error",
+          "message": "File is not formatted according to Prettier rules",
+          "rule": "prettier",
+          "source": "prettier",
+          "category": "formatting"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 1,
+          "column": 1,
+          "severity": "error",
+          "message": "File is not formatted according to Prettier rules",
+          "rule": "prettier",
+          "source": "prettier",
+          "category": "formatting"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 1,
+          "column": 1,
+          "severity": "error",
+          "message": "File is not formatted according to Prettier rules",
+          "rule": "prettier",
+          "source": "prettier",
+          "category": "formatting"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 1,
+          "column": 1,
+          "severity": "error",
+          "message": "File is not formatted according to Prettier rules",
+          "rule": "prettier",
+          "source": "prettier",
+          "category": "formatting"
+        },
+        {
+          "file": "test-output/data-structure-analysis.json",
+          "line": 1,
+          "column": 1,
+          "severity": "error",
+          "message": "File is not formatted according to Prettier rules",
+          "rule": "prettier",
+          "source": "prettier",
+          "category": "formatting"
+        },
+        {
+          "file": "test/integration/data-structure.test.ts",
+          "line": 1,
+          "column": 1,
+          "severity": "error",
+          "message": "File is not formatted according to Prettier rules",
+          "rule": "prettier",
+          "source": "prettier",
+          "category": "formatting"
+        }
+      ],
+      "metrics": {
+        "filesAnalyzed": 31,
+        "totalIssues": 8,
+        "issuesBySeverity": {
+          "error": 8,
+          "warning": 0,
+          "info": 0,
+          "hint": 0
+        },
+        "executionTime": 0,
+        "custom": {
+          "filesNeedingFormatting": 8,
+          "formattingCompliance": 74.19
+        }
+      },
+      "fileMetrics": [
+        {
+          "file": ".principal-views/library.yaml",
+          "score": 90,
+          "issueCount": 1,
+          "errorCount": 1,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0,
+          "categories": {
+            "formatting": 1
+          }
+        },
+        {
+          "file": ".privurc.yaml",
+          "score": 90,
+          "issueCount": 1,
+          "errorCount": 1,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0,
+          "categories": {
+            "formatting": 1
+          }
+        },
+        {
+          "file": "INVESTIGATION-file-metrics-missing.md",
+          "score": 90,
+          "issueCount": 1,
+          "errorCount": 1,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0,
+          "categories": {
+            "formatting": 1
+          }
+        },
+        {
+          "file": "src/cli.ts",
+          "score": 90,
+          "issueCount": 1,
+          "errorCount": 1,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0,
+          "categories": {
+            "formatting": 1
+          }
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "score": 90,
+          "issueCount": 1,
+          "errorCount": 1,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0,
+          "categories": {
+            "formatting": 1
+          }
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "score": 90,
+          "issueCount": 1,
+          "errorCount": 1,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0,
+          "categories": {
+            "formatting": 1
+          }
+        },
+        {
+          "file": "test-output/data-structure-analysis.json",
+          "score": 90,
+          "issueCount": 1,
+          "errorCount": 1,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0,
+          "categories": {
+            "formatting": 1
+          }
+        },
+        {
+          "file": "test/integration/data-structure.test.ts",
+          "score": 90,
+          "issueCount": 1,
+          "errorCount": 1,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0,
+          "categories": {
+            "formatting": 1
+          }
+        },
+        {
+          "file": ".alexandriarc.json",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": ".eslintrc.json",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": ".github/workflows/quality-lens.yml",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": ".gitignore",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": ".prettierrc.json",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": ".principal-views/architecture.canvas",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "analyze-format.js",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "ARTIFACT_RETRIEVAL_GUIDE.md",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "bin/quality-lens.js",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "bun.lock",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "jest.config.js",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "knip.json",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "LENS_REVIEW_PROCESS.md",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "lens-support-registry.json",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "lens-validation/validation-framework.ts",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "package-lock.json",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "package.json",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "README.md",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "src/scanner/RepositoryScanner.ts",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "test/unit/JsonFormatter.test.ts",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        },
+        {
+          "file": "tsconfig.json",
+          "score": 100,
+          "issueCount": 0,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 0,
+          "hintCount": 0
+        }
+      ],
+      "qualityContext": {}
+    },
+    {
+      "package": {
+        "name": "@principal-ai/quality-lens-cli",
+        "path": ""
+      },
+      "lens": {
+        "id": "alexandria",
+        "command": "docs"
+      },
+      "execution": {
+        "success": true,
+        "exitCode": 0,
+        "duration": 8599,
+        "timestamp": 1766164143981
+      },
+      "issues": [
+        {
+          "file": ".alexandriarc.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": ".eslintrc.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": ".github/workflows/quality-lens.yml",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": ".prettierrc.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": ".principal-views/library.yaml",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": ".privurc.yaml",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "ARTIFACT_RETRIEVAL_GUIDE.md",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "INVESTIGATION-file-metrics-missing.md",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "LENS_REVIEW_PROCESS.md",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "README.md",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "analyze-format.js",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "bin/quality-lens.js",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "jest.config.js",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "knip.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "lens-support-registry.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "lens-validation/validation-framework.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "package-lock.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "package.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "src/scanner/RepositoryScanner.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "test-output/data-structure-analysis.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "test/integration/data-structure.test.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "test/unit/JsonFormatter.test.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "tsconfig.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        }
+      ],
+      "metrics": {
+        "filesAnalyzed": 28,
+        "totalIssues": 28,
+        "issuesBySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 28,
+          "hint": 0
+        },
+        "executionTime": 0,
+        "custom": {
+          "totalFiles": 28,
+          "coveredFiles": 0,
+          "uncoveredFiles": 28,
+          "coveragePercentage": 0
+        }
+      },
+      "fileMetrics": [
+        {
+          "file": ".alexandriarc.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": ".eslintrc.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": ".github/workflows/quality-lens.yml",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": ".prettierrc.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": ".principal-views/library.yaml",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": ".privurc.yaml",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "ARTIFACT_RETRIEVAL_GUIDE.md",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "INVESTIGATION-file-metrics-missing.md",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "LENS_REVIEW_PROCESS.md",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "README.md",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "analyze-format.js",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "bin/quality-lens.js",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "jest.config.js",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "knip.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "lens-support-registry.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "lens-validation/validation-framework.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "package-lock.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "package.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "src/cli.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "src/scanner/RepositoryScanner.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "test-output/data-structure-analysis.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "test/integration/data-structure.test.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "test/unit/JsonFormatter.test.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "tsconfig.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        }
+      ],
+      "qualityContext": {}
+    },
+    {
+      "package": {
+        "name": "@principal-ai/quality-lens-cli",
+        "path": ""
+      },
+      "lens": {
+        "id": "alexandria",
+        "command": "alexandria"
+      },
+      "execution": {
+        "success": true,
+        "exitCode": 0,
+        "duration": 1191,
+        "timestamp": 1766164145172
+      },
+      "issues": [
+        {
+          "file": ".alexandriarc.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": ".eslintrc.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": ".github/workflows/quality-lens.yml",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": ".prettierrc.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": ".principal-views/library.yaml",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": ".privurc.yaml",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "ARTIFACT_RETRIEVAL_GUIDE.md",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "INVESTIGATION-file-metrics-missing.md",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "LENS_REVIEW_PROCESS.md",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "README.md",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "analyze-format.js",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "bin/quality-lens.js",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "jest.config.js",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "knip.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "lens-support-registry.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "lens-validation/validation-framework.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "package-lock.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "package.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "src/cli.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "src/scanner/RepositoryScanner.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "test-output/data-structure-analysis.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "test/integration/data-structure.test.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "test/unit/JsonFormatter.test.ts",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        },
+        {
+          "file": "tsconfig.json",
+          "line": 1,
+          "severity": "info",
+          "message": "File is not covered by any Alexandria codebase view",
+          "rule": "coverage",
+          "source": "alexandria",
+          "category": "documentation-coverage"
+        }
+      ],
+      "metrics": {
+        "filesAnalyzed": 28,
+        "totalIssues": 28,
+        "issuesBySeverity": {
+          "error": 0,
+          "warning": 0,
+          "info": 28,
+          "hint": 0
+        },
+        "executionTime": 0,
+        "custom": {
+          "totalFiles": 28,
+          "coveredFiles": 0,
+          "uncoveredFiles": 28,
+          "coveragePercentage": 0
+        }
+      },
+      "fileMetrics": [
+        {
+          "file": ".alexandriarc.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": ".eslintrc.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": ".github/workflows/quality-lens.yml",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": ".prettierrc.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": ".principal-views/library.yaml",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": ".privurc.yaml",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "ARTIFACT_RETRIEVAL_GUIDE.md",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "INVESTIGATION-file-metrics-missing.md",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "LENS_REVIEW_PROCESS.md",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "README.md",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "analyze-format.js",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "bin/quality-lens.js",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "jest.config.js",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "knip.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "lens-support-registry.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "lens-validation/validation-framework.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "package-lock.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "package.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "src/cli.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "src/executor/NodeExecutor.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "src/output/ConsoleReporter.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "src/output/JsonFormatter.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "src/scanner/RepositoryScanner.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "src/service/QualityLensService.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "test-output/data-structure-analysis.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "test/integration/data-structure.test.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "test/unit/JsonFormatter.test.ts",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        },
+        {
+          "file": "tsconfig.json",
+          "score": 99,
+          "issueCount": 1,
+          "errorCount": 0,
+          "warningCount": 0,
+          "infoCount": 1,
+          "hintCount": 0,
+          "categories": {
+            "documentation-coverage": 1
+          }
+        }
+      ],
+      "qualityContext": {}
+    }
+  ],
+  "qualityMetrics": {
+    "packages": [
+      {
+        "name": "@principal-ai/quality-lens-cli",
+        "path": "",
+        "hexagon": {
+          "tests": 100,
+          "deadCode": 2.5,
+          "formatting": 74.19,
+          "linting": 44,
+          "types": 100,
+          "documentation": 0
+        }
+      }
+    ]
+  }
+}

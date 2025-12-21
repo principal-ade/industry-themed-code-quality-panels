@@ -352,24 +352,10 @@ export function RepositoryQualityGrid({
   const items = React.useMemo(() => flattenRepositories(repositories), [repositories]);
   const overallTier = React.useMemo(() => calculateOverallTier(items), [items]);
 
-  // Sort items based on selected metric or average
+  // Sort items alphabetically by package name
   const sortedItems = React.useMemo(() => {
-    return [...items].sort((a, b) => {
-      if (selectedMetric) {
-        // Sort by selected metric (for deadCode, lower is better so invert)
-        const aVal = selectedMetric === 'deadCode'
-          ? 100 - a.metrics[selectedMetric]
-          : a.metrics[selectedMetric];
-        const bVal = selectedMetric === 'deadCode'
-          ? 100 - b.metrics[selectedMetric]
-          : b.metrics[selectedMetric];
-        return bVal - aVal; // Descending (best first)
-      } else {
-        // Sort by average score
-        return calculateAverageScore(b.metrics) - calculateAverageScore(a.metrics);
-      }
-    });
-  }, [items, selectedMetric]);
+    return [...items].sort((a, b) => a.packageName.localeCompare(b.packageName));
+  }, [items]);
 
   const tierColors: Record<QualityTier, string> = {
     none: '#808080',

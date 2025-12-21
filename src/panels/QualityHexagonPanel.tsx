@@ -1,5 +1,5 @@
 import React from 'react';
-import { Hexagon } from 'lucide-react';
+import { Hexagon, X, Copy, Check } from 'lucide-react';
 import { useTheme } from '@principal-ade/industry-theme';
 import type { PanelComponentProps } from '../types';
 import type { QualityMetrics } from '@principal-ai/codebase-composition';
@@ -67,6 +67,18 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
 }) => {
   const { theme } = useTheme();
   const [refreshingPackages, setRefreshingPackages] = React.useState<Set<string>>(new Set());
+  const [showHelpOverlay, setShowHelpOverlay] = React.useState(false);
+  const [copiedCommand, setCopiedCommand] = React.useState<string | null>(null);
+
+  const handleCopyCommand = async (command: string) => {
+    try {
+      await navigator.clipboard.writeText(command);
+      setCopiedCommand(command);
+      setTimeout(() => setCopiedCommand(null), 2000);
+    } catch {
+      console.log('Copy:', command);
+    }
+  };
 
   // Get quality data from context if available
   const qualitySlice = context.getSlice<QualitySliceData>('quality');
@@ -172,6 +184,7 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
         boxSizing: 'border-box',
         display: 'flex',
         flexDirection: 'column',
+        position: 'relative',
       }}
     >
       {/* Header */}
@@ -197,7 +210,8 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
           Code Quality
         </h2>
         <span
-          title="Platinum: 90%+ avg | Gold: 75%+ | Silver: 60%+ | Bronze: 40%+"
+          onClick={() => setShowHelpOverlay(true)}
+          title="Click for help"
           style={{
             display: 'inline-flex',
             alignItems: 'center',
@@ -208,7 +222,7 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
             border: `1px solid ${theme.colors.border}`,
             fontSize: 11,
             color: theme.colors.textMuted,
-            cursor: 'help',
+            cursor: 'pointer',
           }}
         >
           ?
@@ -296,6 +310,136 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
         )}
       </div>
       </div>
+
+      {/* Help Overlay */}
+      {showHelpOverlay && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.7)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 100,
+          }}
+          onClick={() => setShowHelpOverlay(false)}
+        >
+          <div
+            style={{
+              backgroundColor: theme.colors.surface,
+              borderRadius: 8,
+              padding: 20,
+              maxWidth: 400,
+              width: '90%',
+              border: `1px solid ${theme.colors.border}`,
+            }}
+            onClick={(e) => e.stopPropagation()}
+          >
+            <div style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              alignItems: 'center',
+              marginBottom: 16,
+            }}>
+              <h3 style={{
+                margin: 0,
+                fontSize: 16,
+                fontWeight: 600,
+                color: theme.colors.text,
+              }}>
+                Quality Lens CLI
+              </h3>
+              <button
+                onClick={() => setShowHelpOverlay(false)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: 4,
+                  display: 'flex',
+                  color: theme.colors.textMuted,
+                }}
+              >
+                <X size={18} />
+              </button>
+            </div>
+
+            <p style={{
+              fontSize: 13,
+              color: theme.colors.textMuted,
+              margin: '0 0 12px 0',
+            }}>
+              Run quality checks locally with the CLI:
+            </p>
+
+            {[
+              { cmd: 'npx @principal-ai/quality-lens-cli init', label: 'Initialize quality lens in your project' },
+              { cmd: 'npx @principal-ai/quality-lens-cli list', label: 'List available quality lenses' },
+            ].map(({ cmd, label }) => (
+              <div key={cmd} style={{ marginBottom: 12 }}>
+                <span style={{ fontSize: 11, color: theme.colors.textMuted }}>{label}</span>
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'space-between',
+                    gap: 8,
+                    padding: '8px 12px',
+                    borderRadius: 6,
+                    backgroundColor: theme.colors.background,
+                    border: `1px solid ${theme.colors.border}`,
+                    fontFamily: 'monospace',
+                    fontSize: 12,
+                    marginTop: 4,
+                  }}
+                >
+                  <code style={{ color: theme.colors.text }}>{cmd}</code>
+                  <button
+                    onClick={() => handleCopyCommand(cmd)}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      padding: 4,
+                      border: 'none',
+                      backgroundColor: 'transparent',
+                      color: theme.colors.textMuted,
+                      cursor: 'pointer',
+                    }}
+                    title="Copy command"
+                  >
+                    {copiedCommand === cmd ? (
+                      <Check size={14} color={theme.colors.success} />
+                    ) : (
+                      <Copy size={14} />
+                    )}
+                  </button>
+                </div>
+              </div>
+            ))}
+
+            <div style={{
+              marginTop: 16,
+              padding: 12,
+              backgroundColor: theme.colors.background,
+              borderRadius: 6,
+              fontSize: 12,
+              color: theme.colors.textMuted,
+            }}>
+              <strong style={{ color: theme.colors.text }}>Tiers:</strong>
+              <div style={{ marginTop: 8, display: 'flex', flexDirection: 'column', gap: 4 }}>
+                <span>🏆 Platinum: 90%+ average</span>
+                <span>🥇 Gold: 75%+ average</span>
+                <span>🥈 Silver: 60%+ average</span>
+                <span>🥉 Bronze: 40%+ average</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
