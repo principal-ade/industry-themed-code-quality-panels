@@ -94,7 +94,7 @@ interface LensDataDebugPanelProps {
 function groupResultsByPackage(results: LensResult[]): Map<string, LensResult[]> {
   const map = new Map<string, LensResult[]>();
   for (const result of results) {
-    const key = result.package.name;
+    const key = result.package?.name ?? 'unknown';
     const existing = map.get(key) || [];
     existing.push(result);
     map.set(key, existing);
@@ -143,9 +143,9 @@ function getPackageSummary(results: LensResult[]) {
   let failCount = 0;
 
   for (const result of results) {
-    totalErrors += result.metrics.issuesBySeverity.error;
-    totalWarnings += result.metrics.issuesBySeverity.warning;
-    if (result.execution.success) {
+    totalErrors += result.metrics?.issuesBySeverity?.error ?? 0;
+    totalWarnings += result.metrics?.issuesBySeverity?.warning ?? 0;
+    if (result.execution?.success) {
       passCount++;
     } else {
       failCount++;
@@ -163,7 +163,7 @@ export function LensDataDebugPanel({
   onFileClick,
   onPackageSelect,
 }: LensDataDebugPanelProps) {
-  const packageGroups = React.useMemo(() => groupResultsByPackage(data.results), [data.results]);
+  const packageGroups = React.useMemo(() => groupResultsByPackage(data?.results ?? []), [data?.results]);
   const packageNames = React.useMemo(() => Array.from(packageGroups.keys()), [packageGroups]);
 
   const [selectedPackage, setSelectedPackage] = React.useState<string | null>(
@@ -316,10 +316,10 @@ export function LensDataDebugPanel({
 
       {/* Lens Results for Selected Package */}
       {selectedPackage && selectedResults.map((result, idx) => {
-        const lensKey = `${result.lens.id}-${idx}`;
+        const lensKey = `${result.lens?.id ?? 'unknown'}-${idx}`;
         const isExpanded = expandedLens === lensKey;
-        const filesWithIssues = getFilesWithIssues(result.issues);
-        const hasIssues = result.issues.length > 0;
+        const filesWithIssues = getFilesWithIssues(result.issues ?? []);
+        const hasIssues = (result.issues?.length ?? 0) > 0;
 
         return (
           <div
@@ -359,10 +359,10 @@ export function LensDataDebugPanel({
                   <polyline points="9,18 15,12 9,6" />
                 </svg>
                 <span style={{ fontWeight: 600, color: theme.colors.text }}>
-                  {result.lens.id}
+                  {result.lens?.id ?? 'unknown'}
                 </span>
                 <span style={{ color: theme.colors.textMuted }}>
-                  ({result.lens.command})
+                  ({result.lens?.command ?? ''})
                 </span>
               </div>
 
@@ -372,18 +372,18 @@ export function LensDataDebugPanel({
                   padding: '2px 6px',
                   borderRadius: 4,
                   fontSize: 11,
-                  backgroundColor: result.execution.success
+                  backgroundColor: result.execution?.success
                     ? 'rgba(34, 197, 94, 0.1)'
                     : 'rgba(239, 68, 68, 0.1)',
-                  color: result.execution.success ? '#22c55e' : '#ef4444',
+                  color: result.execution?.success ? '#22c55e' : '#ef4444',
                 }}>
-                  {result.execution.success ? 'pass' : 'fail'}
+                  {result.execution?.success ? 'pass' : 'fail'}
                 </span>
 
                 {/* Issue counts */}
                 {hasIssues && (
                   <div style={{ display: 'flex', gap: 6 }}>
-                    {result.metrics.issuesBySeverity.error > 0 && (
+                    {(result.metrics?.issuesBySeverity?.error ?? 0) > 0 && (
                       <span style={{
                         padding: '2px 6px',
                         borderRadius: 4,
@@ -391,10 +391,10 @@ export function LensDataDebugPanel({
                         backgroundColor: getSeverityBg('error'),
                         color: getSeverityColor('error'),
                       }}>
-                        {result.metrics.issuesBySeverity.error} errors
+                        {result.metrics?.issuesBySeverity?.error ?? 0} errors
                       </span>
                     )}
-                    {result.metrics.issuesBySeverity.warning > 0 && (
+                    {(result.metrics?.issuesBySeverity?.warning ?? 0) > 0 && (
                       <span style={{
                         padding: '2px 6px',
                         borderRadius: 4,
@@ -402,7 +402,7 @@ export function LensDataDebugPanel({
                         backgroundColor: getSeverityBg('warning'),
                         color: getSeverityColor('warning'),
                       }}>
-                        {result.metrics.issuesBySeverity.warning} warnings
+                        {result.metrics?.issuesBySeverity?.warning ?? 0} warnings
                       </span>
                     )}
                   </div>
@@ -410,7 +410,7 @@ export function LensDataDebugPanel({
 
                 {/* Files count */}
                 <span style={{ fontSize: 12, color: theme.colors.textMuted }}>
-                  {result.metrics.filesAnalyzed} files
+                  {result.metrics?.filesAnalyzed ?? 0} files
                 </span>
               </div>
             </div>
@@ -435,19 +435,19 @@ export function LensDataDebugPanel({
                   <div>
                     <div style={{ fontSize: 11, color: theme.colors.textMuted }}>Files Analyzed</div>
                     <div style={{ fontSize: 16, fontWeight: 600, color: theme.colors.text }}>
-                      {result.metrics.filesAnalyzed}
+                      {result.metrics?.filesAnalyzed ?? 0}
                     </div>
                   </div>
                   <div>
                     <div style={{ fontSize: 11, color: theme.colors.textMuted }}>Total Issues</div>
                     <div style={{ fontSize: 16, fontWeight: 600, color: theme.colors.text }}>
-                      {result.metrics.totalIssues}
+                      {result.metrics?.totalIssues ?? 0}
                     </div>
                   </div>
                   <div>
                     <div style={{ fontSize: 11, color: theme.colors.textMuted }}>Duration</div>
                     <div style={{ fontSize: 16, fontWeight: 600, color: theme.colors.text }}>
-                      {result.execution.duration || 0}ms
+                      {result.execution?.duration ?? 0}ms
                     </div>
                   </div>
                   {result.coverage && (

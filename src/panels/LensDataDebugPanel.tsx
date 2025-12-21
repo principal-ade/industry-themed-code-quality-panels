@@ -75,18 +75,10 @@ const LensDataDebugPanelContent: React.FC<PanelComponentProps> = ({
           >
             Lens Data Debug
           </h2>
-          {lensResultsSlice?.data && (
-            <>
-              <span style={{ color: theme.colors.textMuted }}>•</span>
-              <span style={{ fontSize: 12, color: theme.colors.textMuted }}>
-                {lensResultsSlice.data.metadata.git?.repository || 'Unknown'} @ {lensResultsSlice.data.metadata.git?.commit?.slice(0, 7) || '?'}
-              </span>
-            </>
-          )}
         </div>
         {lensResultsSlice?.data && (
           <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 11, color: theme.colors.textMuted }}>
-            <span>{new Set(lensResultsSlice.data.results.map(r => r.package.name)).size} packages</span>
+            <span>{new Set(lensResultsSlice.data.results.map(r => r.package?.name ?? 'unknown')).size} packages</span>
             <span>{lensResultsSlice.data.results.length} results</span>
           </div>
         )}
