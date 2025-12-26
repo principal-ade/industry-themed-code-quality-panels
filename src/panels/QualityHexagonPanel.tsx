@@ -42,6 +42,8 @@ interface PackageQuality {
   metrics: QualityMetrics;
   /** List of lens IDs that actually ran for this package */
   lensesRan?: string[];
+  /** True if this is a monorepo orchestrator package (config-only, no source) */
+  isOrchestrator?: boolean;
 }
 
 // Slice data shape
@@ -101,12 +103,13 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
   }, [fileTreeSlice?.data]);
 
   // Determine packages to display
-  // - If slice exists and has data, use it
+  // - If slice exists and has data, use it (filtering out orchestrator packages)
   // - If slice exists but is loading/empty, show empty
   // - If no slice at all, use mock data for demo
   const packages: PackageQuality[] = React.useMemo(() => {
     if (qualitySlice?.data?.packages) {
-      return qualitySlice.data.packages;
+      // Filter out orchestrator packages - they're config-only with no source code
+      return qualitySlice.data.packages.filter((pkg) => !pkg.isOrchestrator);
     }
     if (hasQualitySlice) {
       // Slice exists but no data yet (loading or empty)
