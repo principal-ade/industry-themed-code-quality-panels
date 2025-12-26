@@ -1,11 +1,11 @@
-import React from 'react';
-import { Bug } from 'lucide-react';
-import { useTheme } from '@principal-ade/industry-theme';
-import type { PanelComponentProps } from '../types';
+import React from "react";
+import { Bug } from "lucide-react";
+import { useTheme } from "@principal-ade/industry-theme";
+import type { PanelComponentProps } from "../types";
 import {
   LensDataDebugPanel as LensDataDebugPanelComponent,
   type FormattedResults,
-} from '../components/LensDataDebugPanel';
+} from "../components/LensDataDebugPanel";
 
 // Slice data shape - matches FormattedResults from quality-lens-cli
 type LensResultsSliceData = FormattedResults;
@@ -20,8 +20,9 @@ const LensDataDebugPanelContent: React.FC<PanelComponentProps> = ({
   const { theme } = useTheme();
 
   // Get lens results data from context
-  const lensResultsSlice = context.getSlice<LensResultsSliceData>('lensResults');
-  const hasSlice = context.hasSlice('lensResults');
+  const lensResultsSlice =
+    context.getSlice<LensResultsSliceData>("lensResults");
+  const hasSlice = context.hasSlice("lensResults");
   const isLoading = lensResultsSlice?.loading ?? false;
 
   // Handle file click - open in editor
@@ -42,28 +43,30 @@ const LensDataDebugPanelContent: React.FC<PanelComponentProps> = ({
     <div
       style={{
         fontFamily: theme.fonts.body,
-        height: '100%',
+        height: "100%",
         minHeight: 0,
         backgroundColor: theme.colors.background,
         color: theme.colors.text,
-        overflowY: 'auto',
-        boxSizing: 'border-box',
-        display: 'flex',
-        flexDirection: 'column',
+        overflowY: "auto",
+        boxSizing: "border-box",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       {/* Header */}
-      <div style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        height: 40,
-        flexShrink: 0,
-        padding: '0 16px',
-        borderBottom: `1px solid ${theme.colors.border}`,
-        boxSizing: 'border-box',
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          height: 40,
+          flexShrink: 0,
+          padding: "0 16px",
+          borderBottom: `1px solid ${theme.colors.border}`,
+          boxSizing: "border-box",
+        }}
+      >
+        <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
           <Bug size={18} color={theme.colors.primary} />
           <h2
             style={{
@@ -77,8 +80,25 @@ const LensDataDebugPanelContent: React.FC<PanelComponentProps> = ({
           </h2>
         </div>
         {lensResultsSlice?.data && (
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 11, color: theme.colors.textMuted }}>
-            <span>{new Set(lensResultsSlice.data.results.map(r => r.package?.name ?? 'unknown')).size} packages</span>
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: 12,
+              fontSize: 11,
+              color: theme.colors.textMuted,
+            }}
+          >
+            <span>
+              {
+                new Set(
+                  lensResultsSlice.data.results.map(
+                    (r) => r.package?.name ?? "unknown",
+                  ),
+                ).size
+              }{" "}
+              packages
+            </span>
             <span>{lensResultsSlice.data.results.length} results</span>
           </div>
         )}
@@ -89,27 +109,38 @@ const LensDataDebugPanelContent: React.FC<PanelComponentProps> = ({
         style={{
           flex: 1,
           minHeight: 0,
-          overflow: 'auto',
+          overflow: "auto",
         }}
       >
         {isLoading ? (
-          <div style={{
-            padding: 40,
-            textAlign: 'center',
-            color: theme.colors.textMuted,
-          }}>
+          <div
+            style={{
+              padding: 40,
+              textAlign: "center",
+              color: theme.colors.textMuted,
+            }}
+          >
             Loading lens results...
           </div>
         ) : !hasSlice || !lensResultsSlice?.data ? (
-          <div style={{
-            padding: 40,
-            textAlign: 'center',
-            color: theme.colors.textMuted,
-          }}>
-            <Bug size={48} color={theme.colors.border} style={{ marginBottom: 16 }} />
-            <div style={{ fontSize: 14, marginBottom: 8 }}>No lens data available</div>
+          <div
+            style={{
+              padding: 40,
+              textAlign: "center",
+              color: theme.colors.textMuted,
+            }}
+          >
+            <Bug
+              size={48}
+              color={theme.colors.border}
+              style={{ marginBottom: 16 }}
+            />
+            <div style={{ fontSize: 14, marginBottom: 8 }}>
+              No lens data available
+            </div>
             <div style={{ fontSize: 12 }}>
-              Run quality-lens-cli or check that the lensResults slice is configured.
+              Run quality-lens-cli or check that the lensResults slice is
+              configured.
             </div>
           </div>
         ) : (

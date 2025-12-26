@@ -131,9 +131,13 @@ function isMetricConfigured(
   metricKey: MetricKey,
   lensesRan?: string[],
 ): boolean {
-  if (!lensesRan || lensesRan.length === 0) {
-    // If no lensesRan info, assume all are configured (backwards compatibility)
+  // undefined = old data without lensesRan tracking, assume all configured (backwards compatibility)
+  if (lensesRan === undefined) {
     return true;
+  }
+  // Empty array = new data, explicitly no lenses ran for this package
+  if (lensesRan.length === 0) {
+    return false;
   }
   return lensesRan.some((lensId) => LENS_TO_METRIC_MAP[lensId] === metricKey);
 }

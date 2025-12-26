@@ -39,4 +39,4 @@ export type {
   PanelToolsMetadata,
   JsonSchema,
   PanelEventCallTemplate,
-} from '@principal-ade/panel-framework-core';
+} from "@principal-ade/panel-framework-core";

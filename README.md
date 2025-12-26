@@ -50,8 +50,8 @@ Update `package.json` with your information:
 Edit `src/panels/ExamplePanel.tsx` or create new panel components:
 
 ```tsx
-import React from 'react';
-import type { PanelComponentProps } from '../types';
+import React from "react";
+import type { PanelComponentProps } from "../types";
 
 export const MyPanel: React.FC<PanelComponentProps> = ({
   context,
@@ -72,14 +72,14 @@ export const MyPanel: React.FC<PanelComponentProps> = ({
 Update `src/index.tsx` to export your panel definitions:
 
 ```tsx
-import { MyPanel } from './panels/MyPanel';
+import { MyPanel } from "./panels/MyPanel";
 
 export const panels = [
   {
-    id: 'your-org.my-panel',
-    name: 'My Panel',
-    icon: '🚀',
-    description: 'My custom panel',
+    id: "your-org.my-panel",
+    name: "My Panel",
+    icon: "🚀",
+    description: "My custom panel",
     component: MyPanel,
   },
 ];
@@ -182,7 +182,7 @@ context.markdownFiles; // Markdown files list
 // State management
 context.loading; // Loading state
 context.refresh(); // Refresh data
-context.hasSlice('git'); // Check slice availability
+context.hasSlice("git"); // Check slice availability
 ```
 
 ### Actions
@@ -193,11 +193,11 @@ Interact with the host application:
 const { actions } = props;
 
 // File operations
-actions.openFile?.('path/to/file.ts');
-actions.openGitDiff?.('path/to/file.ts', 'unstaged');
+actions.openFile?.("path/to/file.ts");
+actions.openGitDiff?.("path/to/file.ts", "unstaged");
 
 // Navigation
-actions.navigateToPanel?.('panel-id');
+actions.navigateToPanel?.("panel-id");
 
 // Notifications
 actions.notifyPanels?.(event);
@@ -212,8 +212,8 @@ const { events } = props;
 
 // Subscribe to events
 useEffect(() => {
-  const unsubscribe = events.on('file:opened', (event) => {
-    console.log('File opened:', event.payload);
+  const unsubscribe = events.on("file:opened", (event) => {
+    console.log("File opened:", event.payload);
   });
 
   return unsubscribe; // Cleanup
@@ -221,10 +221,10 @@ useEffect(() => {
 
 // Emit events
 events.emit({
-  type: 'custom:event',
-  source: 'my-panel',
+  type: "custom:event",
+  source: "my-panel",
   timestamp: Date.now(),
-  payload: { data: 'value' },
+  payload: { data: "value" },
 });
 ```
 
@@ -284,12 +284,12 @@ Called once for the entire package:
 
 ```typescript
 export const onPackageLoad = async () => {
-  console.log('Package loaded');
+  console.log("Package loaded");
   // Initialize shared resources
 };
 
 export const onPackageUnload = async () => {
-  console.log('Package unloading');
+  console.log("Package unloading");
   // Cleanup shared resources
 };
 ```
@@ -348,8 +348,8 @@ The host application will automatically discover your panel by the `panel-extens
 Use reverse domain notation for panel IDs:
 
 ```typescript
-id: 'com.company.feature-panel'; // ✅ Good
-id: 'my-panel'; // ❌ Bad (collision risk)
+id: "com.company.feature-panel"; // ✅ Good
+id: "my-panel"; // ❌ Bad (collision risk)
 ```
 
 ### 2. Error Handling
@@ -362,8 +362,8 @@ const [error, setError] = useState(null);
 useEffect(() => {
   const loadData = async () => {
     try {
-      if (!context.hasSlice('git')) {
-        throw new Error('Git data not available');
+      if (!context.hasSlice("git")) {
+        throw new Error("Git data not available");
       }
       // Use data...
     } catch (err) {
@@ -383,7 +383,7 @@ if (error) {
 Show loading indicators:
 
 ```tsx
-if (context.loading || context.isSliceLoading('git')) {
+if (context.loading || context.isSliceLoading("git")) {
   return <div>Loading...</div>;
 }
 ```
@@ -394,7 +394,7 @@ Always unsubscribe from events:
 
 ```tsx
 useEffect(() => {
-  const unsubscribe = events.on('event:type', handler);
+  const unsubscribe = events.on("event:type", handler);
   return unsubscribe; // Cleanup on unmount
 }, [events]);
 ```
@@ -404,7 +404,7 @@ useEffect(() => {
 Use provided types for type safety:
 
 ```tsx
-import type { PanelComponentProps, GitStatus } from './types';
+import type { PanelComponentProps, GitStatus } from "./types";
 
 const MyPanel: React.FC<PanelComponentProps> = ({ context }) => {
   const gitStatus: GitStatus = context.gitStatus;
@@ -427,7 +427,7 @@ Panels can access these data slices from the host:
 Check availability before use:
 
 ```tsx
-if (context.hasSlice('git') && !context.isSliceLoading('git')) {
+if (context.hasSlice("git") && !context.isSliceLoading("git")) {
   // Use git data
 }
 ```
@@ -495,7 +495,7 @@ Ensure `package.json` has:
 Check that peer dependencies are externalized in `vite.config.ts`:
 
 ```typescript
-external: ['react', 'react-dom'];
+external: ["react", "react-dom"];
 ```
 
 ### Type Errors

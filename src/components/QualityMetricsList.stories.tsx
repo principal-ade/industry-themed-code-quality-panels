@@ -1,27 +1,31 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { QualityMetricsList, QualityMetricsListCompact } from './QualityMetricsList';
-import { slateTheme } from '@principal-ade/industry-theme';
-import type { QualityMetrics } from '@principal-ai/codebase-composition';
+import type { Meta, StoryObj } from "@storybook/react";
+import {
+  QualityMetricsList,
+  QualityMetricsListCompact,
+} from "./QualityMetricsList";
+import { slateTheme } from "@principal-ade/industry-theme";
+import type { QualityMetrics } from "@principal-ai/codebase-composition";
 
 const meta = {
-  title: 'Components/QualityMetricsList',
+  title: "Components/QualityMetricsList",
   component: QualityMetricsList,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
     backgrounds: {
-      default: 'dark',
+      default: "dark",
       values: [
-        { name: 'dark', value: '#1a1a2e' },
-        { name: 'light', value: '#f5f5f5' },
+        { name: "dark", value: "#1a1a2e" },
+        { name: "light", value: "#f5f5f5" },
       ],
     },
     docs: {
       description: {
-        component: 'A list view of quality metrics with icons, progress bars, and optional click handlers. Each metric is displayed as a row with its value and visual indicator.'
-      }
-    }
+        component:
+          "A list view of quality metrics with icons, progress bars, and optional click handlers. Each metric is displayed as a row with its value and visual indicator.",
+      },
+    },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
 } satisfies Meta<typeof QualityMetricsList>;
 
 export default meta;
@@ -43,7 +47,7 @@ const excellentMetrics: QualityMetrics = {
   deadCode: 5,
   formatting: 100,
   linting: 98,
-  types: 96
+  types: 96,
 };
 
 const goodMetrics: QualityMetrics = {
@@ -52,7 +56,7 @@ const goodMetrics: QualityMetrics = {
   deadCode: 15,
   formatting: 90,
   linting: 85,
-  types: 88
+  types: 88,
 };
 
 const poorMetrics: QualityMetrics = {
@@ -61,7 +65,7 @@ const poorMetrics: QualityMetrics = {
   deadCode: 60,
   formatting: 40,
   linting: 35,
-  types: 20
+  types: 20,
 };
 
 export const Default: Story = {
@@ -73,7 +77,7 @@ export const Default: Story = {
   args: {
     metrics: goodMetrics,
     theme: slateTheme,
-  }
+  },
 };
 
 export const RealWorldData: Story = {
@@ -89,10 +93,11 @@ export const RealWorldData: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Real metrics from the codebase-quality-lens-cli GitHub Actions artifact. Note the mixed quality: excellent tests and types, but poor linting and no documentation.'
-      }
-    }
-  }
+        story:
+          "Real metrics from the codebase-quality-lens-cli GitHub Actions artifact. Note the mixed quality: excellent tests and types, but poor linting and no documentation.",
+      },
+    },
+  },
 };
 
 export const Interactive: Story = {
@@ -109,10 +114,11 @@ export const Interactive: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'With click handler - rows become interactive with hover states and chevron indicators.'
-      }
-    }
-  }
+        story:
+          "With click handler - rows become interactive with hover states and chevron indicators.",
+      },
+    },
+  },
 };
 
 export const Excellent: Story = {
@@ -128,10 +134,10 @@ export const Excellent: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'All metrics in the green zone - a well-maintained codebase.'
-      }
-    }
-  }
+        story: "All metrics in the green zone - a well-maintained codebase.",
+      },
+    },
+  },
 };
 
 export const Poor: Story = {
@@ -147,10 +153,10 @@ export const Poor: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Most metrics in the red zone - needs significant improvement.'
-      }
-    }
-  }
+        story: "Most metrics in the red zone - needs significant improvement.",
+      },
+    },
+  },
 };
 
 export const Compact: Story = {
@@ -166,10 +172,11 @@ export const Compact: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Compact version without icons or progress bars - suitable for sidebars or constrained spaces.'
-      }
-    }
-  }
+        story:
+          "Compact version without icons or progress bars - suitable for sidebars or constrained spaces.",
+      },
+    },
+  },
 };
 
 export const CompactInteractive: Story = {
@@ -186,10 +193,10 @@ export const CompactInteractive: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Compact version with click handlers for drill-down navigation.'
-      }
-    }
-  }
+        story: "Compact version with click handlers for drill-down navigation.",
+      },
+    },
+  },
 };
 
 export const SideBySide: Story = {
@@ -198,17 +205,31 @@ export const SideBySide: Story = {
     theme: slateTheme,
   },
   render: () => (
-    <div style={{ display: 'flex', gap: 32, alignItems: 'flex-start' }}>
+    <div style={{ display: "flex", gap: 32, alignItems: "flex-start" }}>
       <div>
-        <h3 style={{ color: '#e5e7eb', marginBottom: 12, fontSize: 14 }}>Full List</h3>
+        <h3 style={{ color: "#e5e7eb", marginBottom: 12, fontSize: 14 }}>
+          Full List
+        </h3>
         <div style={{ width: 380 }}>
           <QualityMetricsList metrics={realWorldMetrics} theme={slateTheme} />
         </div>
       </div>
       <div>
-        <h3 style={{ color: '#e5e7eb', marginBottom: 12, fontSize: 14 }}>Compact List</h3>
-        <div style={{ width: 200, padding: 12, backgroundColor: slateTheme.colors.surface, borderRadius: 8 }}>
-          <QualityMetricsListCompact metrics={realWorldMetrics} theme={slateTheme} />
+        <h3 style={{ color: "#e5e7eb", marginBottom: 12, fontSize: 14 }}>
+          Compact List
+        </h3>
+        <div
+          style={{
+            width: 200,
+            padding: 12,
+            backgroundColor: slateTheme.colors.surface,
+            borderRadius: 8,
+          }}
+        >
+          <QualityMetricsListCompact
+            metrics={realWorldMetrics}
+            theme={slateTheme}
+          />
         </div>
       </div>
     </div>
@@ -216,8 +237,9 @@ export const SideBySide: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Comparison of full and compact list variants using the same data.'
-      }
-    }
-  }
+        story:
+          "Comparison of full and compact list variants using the same data.",
+      },
+    },
+  },
 };

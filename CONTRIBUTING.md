@@ -97,8 +97,8 @@ docs: update README with new examples
 Example:
 
 ```tsx
-import React, { useEffect } from 'react';
-import type { PanelComponentProps } from '../types';
+import React, { useEffect } from "react";
+import type { PanelComponentProps } from "../types";
 
 export const MyPanel: React.FC<PanelComponentProps> = ({
   context,
@@ -106,7 +106,7 @@ export const MyPanel: React.FC<PanelComponentProps> = ({
   events,
 }) => {
   useEffect(() => {
-    const cleanup = events.on('event:type', handler);
+    const cleanup = events.on("event:type", handler);
     return cleanup;
   }, [events]);
 

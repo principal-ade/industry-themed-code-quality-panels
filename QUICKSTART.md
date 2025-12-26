@@ -31,8 +31,8 @@ Change these fields to match your panel:
 Edit `src/panels/ExamplePanel.tsx` or create a new panel:
 
 ```tsx
-import React from 'react';
-import type { PanelComponentProps } from '../types';
+import React from "react";
+import type { PanelComponentProps } from "../types";
 
 export const AwesomePanel: React.FC<PanelComponentProps> = ({
   context,
@@ -40,9 +40,9 @@ export const AwesomePanel: React.FC<PanelComponentProps> = ({
   events,
 }) => {
   return (
-    <div style={{ padding: '20px' }}>
+    <div style={{ padding: "20px" }}>
       <h1>🚀 My Awesome Panel</h1>
-      <p>Repository: {context.repositoryPath || 'None'}</p>
+      <p>Repository: {context.repositoryPath || "None"}</p>
     </div>
   );
 };
@@ -53,14 +53,14 @@ export const AwesomePanel: React.FC<PanelComponentProps> = ({
 Update `src/index.tsx`:
 
 ```tsx
-import { AwesomePanel } from './panels/AwesomePanel';
+import { AwesomePanel } from "./panels/AwesomePanel";
 
 export const panels = [
   {
-    id: 'your-org.awesome-panel',
-    name: 'Awesome Panel',
-    icon: '🚀',
-    description: 'Does awesome things',
+    id: "your-org.awesome-panel",
+    name: "Awesome Panel",
+    icon: "🚀",
+    description: "Does awesome things",
     component: AwesomePanel,
   },
 ];

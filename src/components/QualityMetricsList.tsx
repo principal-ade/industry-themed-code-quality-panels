@@ -1,8 +1,8 @@
-import * as React from 'react';
-import { cn } from '../lib/utils';
-import type { Theme } from '@principal-ade/industry-theme';
-import type { QualityMetrics } from '@principal-ai/codebase-composition';
-import type { MetricKey } from './QualityHexagon';
+import * as React from "react";
+import { cn } from "../lib/utils";
+import type { Theme } from "@principal-ade/industry-theme";
+import type { QualityMetrics } from "@principal-ai/codebase-composition";
+import type { MetricKey } from "./QualityHexagon";
 
 export interface MetricListItem {
   key: MetricKey;
@@ -22,20 +22,20 @@ interface QualityMetricsListProps {
 // Get color based on value (good/medium/poor)
 function getValueColor(value: number, key: string): string {
   // For deadCode, lower is better (invert the logic)
-  const effectiveValue = key === 'deadCode' ? 100 - value : value;
+  const effectiveValue = key === "deadCode" ? 100 - value : value;
 
-  if (effectiveValue >= 80) return '#2E7D32'; // forest green
-  if (effectiveValue >= 60) return '#E6A700'; // amber
-  return '#C62828'; // crimson
+  if (effectiveValue >= 80) return "#2E7D32"; // forest green
+  if (effectiveValue >= 60) return "#E6A700"; // amber
+  return "#C62828"; // crimson
 }
 
 // Get background color for the value indicator
 function getValueBgColor(value: number, key: string): string {
-  const effectiveValue = key === 'deadCode' ? 100 - value : value;
+  const effectiveValue = key === "deadCode" ? 100 - value : value;
 
-  if (effectiveValue >= 80) return 'rgba(46, 125, 50, 0.1)';
-  if (effectiveValue >= 60) return 'rgba(230, 167, 0, 0.1)';
-  return 'rgba(198, 40, 40, 0.1)';
+  if (effectiveValue >= 80) return "rgba(46, 125, 50, 0.1)";
+  if (effectiveValue >= 60) return "rgba(230, 167, 0, 0.1)";
+  return "rgba(198, 40, 40, 0.1)";
 }
 
 // Icons for each metric
@@ -43,16 +43,16 @@ function getMetricIcon(key: MetricKey): React.ReactNode {
   const iconProps = {
     width: 18,
     height: 18,
-    viewBox: '0 0 24 24',
-    fill: 'none',
-    stroke: 'currentColor',
+    viewBox: "0 0 24 24",
+    fill: "none",
+    stroke: "currentColor",
     strokeWidth: 2,
-    strokeLinecap: 'round' as const,
-    strokeLinejoin: 'round' as const,
+    strokeLinecap: "round" as const,
+    strokeLinejoin: "round" as const,
   };
 
   switch (key) {
-    case 'types':
+    case "types":
       // TypeScript/Types icon (diamond/brackets)
       return (
         <svg {...iconProps}>
@@ -61,7 +61,7 @@ function getMetricIcon(key: MetricKey): React.ReactNode {
           <path d="M2 12l10 5 10-5" />
         </svg>
       );
-    case 'documentation':
+    case "documentation":
       // Docs icon (file with lines)
       return (
         <svg {...iconProps}>
@@ -72,7 +72,7 @@ function getMetricIcon(key: MetricKey): React.ReactNode {
           <line x1="10" y1="9" x2="8" y2="9" />
         </svg>
       );
-    case 'tests':
+    case "tests":
       // Tests icon (check circle)
       return (
         <svg {...iconProps}>
@@ -80,7 +80,7 @@ function getMetricIcon(key: MetricKey): React.ReactNode {
           <polyline points="22,4 12,14.01 9,11.01" />
         </svg>
       );
-    case 'deadCode':
+    case "deadCode":
       // Dead code icon (trash/code)
       return (
         <svg {...iconProps}>
@@ -90,7 +90,7 @@ function getMetricIcon(key: MetricKey): React.ReactNode {
           <line x1="14" y1="11" x2="14" y2="17" />
         </svg>
       );
-    case 'formatting':
+    case "formatting":
       // Formatting icon (align/indent)
       return (
         <svg {...iconProps}>
@@ -100,7 +100,7 @@ function getMetricIcon(key: MetricKey): React.ReactNode {
           <line x1="21" y1="18" x2="7" y2="18" />
         </svg>
       );
-    case 'linting':
+    case "linting":
       // Linting icon (alert/shield)
       return (
         <svg {...iconProps}>
@@ -115,14 +115,31 @@ function getMetricIcon(key: MetricKey): React.ReactNode {
 }
 
 // Metrics configuration
-const METRIC_CONFIG: { key: MetricKey; label: string; description: string }[] = [
-  { key: 'types', label: 'Types', description: 'Type safety score' },
-  { key: 'documentation', label: 'Documentation', description: 'Documentation coverage' },
-  { key: 'tests', label: 'Tests', description: 'Test coverage and passing rate' },
-  { key: 'deadCode', label: 'Dead Code', description: 'Unused code detected' },
-  { key: 'formatting', label: 'Formatting', description: 'Code formatting consistency' },
-  { key: 'linting', label: 'Linting', description: 'Linting compliance' },
-];
+const METRIC_CONFIG: { key: MetricKey; label: string; description: string }[] =
+  [
+    { key: "types", label: "Types", description: "Type safety score" },
+    {
+      key: "documentation",
+      label: "Documentation",
+      description: "Documentation coverage",
+    },
+    {
+      key: "tests",
+      label: "Tests",
+      description: "Test coverage and passing rate",
+    },
+    {
+      key: "deadCode",
+      label: "Dead Code",
+      description: "Unused code detected",
+    },
+    {
+      key: "formatting",
+      label: "Formatting",
+      description: "Code formatting consistency",
+    },
+    { key: "linting", label: "Linting", description: "Linting compliance" },
+  ];
 
 export function QualityMetricsList({
   metrics,
@@ -134,33 +151,34 @@ export function QualityMetricsList({
     <div
       className={cn(className)}
       style={{
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
         gap: 4,
       }}
     >
       {METRIC_CONFIG.map(({ key, label, description }) => {
         const value = metrics[key];
-        const isDeadCode = key === 'deadCode';
+        const isDeadCode = key === "deadCode";
 
         return (
           <div
             key={key}
             onClick={() => onMetricClick?.(key)}
             style={{
-              display: 'flex',
-              alignItems: 'center',
+              display: "flex",
+              alignItems: "center",
               gap: 12,
-              padding: '10px 12px',
+              padding: "10px 12px",
               borderRadius: 6,
               backgroundColor: theme.colors.surface,
               border: `1px solid ${theme.colors.border}`,
-              cursor: onMetricClick ? 'pointer' : 'default',
-              transition: 'all 0.15s ease',
+              cursor: onMetricClick ? "pointer" : "default",
+              transition: "all 0.15s ease",
             }}
             onMouseEnter={(e) => {
               if (onMetricClick) {
-                e.currentTarget.style.backgroundColor = theme.colors.backgroundLight;
+                e.currentTarget.style.backgroundColor =
+                  theme.colors.backgroundLight;
                 e.currentTarget.style.borderColor = theme.colors.primary;
               }
             }}
@@ -172,9 +190,9 @@ export function QualityMetricsList({
             {/* Icon */}
             <div
               style={{
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
                 width: 32,
                 height: 32,
                 borderRadius: 6,
@@ -212,9 +230,9 @@ export function QualityMetricsList({
                 style={{
                   fontSize: 12,
                   color: theme.colors.textMuted,
-                  whiteSpace: 'nowrap',
-                  overflow: 'hidden',
-                  textOverflow: 'ellipsis',
+                  whiteSpace: "nowrap",
+                  overflow: "hidden",
+                  textOverflow: "ellipsis",
                 }}
               >
                 {description}
@@ -224,8 +242,8 @@ export function QualityMetricsList({
             {/* Value */}
             <div
               style={{
-                display: 'flex',
-                alignItems: 'center',
+                display: "flex",
+                alignItems: "center",
                 gap: 8,
                 flexShrink: 0,
               }}
@@ -237,16 +255,16 @@ export function QualityMetricsList({
                   height: 6,
                   borderRadius: 3,
                   backgroundColor: theme.colors.border,
-                  overflow: 'hidden',
+                  overflow: "hidden",
                 }}
               >
                 <div
                   style={{
                     width: `${isDeadCode ? 100 - value : value}%`,
-                    height: '100%',
+                    height: "100%",
                     backgroundColor: getValueColor(value, key),
                     borderRadius: 3,
-                    transition: 'width 0.3s ease',
+                    transition: "width 0.3s ease",
                   }}
                 />
               </div>
@@ -258,7 +276,7 @@ export function QualityMetricsList({
                   fontWeight: 600,
                   color: getValueColor(value, key),
                   minWidth: 45,
-                  textAlign: 'right',
+                  textAlign: "right",
                 }}
               >
                 {value.toFixed(1)}%
@@ -298,28 +316,28 @@ export function QualityMetricsListCompact({
     <div
       className={cn(className)}
       style={{
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
         gap: 2,
       }}
     >
       {METRIC_CONFIG.map(({ key, label }) => {
         const value = metrics[key];
-        const isDeadCode = key === 'deadCode';
+        const isDeadCode = key === "deadCode";
 
         return (
           <div
             key={key}
             onClick={() => onMetricClick?.(key)}
             style={{
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'space-between',
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "space-between",
               gap: 8,
-              padding: '6px 8px',
+              padding: "6px 8px",
               borderRadius: 4,
-              cursor: onMetricClick ? 'pointer' : 'default',
-              transition: 'background-color 0.15s ease',
+              cursor: onMetricClick ? "pointer" : "default",
+              transition: "background-color 0.15s ease",
             }}
             onMouseEnter={(e) => {
               if (onMetricClick) {
@@ -327,7 +345,7 @@ export function QualityMetricsListCompact({
               }
             }}
             onMouseLeave={(e) => {
-              e.currentTarget.style.backgroundColor = 'transparent';
+              e.currentTarget.style.backgroundColor = "transparent";
             }}
           >
             <span
@@ -337,7 +355,7 @@ export function QualityMetricsListCompact({
               }}
             >
               {label}
-              {isDeadCode && ' ↓'}
+              {isDeadCode && " ↓"}
             </span>
             <span
               style={{

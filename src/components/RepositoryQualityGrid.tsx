@@ -1,18 +1,24 @@
-import * as React from 'react';
-import { cn } from '../lib/utils';
-import type { Theme } from '@principal-ade/industry-theme';
-import type { QualityMetrics } from '@principal-ai/codebase-composition';
-import { QualityHexagon, calculateQualityTier, type QualityTier, type VertexHoverInfo, type MetricKey } from './QualityHexagon';
+import * as React from "react";
+import { cn } from "../lib/utils";
+import type { Theme } from "@principal-ade/industry-theme";
+import type { QualityMetrics } from "@principal-ai/codebase-composition";
+import {
+  QualityHexagon,
+  calculateQualityTier,
+  type QualityTier,
+  type VertexHoverInfo,
+  type MetricKey,
+} from "./QualityHexagon";
 
 export type { VertexHoverInfo, MetricKey };
 
 const METRIC_OPTIONS: Array<{ key: MetricKey; label: string }> = [
-  { key: 'formatting', label: 'Format' },
-  { key: 'linting', label: 'Linting' },
-  { key: 'types', label: 'Types' },
-  { key: 'tests', label: 'Tests' },
-  { key: 'deadCode', label: 'Dead Code' },
-  { key: 'documentation', label: 'Docs' },
+  { key: "formatting", label: "Format" },
+  { key: "linting", label: "Linting" },
+  { key: "types", label: "Types" },
+  { key: "tests", label: "Tests" },
+  { key: "deadCode", label: "Dead Code" },
+  { key: "documentation", label: "Docs" },
 ];
 
 /**
@@ -100,7 +106,9 @@ interface RepositoryQualityGridItemProps {
 /**
  * Flatten repositories into a single array of grid items
  */
-function flattenRepositories(repositories: RepositoryQualityItem[]): FlatGridItem[] {
+function flattenRepositories(
+  repositories: RepositoryQualityItem[],
+): FlatGridItem[] {
   const items: FlatGridItem[] = [];
 
   for (const repo of repositories) {
@@ -125,7 +133,7 @@ function flattenRepositories(repositories: RepositoryQualityItem[]): FlatGridIte
  * Calculate overall tier from all items
  */
 function calculateOverallTier(items: FlatGridItem[]): QualityTier {
-  if (items.length === 0) return 'none';
+  if (items.length === 0) return "none";
 
   const avgMetrics = items.reduce(
     (acc, item) => ({
@@ -134,9 +142,17 @@ function calculateOverallTier(items: FlatGridItem[]): QualityTier {
       linting: acc.linting + item.metrics.linting / items.length,
       formatting: acc.formatting + item.metrics.formatting / items.length,
       types: acc.types + item.metrics.types / items.length,
-      documentation: acc.documentation + item.metrics.documentation / items.length,
+      documentation:
+        acc.documentation + item.metrics.documentation / items.length,
     }),
-    { tests: 0, deadCode: 0, linting: 0, formatting: 0, types: 0, documentation: 0 }
+    {
+      tests: 0,
+      deadCode: 0,
+      linting: 0,
+      formatting: 0,
+      types: 0,
+      documentation: 0,
+    },
   );
 
   return calculateQualityTier(avgMetrics);
@@ -148,7 +164,7 @@ function calculateOverallTier(items: FlatGridItem[]): QualityTier {
 function formatLabel(
   item: FlatGridItem,
   showRepositoryName: boolean,
-  isSameAsRepo: boolean
+  isSameAsRepo: boolean,
 ): string {
   if (!showRepositoryName || isSameAsRepo) {
     return item.packageName;
@@ -162,11 +178,11 @@ function formatLabel(
 // Get color based on value (good/medium/poor)
 function getValueColor(value: number, key: MetricKey): string {
   // For deadCode, lower is better (invert the logic)
-  const effectiveValue = key === 'deadCode' ? 100 - value : value;
+  const effectiveValue = key === "deadCode" ? 100 - value : value;
 
-  if (effectiveValue >= 80) return '#2E7D32'; // forest green
-  if (effectiveValue >= 60) return '#E6A700'; // amber
-  return '#C62828'; // crimson
+  if (effectiveValue >= 80) return "#2E7D32"; // forest green
+  if (effectiveValue >= 60) return "#E6A700"; // amber
+  return "#C62828"; // crimson
 }
 
 export function RepositoryQualityGridItem({
@@ -178,22 +194,23 @@ export function RepositoryQualityGridItem({
   selectedMetric,
   className,
 }: RepositoryQualityGridItemProps) {
-  const [hoveredVertex, setHoveredVertex] = React.useState<VertexHoverInfo | null>(null);
+  const [hoveredVertex, setHoveredVertex] =
+    React.useState<VertexHoverInfo | null>(null);
   const isSameAsRepo = item.packageName === item.repositoryName;
   const label = formatLabel(item, showRepositoryName, isSameAsRepo);
 
   const tierColors: Record<QualityTier, string> = {
-    none: '#808080',
-    bronze: '#CD7F32',
-    silver: '#C0C0C0',
-    gold: '#FFD700',
-    platinum: '#E5E4E2',
+    none: "#808080",
+    bronze: "#CD7F32",
+    silver: "#C0C0C0",
+    gold: "#FFD700",
+    platinum: "#E5E4E2",
   };
 
   // Get the display info - either from selected metric or hovered vertex
   const displayInfo = React.useMemo(() => {
     if (selectedMetric) {
-      const option = METRIC_OPTIONS.find(o => o.key === selectedMetric);
+      const option = METRIC_OPTIONS.find((o) => o.key === selectedMetric);
       if (option) {
         const value = item.metrics[selectedMetric];
         return {
@@ -218,26 +235,26 @@ export function RepositoryQualityGridItem({
       className={cn(className)}
       onClick={onClick}
       style={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
         gap: 8,
         padding: 12,
         borderRadius: 8,
         backgroundColor: theme.colors.surface,
         border: `1px solid ${theme.colors.border}`,
-        cursor: onClick ? 'pointer' : 'default',
-        transition: 'all 0.2s ease',
+        cursor: onClick ? "pointer" : "default",
+        transition: "all 0.2s ease",
       }}
       onMouseEnter={(e) => {
         if (onClick) {
           e.currentTarget.style.borderColor = tierColors[item.tier];
-          e.currentTarget.style.transform = 'translateY(-2px)';
+          e.currentTarget.style.transform = "translateY(-2px)";
         }
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.borderColor = theme.colors.border;
-        e.currentTarget.style.transform = 'translateY(0)';
+        e.currentTarget.style.transform = "translateY(0)";
         setHoveredVertex(null);
       }}
     >
@@ -245,11 +262,11 @@ export function RepositoryQualityGridItem({
       <div
         style={{
           height: 24,
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
           gap: 8,
-          width: '100%',
+          width: "100%",
           minHeight: 24,
         }}
       >
@@ -289,14 +306,16 @@ export function RepositoryQualityGridItem({
           showValues={false}
           onVertexHover={setHoveredVertex}
           onVertexLeave={() => setHoveredVertex(null)}
-          onVertexClick={onVertexClick ? (vertex) => onVertexClick(item, vertex) : undefined}
+          onVertexClick={
+            onVertexClick ? (vertex) => onVertexClick(item, vertex) : undefined
+          }
         />
       </div>
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
           gap: 2,
         }}
       >
@@ -305,7 +324,7 @@ export function RepositoryQualityGridItem({
             fontSize: 12,
             fontWeight: 500,
             color: theme.colors.text,
-            textAlign: 'center',
+            textAlign: "center",
           }}
         >
           {label}
@@ -348,29 +367,36 @@ export function RepositoryQualityGrid({
   showRepositoryName = true,
   showSummary = true,
 }: RepositoryQualityGridProps) {
-  const [selectedMetric, setSelectedMetric] = React.useState<MetricKey | null>(null);
-  const items = React.useMemo(() => flattenRepositories(repositories), [repositories]);
+  const [selectedMetric, setSelectedMetric] = React.useState<MetricKey | null>(
+    null,
+  );
+  const items = React.useMemo(
+    () => flattenRepositories(repositories),
+    [repositories],
+  );
   const overallTier = React.useMemo(() => calculateOverallTier(items), [items]);
 
   // Sort items alphabetically by package name
   const sortedItems = React.useMemo(() => {
-    return [...items].sort((a, b) => a.packageName.localeCompare(b.packageName));
+    return [...items].sort((a, b) =>
+      a.packageName.localeCompare(b.packageName),
+    );
   }, [items]);
 
   const tierColors: Record<QualityTier, string> = {
-    none: '#808080',
-    bronze: '#CD7F32',
-    silver: '#C0C0C0',
-    gold: '#FFD700',
-    platinum: '#E5E4E2',
+    none: "#808080",
+    bronze: "#CD7F32",
+    silver: "#C0C0C0",
+    gold: "#FFD700",
+    platinum: "#E5E4E2",
   };
 
   const tierLabels: Record<QualityTier, string> = {
-    none: 'No Data',
-    bronze: 'Bronze',
-    silver: 'Silver',
-    gold: 'Gold',
-    platinum: 'Platinum',
+    none: "No Data",
+    bronze: "Bronze",
+    silver: "Silver",
+    gold: "Gold",
+    platinum: "Platinum",
   };
 
   if (items.length === 0) {
@@ -379,7 +405,7 @@ export function RepositoryQualityGrid({
         className={cn(className)}
         style={{
           padding: 40,
-          textAlign: 'center',
+          textAlign: "center",
           color: theme.colors.textMuted,
           backgroundColor: theme.colors.background,
           borderRadius: 8,
@@ -394,8 +420,8 @@ export function RepositoryQualityGrid({
     <div
       className={cn(className)}
       style={{
-        display: 'flex',
-        flexDirection: 'column',
+        display: "flex",
+        flexDirection: "column",
         gap: 16,
         backgroundColor: theme.colors.background,
         fontFamily: theme.fonts.body,
@@ -405,17 +431,17 @@ export function RepositoryQualityGrid({
       {showSummary && (
         <div
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            flexWrap: 'wrap',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "space-between",
+            flexWrap: "wrap",
             gap: 12,
-            padding: '12px 16px',
+            padding: "12px 16px",
             backgroundColor: theme.colors.surface,
             border: `1px solid ${theme.colors.border}`,
           }}
         >
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             <span
               style={{
                 fontSize: 14,
@@ -423,7 +449,7 @@ export function RepositoryQualityGrid({
                 color: theme.colors.text,
               }}
             >
-              {items.length} {items.length === 1 ? 'package' : 'packages'}
+              {items.length} {items.length === 1 ? "package" : "packages"}
             </span>
             <span style={{ color: theme.colors.textMuted }}>•</span>
             <span
@@ -432,23 +458,28 @@ export function RepositoryQualityGrid({
                 color: theme.colors.textMuted,
               }}
             >
-              {repositories.length} {repositories.length === 1 ? 'repository' : 'repositories'}
+              {repositories.length}{" "}
+              {repositories.length === 1 ? "repository" : "repositories"}
             </span>
           </div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 12 }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
             {/* Metric dropdown */}
             <select
-              value={selectedMetric ?? ''}
-              onChange={(e) => setSelectedMetric(e.target.value ? e.target.value as MetricKey : null)}
+              value={selectedMetric ?? ""}
+              onChange={(e) =>
+                setSelectedMetric(
+                  e.target.value ? (e.target.value as MetricKey) : null,
+                )
+              }
               style={{
-                padding: '4px 8px',
+                padding: "4px 8px",
                 fontSize: 13,
                 backgroundColor: theme.colors.background,
                 color: theme.colors.text,
                 border: `1px solid ${theme.colors.border}`,
                 borderRadius: 4,
-                cursor: 'pointer',
-                outline: 'none',
+                cursor: "pointer",
+                outline: "none",
               }}
             >
               <option value="">Select metric...</option>
@@ -461,10 +492,10 @@ export function RepositoryQualityGrid({
             {/* Tier badge */}
             <div
               style={{
-                display: 'flex',
-                alignItems: 'center',
+                display: "flex",
+                alignItems: "center",
                 gap: 8,
-                padding: '4px 12px',
+                padding: "4px 12px",
                 backgroundColor: theme.colors.backgroundLight,
                 borderRadius: 16,
                 border: `1px solid ${tierColors[overallTier]}`,
@@ -474,7 +505,7 @@ export function RepositoryQualityGrid({
                 style={{
                   width: 8,
                   height: 8,
-                  borderRadius: '50%',
+                  borderRadius: "50%",
                   backgroundColor: tierColors[overallTier],
                 }}
               />
@@ -495,8 +526,8 @@ export function RepositoryQualityGrid({
       {/* Grid of Items */}
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(220px, 1fr))',
+          display: "grid",
+          gridTemplateColumns: "repeat(auto-fill, minmax(220px, 1fr))",
           gap: 12,
           padding: 16,
         }}

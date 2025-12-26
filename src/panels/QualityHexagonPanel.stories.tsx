@@ -1,30 +1,30 @@
-import type { Meta, StoryObj } from '@storybook/react-vite';
-import { QualityHexagonPanel } from './QualityHexagonPanel';
+import type { Meta, StoryObj } from "@storybook/react-vite";
+import { QualityHexagonPanel } from "./QualityHexagonPanel";
 import {
   MockPanelProvider,
   createMockContext,
   createMockActions,
   createMockEvents,
-} from '../mocks/panelContext';
-import type { DataSlice } from '../types';
+} from "../mocks/panelContext";
+import type { DataSlice } from "../types";
 
 /**
  * QualityHexagonPanel visualizes code quality metrics using a hexagonal radar chart.
  * Shows quality tier, detailed metrics breakdown, and quick stats.
  */
 const meta = {
-  title: 'Panels/QualityHexagonPanel',
+  title: "Panels/QualityHexagonPanel",
   component: QualityHexagonPanel,
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
     docs: {
       description: {
         component:
-          'A panel for visualizing code quality metrics using a hexagonal radar chart. Shows quality tier (none, bronze, silver, gold, platinum), detailed metrics breakdown, and quick stats.',
+          "A panel for visualizing code quality metrics using a hexagonal radar chart. Shows quality tier (none, bronze, silver, gold, platinum), detailed metrics breakdown, and quick stats.",
       },
     },
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   args: {
     context: createMockContext(),
     actions: createMockActions(),
@@ -52,14 +52,14 @@ export const Default: Story = {
 export const PlatinumQuality: Story = {
   render: () => {
     const mockSlices = new Map<string, DataSlice>();
-    mockSlices.set('quality', {
-      scope: 'repository',
-      name: 'quality',
+    mockSlices.set("quality", {
+      scope: "repository",
+      name: "quality",
       data: {
         packages: [
           {
-            name: '@acme/platinum-project',
-            version: '2.0.0',
+            name: "@acme/platinum-project",
+            version: "2.0.0",
             metrics: {
               tests: 95,
               deadCode: 3,
@@ -82,14 +82,14 @@ export const PlatinumQuality: Story = {
         contextOverrides={{
           slices: mockSlices,
           currentScope: {
-            type: 'repository',
+            type: "repository",
             workspace: {
-              name: 'my-workspace',
-              path: '/Users/developer/my-workspace',
+              name: "my-workspace",
+              path: "/Users/developer/my-workspace",
             },
             repository: {
-              name: 'platinum-project',
-              path: '/Users/developer/platinum-project',
+              name: "platinum-project",
+              path: "/Users/developer/platinum-project",
             },
           },
         }}
@@ -101,7 +101,7 @@ export const PlatinumQuality: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Shows a project with platinum-tier quality metrics.',
+        story: "Shows a project with platinum-tier quality metrics.",
       },
     },
   },
@@ -113,13 +113,13 @@ export const PlatinumQuality: Story = {
 export const PoorQuality: Story = {
   render: () => {
     const mockSlices = new Map<string, DataSlice>();
-    mockSlices.set('quality', {
-      scope: 'repository',
-      name: 'quality',
+    mockSlices.set("quality", {
+      scope: "repository",
+      name: "quality",
       data: {
         packages: [
           {
-            name: 'legacy-codebase',
+            name: "legacy-codebase",
             metrics: {
               tests: 25,
               deadCode: 45,
@@ -142,14 +142,14 @@ export const PoorQuality: Story = {
         contextOverrides={{
           slices: mockSlices,
           currentScope: {
-            type: 'repository',
+            type: "repository",
             workspace: {
-              name: 'my-workspace',
-              path: '/Users/developer/my-workspace',
+              name: "my-workspace",
+              path: "/Users/developer/my-workspace",
             },
             repository: {
-              name: 'legacy-codebase',
-              path: '/Users/developer/legacy-codebase',
+              name: "legacy-codebase",
+              path: "/Users/developer/legacy-codebase",
             },
           },
         }}
@@ -161,7 +161,8 @@ export const PoorQuality: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Shows a project with poor quality metrics, typical of legacy codebases.',
+        story:
+          "Shows a project with poor quality metrics, typical of legacy codebases.",
       },
     },
   },
@@ -173,14 +174,14 @@ export const PoorQuality: Story = {
 export const UnbalancedMetrics: Story = {
   render: () => {
     const mockSlices = new Map<string, DataSlice>();
-    mockSlices.set('quality', {
-      scope: 'repository',
-      name: 'quality',
+    mockSlices.set("quality", {
+      scope: "repository",
+      name: "quality",
       data: {
         packages: [
           {
-            name: 'fast-mvp',
-            version: '0.0.1',
+            name: "fast-mvp",
+            version: "0.0.1",
             metrics: {
               tests: 30,
               deadCode: 5,
@@ -203,14 +204,14 @@ export const UnbalancedMetrics: Story = {
         contextOverrides={{
           slices: mockSlices,
           currentScope: {
-            type: 'repository',
+            type: "repository",
             workspace: {
-              name: 'my-workspace',
-              path: '/Users/developer/my-workspace',
+              name: "my-workspace",
+              path: "/Users/developer/my-workspace",
             },
             repository: {
-              name: 'fast-mvp',
-              path: '/Users/developer/fast-mvp',
+              name: "fast-mvp",
+              path: "/Users/developer/fast-mvp",
             },
           },
         }}
@@ -222,7 +223,8 @@ export const UnbalancedMetrics: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Shows a project with unbalanced metrics - good code style but lacking tests and documentation.',
+        story:
+          "Shows a project with unbalanced metrics - good code style but lacking tests and documentation.",
       },
     },
   },
@@ -234,14 +236,14 @@ export const UnbalancedMetrics: Story = {
 export const Monorepo: Story = {
   render: () => {
     const mockSlices = new Map<string, DataSlice>();
-    mockSlices.set('quality', {
-      scope: 'repository',
-      name: 'quality',
+    mockSlices.set("quality", {
+      scope: "repository",
+      name: "quality",
       data: {
         packages: [
           {
-            name: '@acme/core',
-            version: '1.2.0',
+            name: "@acme/core",
+            version: "1.2.0",
             metrics: {
               tests: 92,
               deadCode: 5,
@@ -252,8 +254,8 @@ export const Monorepo: Story = {
             },
           },
           {
-            name: '@acme/ui',
-            version: '1.0.0',
+            name: "@acme/ui",
+            version: "1.0.0",
             metrics: {
               tests: 78,
               deadCode: 12,
@@ -264,8 +266,8 @@ export const Monorepo: Story = {
             },
           },
           {
-            name: '@acme/utils',
-            version: '0.5.0',
+            name: "@acme/utils",
+            version: "0.5.0",
             metrics: {
               tests: 45,
               deadCode: 25,
@@ -288,14 +290,14 @@ export const Monorepo: Story = {
         contextOverrides={{
           slices: mockSlices,
           currentScope: {
-            type: 'repository',
+            type: "repository",
             workspace: {
-              name: 'acme-workspace',
-              path: '/Users/developer/acme-workspace',
+              name: "acme-workspace",
+              path: "/Users/developer/acme-workspace",
             },
             repository: {
-              name: 'acme-monorepo',
-              path: '/Users/developer/acme-monorepo',
+              name: "acme-monorepo",
+              path: "/Users/developer/acme-monorepo",
             },
           },
         }}
@@ -307,7 +309,8 @@ export const Monorepo: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Shows a monorepo with multiple packages, each with their own quality metrics.',
+        story:
+          "Shows a monorepo with multiple packages, each with their own quality metrics.",
       },
     },
   },
@@ -321,10 +324,10 @@ export const NoRepository: Story = {
     <MockPanelProvider
       contextOverrides={{
         currentScope: {
-          type: 'workspace',
+          type: "workspace",
           workspace: {
-            name: 'my-workspace',
-            path: '/Users/developer/my-workspace',
+            name: "my-workspace",
+            path: "/Users/developer/my-workspace",
           },
         },
       }}
@@ -335,7 +338,7 @@ export const NoRepository: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Shows the panel when no repository is loaded.',
+        story: "Shows the panel when no repository is loaded.",
       },
     },
   },
@@ -347,9 +350,9 @@ export const NoRepository: Story = {
 export const Loading: Story = {
   render: () => {
     const mockSlices = new Map<string, DataSlice>();
-    mockSlices.set('quality', {
-      scope: 'repository',
-      name: 'quality',
+    mockSlices.set("quality", {
+      scope: "repository",
+      name: "quality",
       data: null,
       loading: true,
       error: null,
@@ -369,7 +372,7 @@ export const Loading: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Shows the panel while quality data is loading.',
+        story: "Shows the panel while quality data is loading.",
       },
     },
   },
@@ -383,23 +386,23 @@ export const EmptyNoWorkflow: Story = {
   render: () => {
     const mockSlices = new Map<string, DataSlice>();
     // Quality slice exists but has no packages
-    mockSlices.set('quality', {
-      scope: 'repository',
-      name: 'quality',
+    mockSlices.set("quality", {
+      scope: "repository",
+      name: "quality",
       data: { packages: [], lastUpdated: new Date().toISOString() },
       loading: false,
       error: null,
       refresh: async () => {},
     });
     // File tree without the workflow file
-    mockSlices.set('fileTree', {
-      scope: 'repository',
-      name: 'fileTree',
+    mockSlices.set("fileTree", {
+      scope: "repository",
+      name: "fileTree",
       data: {
         allFiles: [
-          { relativePath: 'src/index.ts', path: '/project/src/index.ts' },
-          { relativePath: 'package.json', path: '/project/package.json' },
-          { relativePath: 'README.md', path: '/project/README.md' },
+          { relativePath: "src/index.ts", path: "/project/src/index.ts" },
+          { relativePath: "package.json", path: "/project/package.json" },
+          { relativePath: "README.md", path: "/project/README.md" },
         ],
       },
       loading: false,
@@ -412,14 +415,14 @@ export const EmptyNoWorkflow: Story = {
         contextOverrides={{
           slices: mockSlices,
           currentScope: {
-            type: 'repository',
+            type: "repository",
             workspace: {
-              name: 'my-workspace',
-              path: '/Users/developer/my-workspace',
+              name: "my-workspace",
+              path: "/Users/developer/my-workspace",
             },
             repository: {
-              name: 'new-project',
-              path: '/Users/developer/new-project',
+              name: "new-project",
+              path: "/Users/developer/new-project",
             },
           },
         }}
@@ -431,7 +434,8 @@ export const EmptyNoWorkflow: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Shows setup instructions when the Quality Lens workflow is not installed.',
+        story:
+          "Shows setup instructions when the Quality Lens workflow is not installed.",
       },
     },
   },
@@ -445,24 +449,27 @@ export const EmptyWithWorkflow: Story = {
   render: () => {
     const mockSlices = new Map<string, DataSlice>();
     // Quality slice exists but has no packages
-    mockSlices.set('quality', {
-      scope: 'repository',
-      name: 'quality',
+    mockSlices.set("quality", {
+      scope: "repository",
+      name: "quality",
       data: { packages: [], lastUpdated: new Date().toISOString() },
       loading: false,
       error: null,
       refresh: async () => {},
     });
     // File tree WITH the workflow file
-    mockSlices.set('fileTree', {
-      scope: 'repository',
-      name: 'fileTree',
+    mockSlices.set("fileTree", {
+      scope: "repository",
+      name: "fileTree",
       data: {
         allFiles: [
-          { relativePath: 'src/index.ts', path: '/project/src/index.ts' },
-          { relativePath: 'package.json', path: '/project/package.json' },
-          { relativePath: '.github/workflows/quality-lens.yml', path: '/project/.github/workflows/quality-lens.yml' },
-          { relativePath: 'README.md', path: '/project/README.md' },
+          { relativePath: "src/index.ts", path: "/project/src/index.ts" },
+          { relativePath: "package.json", path: "/project/package.json" },
+          {
+            relativePath: ".github/workflows/quality-lens.yml",
+            path: "/project/.github/workflows/quality-lens.yml",
+          },
+          { relativePath: "README.md", path: "/project/README.md" },
         ],
       },
       loading: false,
@@ -475,14 +482,14 @@ export const EmptyWithWorkflow: Story = {
         contextOverrides={{
           slices: mockSlices,
           currentScope: {
-            type: 'repository',
+            type: "repository",
             workspace: {
-              name: 'my-workspace',
-              path: '/Users/developer/my-workspace',
+              name: "my-workspace",
+              path: "/Users/developer/my-workspace",
             },
             repository: {
-              name: 'project-with-workflow',
-              path: '/Users/developer/project-with-workflow',
+              name: "project-with-workflow",
+              path: "/Users/developer/project-with-workflow",
             },
           },
         }}
@@ -494,7 +501,8 @@ export const EmptyWithWorkflow: Story = {
   parameters: {
     docs: {
       description: {
-        story: 'Shows the waiting state when the Quality Lens workflow is installed but no data has been collected yet.',
+        story:
+          "Shows the waiting state when the Quality Lens workflow is installed but no data has been collected yet.",
       },
     },
   },

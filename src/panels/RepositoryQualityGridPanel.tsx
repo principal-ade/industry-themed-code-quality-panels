@@ -1,14 +1,14 @@
-import React from 'react';
-import { useTheme } from '@principal-ade/industry-theme';
-import type { PanelComponentProps } from '../types';
-import type { QualityMetrics } from '@principal-ai/codebase-composition';
+import React from "react";
+import { useTheme } from "@principal-ade/industry-theme";
+import type { PanelComponentProps } from "../types";
+import type { QualityMetrics } from "@principal-ai/codebase-composition";
 import {
   RepositoryQualityGrid,
   type RepositoryQualityItem,
   type FlatGridItem,
   type VertexHoverInfo,
-} from '../components/RepositoryQualityGrid';
-import { QualityEmptyState } from '../components/QualityEmptyState';
+} from "../components/RepositoryQualityGrid";
+import { QualityEmptyState } from "../components/QualityEmptyState";
 
 // Repository quality data from slice
 interface RepositoryQualityData {
@@ -38,10 +38,14 @@ const RepositoryQualityGridPanelContent: React.FC<PanelComponentProps> = ({
   const { theme } = useTheme();
 
   // Track currently selected item for toggle behavior
-  const [selectedItemKey, setSelectedItemKey] = React.useState<string | null>(null);
+  const [selectedItemKey, setSelectedItemKey] = React.useState<string | null>(
+    null,
+  );
 
   // Get repositories quality data from context if available
-  const qualitySlice = context.getSlice<RepositoriesQualitySliceData>('repositoriesQuality');
+  const qualitySlice = context.getSlice<RepositoriesQualitySliceData>(
+    "repositoriesQuality",
+  );
   const isLoading = qualitySlice?.loading ?? false;
 
   // Determine repositories to display
@@ -57,27 +61,33 @@ const RepositoryQualityGridPanelContent: React.FC<PanelComponentProps> = ({
     const isDeselecting = selectedItemKey === item.key;
 
     events.emit({
-      type: 'principal-ade.repository-quality-grid:item:click',
-      source: 'principal-ade.repository-quality-grid-panel',
+      type: "principal-ade.repository-quality-grid:item:click",
+      source: "principal-ade.repository-quality-grid-panel",
       timestamp: Date.now(),
-      payload: isDeselecting ? null : {
-        repositoryId: item.repositoryId,
-        repositoryName: item.repositoryName,
-        packageName: item.packageName,
-        tier: item.tier,
-      },
+      payload: isDeselecting
+        ? null
+        : {
+            repositoryId: item.repositoryId,
+            repositoryName: item.repositoryName,
+            packageName: item.packageName,
+            tier: item.tier,
+          },
     });
 
     // Emit package:select event for cross-panel filtering (e.g., File City)
     // Clicking the same item again deselects (sends null payload)
     events.emit({
-      type: 'package:select',
-      source: 'principal-ade.repository-quality-grid-panel',
+      type: "package:select",
+      source: "principal-ade.repository-quality-grid-panel",
       timestamp: Date.now(),
-      payload: isDeselecting ? null : (item.repositoryPath ? {
-        packagePath: item.repositoryPath,
-        packageName: item.packageName,
-      } : null),
+      payload: isDeselecting
+        ? null
+        : item.repositoryPath
+          ? {
+              packagePath: item.repositoryPath,
+              packageName: item.packageName,
+            }
+          : null,
     });
 
     setSelectedItemKey(isDeselecting ? null : item.key);
@@ -86,8 +96,8 @@ const RepositoryQualityGridPanelContent: React.FC<PanelComponentProps> = ({
   // Handle vertex click
   const handleVertexClick = (item: FlatGridItem, vertex: VertexHoverInfo) => {
     events.emit({
-      type: 'principal-ade.repository-quality-grid:vertex:click',
-      source: 'principal-ade.repository-quality-grid-panel',
+      type: "principal-ade.repository-quality-grid:vertex:click",
+      source: "principal-ade.repository-quality-grid-panel",
       timestamp: Date.now(),
       payload: {
         repositoryId: item.repositoryId,
@@ -102,15 +112,15 @@ const RepositoryQualityGridPanelContent: React.FC<PanelComponentProps> = ({
 
   // Handle refresh
   const handleRefresh = async () => {
-    if (context.hasSlice('repositoriesQuality')) {
-      await context.refresh('workspace', 'repositoriesQuality');
+    if (context.hasSlice("repositoriesQuality")) {
+      await context.refresh("workspace", "repositoriesQuality");
     }
   };
 
   // Subscribe to events
   React.useEffect(() => {
     const unsubscribers = [
-      events.on('principal-ade.repository-quality-grid:refresh', async () => {
+      events.on("principal-ade.repository-quality-grid:refresh", async () => {
         await handleRefresh();
       }),
     ];
@@ -123,19 +133,19 @@ const RepositoryQualityGridPanelContent: React.FC<PanelComponentProps> = ({
     <div
       style={{
         fontFamily: theme.fonts.body,
-        height: '100%',
+        height: "100%",
         minHeight: 0,
         backgroundColor: theme.colors.background,
         color: theme.colors.text,
-        overflowY: 'auto',
-        boxSizing: 'border-box',
+        overflowY: "auto",
+        boxSizing: "border-box",
       }}
     >
       {isLoading ? (
         <div
           style={{
             padding: 40,
-            textAlign: 'center',
+            textAlign: "center",
             color: theme.colors.textMuted,
           }}
         >

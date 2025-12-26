@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 import {
   Terminal,
   Copy,
@@ -13,29 +13,31 @@ import {
   Sparkles,
   Trash2,
   BookOpen,
-} from 'lucide-react';
-import type { Theme } from '@principal-ade/industry-theme';
+} from "lucide-react";
+import type { Theme } from "@principal-ade/industry-theme";
 
 interface QualityEmptyStateProps {
   theme: Theme;
   hasWorkflow: boolean;
 }
 
-const WORKFLOW_FILE_PATH = '.github/workflows/quality-lens.yml';
+const WORKFLOW_FILE_PATH = ".github/workflows/quality-lens.yml";
 
 /**
  * Check if a file path exists in a FileTree's allFiles array
  */
 export function checkFileExistsInTree(
-  treeData: { allFiles?: Array<{ relativePath?: string; path?: string }> } | undefined,
-  targetPath: string
+  treeData:
+    | { allFiles?: Array<{ relativePath?: string; path?: string }> }
+    | undefined,
+  targetPath: string,
 ): boolean {
   if (!treeData?.allFiles) return false;
 
-  const normalizedTarget = targetPath.replace(/^\//, '').toLowerCase();
+  const normalizedTarget = targetPath.replace(/^\//, "").toLowerCase();
 
   return treeData.allFiles.some((file) => {
-    const filePath = (file.relativePath || file.path || '').toLowerCase();
+    const filePath = (file.relativePath || file.path || "").toLowerCase();
     return filePath.endsWith(normalizedTarget) || filePath === normalizedTarget;
   });
 }
@@ -56,26 +58,28 @@ const CommandLine: React.FC<{
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
     } catch {
-      console.log('Copy:', command);
+      console.log("Copy:", command);
     }
   };
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
+    <div style={{ display: "flex", flexDirection: "column", gap: 4 }}>
       {label && (
-        <span style={{ fontSize: 12, color: theme.colors.textMuted }}>{label}</span>
+        <span style={{ fontSize: 12, color: theme.colors.textMuted }}>
+          {label}
+        </span>
       )}
       <div
         style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
           gap: 12,
-          padding: '10px 14px',
+          padding: "10px 14px",
           borderRadius: 6,
           backgroundColor: theme.colors.background,
           border: `1px solid ${theme.colors.border}`,
-          fontFamily: 'monospace',
+          fontFamily: "monospace",
           fontSize: 13,
         }}
       >
@@ -83,14 +87,14 @@ const CommandLine: React.FC<{
         <button
           onClick={handleCopy}
           style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
             padding: 4,
-            border: 'none',
-            backgroundColor: 'transparent',
+            border: "none",
+            backgroundColor: "transparent",
             color: theme.colors.textMuted,
-            cursor: 'pointer',
+            cursor: "pointer",
           }}
           title="Copy command"
         >
@@ -110,19 +114,49 @@ const CommandLine: React.FC<{
  */
 const MetricsPreview: React.FC<{ theme: Theme }> = ({ theme }) => {
   const metrics = [
-    { key: 'formatting', label: 'Formatting', description: 'Prettier code style', Icon: Sparkles },
-    { key: 'linting', label: 'Linting', description: 'ESLint code quality', Icon: FileSearch },
-    { key: 'types', label: 'Types', description: 'TypeScript type safety', Icon: Braces },
-    { key: 'tests', label: 'Tests', description: 'Test coverage & pass rate', Icon: FlaskConical },
-    { key: 'deadCode', label: 'Dead Code', description: 'Unused exports & deps', Icon: Trash2 },
-    { key: 'documentation', label: 'Docs', description: 'Code documentation', Icon: BookOpen },
+    {
+      key: "formatting",
+      label: "Formatting",
+      description: "Prettier code style",
+      Icon: Sparkles,
+    },
+    {
+      key: "linting",
+      label: "Linting",
+      description: "ESLint code quality",
+      Icon: FileSearch,
+    },
+    {
+      key: "types",
+      label: "Types",
+      description: "TypeScript type safety",
+      Icon: Braces,
+    },
+    {
+      key: "tests",
+      label: "Tests",
+      description: "Test coverage & pass rate",
+      Icon: FlaskConical,
+    },
+    {
+      key: "deadCode",
+      label: "Dead Code",
+      description: "Unused exports & deps",
+      Icon: Trash2,
+    },
+    {
+      key: "documentation",
+      label: "Docs",
+      description: "Code documentation",
+      Icon: BookOpen,
+    },
   ];
 
   return (
     <div
       style={{
-        display: 'grid',
-        gridTemplateColumns: 'repeat(2, 1fr)',
+        display: "grid",
+        gridTemplateColumns: "repeat(2, 1fr)",
         gap: 8,
         padding: 12,
         borderRadius: 8,
@@ -134,18 +168,22 @@ const MetricsPreview: React.FC<{ theme: Theme }> = ({ theme }) => {
         <div
           key={m.key}
           style={{
-            display: 'flex',
-            alignItems: 'center',
+            display: "flex",
+            alignItems: "center",
             gap: 8,
-            padding: '6px 8px',
+            padding: "6px 8px",
             borderRadius: 4,
             fontSize: 12,
           }}
         >
           <m.Icon size={14} color={theme.colors.textMuted} />
-          <div style={{ display: 'flex', flexDirection: 'column' }}>
-            <span style={{ fontWeight: 500, color: theme.colors.text }}>{m.label}</span>
-            <span style={{ fontSize: 11, color: theme.colors.textMuted }}>{m.description}</span>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+            <span style={{ fontWeight: 500, color: theme.colors.text }}>
+              {m.label}
+            </span>
+            <span style={{ fontSize: 11, color: theme.colors.textMuted }}>
+              {m.description}
+            </span>
           </div>
         </div>
       ))}
@@ -167,19 +205,19 @@ export const QualityEmptyState: React.FC<QualityEmptyStateProps> = ({
     return (
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
-          padding: '16px 0',
+          display: "flex",
+          flexDirection: "column",
+          padding: "16px 0",
           gap: 16,
-          width: '100%',
+          width: "100%",
         }}
       >
         <div
           style={{
-            display: 'flex',
-            alignItems: 'center',
+            display: "flex",
+            alignItems: "center",
             gap: 8,
-            padding: '10px 14px',
+            padding: "10px 14px",
             borderRadius: 6,
             backgroundColor: `${theme.colors.success}15`,
             color: theme.colors.success,
@@ -198,28 +236,45 @@ export const QualityEmptyState: React.FC<QualityEmptyStateProps> = ({
             lineHeight: 1.5,
           }}
         >
-          Quality metrics will appear here after your workflow runs. Push a commit to trigger it, or check the Actions tab for status.
+          Quality metrics will appear here after your workflow runs. Push a
+          commit to trigger it, or check the Actions tab for status.
         </p>
 
         <MetricsPreview theme={theme} />
 
         <div
           style={{
-            display: 'flex',
-            alignItems: 'flex-start',
+            display: "flex",
+            alignItems: "flex-start",
             gap: 8,
-            padding: '10px 14px',
+            padding: "10px 14px",
             borderRadius: 6,
             backgroundColor: `${theme.colors.warning}10`,
             fontSize: 12,
             color: theme.colors.textMuted,
           }}
         >
-          <Info size={14} style={{ flexShrink: 0, marginTop: 2 }} color={theme.colors.warning} />
+          <Info
+            size={14}
+            style={{ flexShrink: 0, marginTop: 2 }}
+            color={theme.colors.warning}
+          />
           <div>
-            <strong style={{ color: theme.colors.text }}>Using private npm packages?</strong>
+            <strong style={{ color: theme.colors.text }}>
+              Using private npm packages?
+            </strong>
             <br />
-            Add <code style={{ backgroundColor: theme.colors.background, padding: '1px 4px', borderRadius: 3 }}>NPM_TOKEN</code> to your repository secrets and ensure the workflow has access to it.
+            Add{" "}
+            <code
+              style={{
+                backgroundColor: theme.colors.background,
+                padding: "1px 4px",
+                borderRadius: 3,
+              }}
+            >
+              NPM_TOKEN
+            </code>{" "}
+            to your repository secrets and ensure the workflow has access to it.
           </div>
         </div>
       </div>
@@ -230,18 +285,18 @@ export const QualityEmptyState: React.FC<QualityEmptyStateProps> = ({
   return (
     <div
       style={{
-        display: 'flex',
-        flexDirection: 'column',
-        padding: '16px 0',
+        display: "flex",
+        flexDirection: "column",
+        padding: "16px 0",
         gap: 16,
-        width: '100%',
+        width: "100%",
       }}
     >
       {/* What you'll get */}
       <div>
         <h4
           style={{
-            margin: '0 0 12px 0',
+            margin: "0 0 12px 0",
             fontSize: 14,
             fontWeight: 600,
             color: theme.colors.text,
@@ -255,8 +310,8 @@ export const QualityEmptyState: React.FC<QualityEmptyStateProps> = ({
       {/* Quick Start */}
       <div
         style={{
-          display: 'flex',
-          flexDirection: 'column',
+          display: "flex",
+          flexDirection: "column",
           gap: 12,
           padding: 16,
           borderRadius: 8,
@@ -266,8 +321,8 @@ export const QualityEmptyState: React.FC<QualityEmptyStateProps> = ({
       >
         <div
           style={{
-            display: 'flex',
-            alignItems: 'center',
+            display: "flex",
+            alignItems: "center",
             gap: 8,
           }}
         >
@@ -292,7 +347,8 @@ export const QualityEmptyState: React.FC<QualityEmptyStateProps> = ({
             lineHeight: 1.5,
           }}
         >
-          Run this in your project directory to set up automated quality tracking:
+          Run this in your project directory to set up automated quality
+          tracking:
         </p>
 
         <CommandLine
@@ -302,8 +358,8 @@ export const QualityEmptyState: React.FC<QualityEmptyStateProps> = ({
 
         <div
           style={{
-            display: 'flex',
-            alignItems: 'center',
+            display: "flex",
+            alignItems: "center",
             gap: 6,
             fontSize: 12,
             color: theme.colors.textMuted,
@@ -318,33 +374,33 @@ export const QualityEmptyState: React.FC<QualityEmptyStateProps> = ({
       <button
         onClick={() => setShowAdvanced(!showAdvanced)}
         style={{
-          display: 'flex',
-          alignItems: 'center',
+          display: "flex",
+          alignItems: "center",
           gap: 6,
           padding: 0,
-          border: 'none',
-          backgroundColor: 'transparent',
+          border: "none",
+          backgroundColor: "transparent",
           color: theme.colors.textMuted,
           fontSize: 13,
-          cursor: 'pointer',
+          cursor: "pointer",
         }}
       >
         <ChevronRight
           size={14}
           style={{
-            transform: showAdvanced ? 'rotate(90deg)' : 'none',
-            transition: 'transform 0.2s',
+            transform: showAdvanced ? "rotate(90deg)" : "none",
+            transition: "transform 0.2s",
           }}
         />
-        <span>{showAdvanced ? 'Hide' : 'Show'} additional options</span>
+        <span>{showAdvanced ? "Hide" : "Show"} additional options</span>
       </button>
 
       {/* Advanced Options */}
       {showAdvanced && (
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'column',
+            display: "flex",
+            flexDirection: "column",
             gap: 16,
             padding: 16,
             borderRadius: 8,
@@ -354,8 +410,8 @@ export const QualityEmptyState: React.FC<QualityEmptyStateProps> = ({
         >
           <div
             style={{
-              display: 'flex',
-              alignItems: 'center',
+              display: "flex",
+              alignItems: "center",
               gap: 8,
             }}
           >
@@ -392,21 +448,38 @@ export const QualityEmptyState: React.FC<QualityEmptyStateProps> = ({
 
           <div
             style={{
-              display: 'flex',
-              alignItems: 'flex-start',
+              display: "flex",
+              alignItems: "flex-start",
               gap: 8,
-              padding: '10px 14px',
+              padding: "10px 14px",
               borderRadius: 6,
               backgroundColor: `${theme.colors.warning}10`,
               fontSize: 12,
               color: theme.colors.textMuted,
             }}
           >
-            <Info size={14} style={{ flexShrink: 0, marginTop: 2 }} color={theme.colors.warning} />
+            <Info
+              size={14}
+              style={{ flexShrink: 0, marginTop: 2 }}
+              color={theme.colors.warning}
+            />
             <div>
-              <strong style={{ color: theme.colors.text }}>Private npm packages?</strong>
+              <strong style={{ color: theme.colors.text }}>
+                Private npm packages?
+              </strong>
               <br />
-              If your project uses private @org packages, add <code style={{ backgroundColor: theme.colors.background, padding: '1px 4px', borderRadius: 3 }}>NPM_TOKEN</code> to your GitHub repository secrets under Settings → Secrets → Actions, and set the workflow environment if needed.
+              If your project uses private @org packages, add{" "}
+              <code
+                style={{
+                  backgroundColor: theme.colors.background,
+                  padding: "1px 4px",
+                  borderRadius: 3,
+                }}
+              >
+                NPM_TOKEN
+              </code>{" "}
+              to your GitHub repository secrets under Settings → Secrets →
+              Actions, and set the workflow environment if needed.
             </div>
           </div>
         </div>

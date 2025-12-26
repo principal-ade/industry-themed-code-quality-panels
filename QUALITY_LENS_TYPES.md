@@ -21,7 +21,7 @@ import type {
   FormattedResults,
   Severity,
   Metrics,
-} from '@principal-ai/codebase-quality-lenses';
+} from "@principal-ai/codebase-quality-lenses";
 ```
 
 ## Core Types
@@ -32,17 +32,18 @@ Individual issue found by a quality tool (ESLint, TypeScript, Prettier, etc.)
 
 ```typescript
 interface Issue {
-  file: string;           // Relative file path
-  line: number;           // Line number (1-based)
-  column?: number;        // Column number (1-based)
-  endLine?: number;       // End line for multi-line issues
-  endColumn?: number;     // End column
-  severity: Severity;     // 'error' | 'warning' | 'info' | 'hint'
-  message: string;        // Issue message
-  rule?: string;          // Rule or error code (e.g., "no-unused-vars")
-  source: string;         // Tool that found this (e.g., "eslint")
-  category?: string;      // Category (e.g., "style", "type-error")
-  fix?: {                 // Suggested fix if available
+  file: string; // Relative file path
+  line: number; // Line number (1-based)
+  column?: number; // Column number (1-based)
+  endLine?: number; // End line for multi-line issues
+  endColumn?: number; // End column
+  severity: Severity; // 'error' | 'warning' | 'info' | 'hint'
+  message: string; // Issue message
+  rule?: string; // Rule or error code (e.g., "no-unused-vars")
+  source: string; // Tool that found this (e.g., "eslint")
+  category?: string; // Category (e.g., "style", "type-error")
+  fix?: {
+    // Suggested fix if available
     text: string;
     range?: {
       start: { line: number; column: number };
@@ -59,13 +60,13 @@ Individual test result from test runners (Jest, Vitest, Bun).
 
 ```typescript
 interface TestResult {
-  suite: string;                                    // Test suite name
-  name: string;                                     // Test name
-  status: 'passed' | 'failed' | 'skipped' | 'pending';
-  duration?: number;                                // Duration in ms
-  error?: string;                                   // Failure message
-  file?: string;                                    // File containing test
-  line?: number;                                    // Line number
+  suite: string; // Test suite name
+  name: string; // Test name
+  status: "passed" | "failed" | "skipped" | "pending";
+  duration?: number; // Duration in ms
+  error?: string; // Failure message
+  file?: string; // File containing test
+  line?: number; // Line number
 }
 ```
 
@@ -75,11 +76,12 @@ Code coverage information from test runners.
 
 ```typescript
 interface Coverage {
-  line: number;           // Overall line coverage %
-  branch?: number;        // Overall branch coverage %
-  function?: number;      // Overall function coverage %
-  statement?: number;     // Overall statement coverage %
-  files?: Array<{         // Per-file coverage
+  line: number; // Overall line coverage %
+  branch?: number; // Overall branch coverage %
+  function?: number; // Overall function coverage %
+  statement?: number; // Overall statement coverage %
+  files?: Array<{
+    // Per-file coverage
     file: string;
     lines: number;
     branches?: number;
@@ -96,15 +98,15 @@ Per-file quality metrics for visualizations (Code City, heatmaps).
 
 ```typescript
 interface FileMetric {
-  file: string;           // Relative file path
-  score: number;          // Quality score 0-100 (100 = no issues)
-  issueCount: number;     // Total issues
-  errorCount: number;     // Error-severity issues
-  warningCount: number;   // Warning-severity issues
-  infoCount: number;      // Info-severity issues
-  hintCount: number;      // Hint-severity issues
-  fixableCount?: number;  // Auto-fixable issues
-  categories?: Record<string, number>;  // Issues by category
+  file: string; // Relative file path
+  score: number; // Quality score 0-100 (100 = no issues)
+  issueCount: number; // Total issues
+  errorCount: number; // Error-severity issues
+  warningCount: number; // Warning-severity issues
+  infoCount: number; // Info-severity issues
+  hintCount: number; // Hint-severity issues
+  fixableCount?: number; // Auto-fixable issues
+  categories?: Record<string, number>; // Issues by category
 }
 ```
 
@@ -114,12 +116,12 @@ Six dimensions of code quality for radar/hexagon charts.
 
 ```typescript
 interface QualityHexagonMetrics {
-  tests: number;          // Test coverage and passing rate (0-100)
-  deadCode: number;       // Dead code score (100 = no dead code)
-  formatting: number;     // Code formatting consistency (0-100)
-  linting: number;        // Linting compliance (0-100)
-  types: number;          // Type safety score (0-100)
-  documentation: number;  // Documentation coverage (0-100)
+  tests: number; // Test coverage and passing rate (0-100)
+  deadCode: number; // Dead code score (100 = no dead code)
+  formatting: number; // Code formatting consistency (0-100)
+  linting: number; // Linting compliance (0-100)
+  types: number; // Type safety score (0-100)
+  documentation: number; // Documentation coverage (0-100)
 }
 ```
 
@@ -137,8 +139,8 @@ interface Metrics {
     info: number;
     hint: number;
   };
-  executionTime: number;  // ms
-  custom?: Record<string, unknown>;  // Tool-specific
+  executionTime: number; // ms
+  custom?: Record<string, unknown>; // Tool-specific
 }
 ```
 
@@ -151,14 +153,14 @@ The format stored as GitHub Actions artifacts and retrieved by web-ade.
 ```typescript
 interface FormattedResults {
   metadata: {
-    timestamp: string;      // ISO timestamp
-    version: string;        // Schema version
+    timestamp: string; // ISO timestamp
+    version: string; // Schema version
     totalPackages: number;
     totalLenses: number;
     git?: {
       commit?: string;
       branch?: string;
-      repository?: string;  // "owner/repo"
+      repository?: string; // "owner/repo"
     };
   };
 
@@ -193,18 +195,18 @@ interface FormattedResults {
 
 Available lens identifiers that appear in results:
 
-| Lens ID | Category | Tool |
-|---------|----------|------|
-| `eslint` | linting | ESLint |
-| `biome-lint` | linting | Biome |
-| `typescript` | types | TypeScript |
-| `prettier` | formatting | Prettier |
-| `biome-format` | formatting | Biome |
-| `jest` | tests | Jest |
-| `vitest` | tests | Vitest |
-| `bun-test` | tests | Bun |
-| `knip` | deadCode | Knip |
-| `alexandria` | documentation | Alexandria |
+| Lens ID        | Category      | Tool       |
+| -------------- | ------------- | ---------- |
+| `eslint`       | linting       | ESLint     |
+| `biome-lint`   | linting       | Biome      |
+| `typescript`   | types         | TypeScript |
+| `prettier`     | formatting    | Prettier   |
+| `biome-format` | formatting    | Biome      |
+| `jest`         | tests         | Jest       |
+| `vitest`       | tests         | Vitest     |
+| `bun-test`     | tests         | Bun        |
+| `knip`         | deadCode      | Knip       |
+| `alexandria`   | documentation | Alexandria |
 
 ## Usage Examples
 
@@ -237,10 +239,14 @@ function calculateAverageScore(fileMetrics: FileMetric[]): number {
 ```typescript
 function getSeverityColor(severity: Severity): string {
   switch (severity) {
-    case 'error': return '#ef4444';   // red
-    case 'warning': return '#f59e0b'; // amber
-    case 'info': return '#3b82f6';    // blue
-    case 'hint': return '#6b7280';    // gray
+    case "error":
+      return "#ef4444"; // red
+    case "warning":
+      return "#f59e0b"; // amber
+    case "info":
+      return "#3b82f6"; // blue
+    case "hint":
+      return "#6b7280"; // gray
   }
 }
 ```
@@ -250,12 +256,12 @@ function getSeverityColor(severity: Severity): string {
 ```typescript
 function getHexagonLabel(key: keyof QualityHexagonMetrics): string {
   const labels = {
-    tests: 'Tests',
-    deadCode: 'Dead Code',
-    formatting: 'Formatting',
-    linting: 'Linting',
-    types: 'Types',
-    documentation: 'Docs',
+    tests: "Tests",
+    deadCode: "Dead Code",
+    formatting: "Formatting",
+    linting: "Linting",
+    types: "Types",
+    documentation: "Docs",
   };
   return labels[key];
 }
