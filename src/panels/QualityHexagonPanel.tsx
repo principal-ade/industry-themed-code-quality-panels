@@ -52,15 +52,39 @@ interface QualitySliceData {
   lastUpdated: string;
 }
 
-// Metric to colorMode mapping for File City
-const METRIC_TO_COLOR_MODE: Record<string, string> = {
-  types: "typescript",
-  documentation: "alexandria",
-  tests: "coverage",
-  deadCode: "knip",
-  formatting: "prettier",
-  linting: "eslint",
-};
+// Get the appropriate colorMode for a metric based on which lenses ran
+function getColorModeForMetric(metric: string, lensesRan?: string[]): string | null {
+  // Static mappings for metrics with only one tool option
+  const staticMappings: Record<string, string> = {
+    types: "typescript",
+    documentation: "alexandria",
+    tests: "coverage",
+    deadCode: "knip",
+  };
+
+  if (staticMappings[metric]) {
+    return staticMappings[metric];
+  }
+
+  // Dynamic mappings for metrics with multiple tool options
+  if (metric === "linting") {
+    // Prefer biome-lint if it ran, otherwise eslint
+    if (lensesRan?.includes("biome-lint") || lensesRan?.includes("biome")) {
+      return "biome-lint";
+    }
+    return "eslint";
+  }
+
+  if (metric === "formatting") {
+    // Prefer biome-format if it ran, otherwise prettier
+    if (lensesRan?.includes("biome-format")) {
+      return "biome-format";
+    }
+    return "prettier";
+  }
+
+  return null;
+}
 
 /**
  * QualityHexagonPanelContent - Internal component that uses theme
@@ -341,7 +365,8 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
                   }}
                   onMetricClick={(metric) => {
                     // Emit colorMode event for File City
-                    const colorMode = METRIC_TO_COLOR_MODE[metric];
+                    // Use lensesRan to determine correct tool (e.g., biome-lint vs eslint)
+                    const colorMode = getColorModeForMetric(metric, pkg.lensesRan);
                     if (colorMode) {
                       events.emit({
                         type: "quality:colorMode:select",
