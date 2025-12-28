@@ -3,6 +3,7 @@ import { Hexagon, X, Copy, Check } from "lucide-react";
 import { useTheme } from "@principal-ade/industry-theme";
 import type { PanelComponentProps } from "../types";
 import type { QualityMetrics } from "@principal-ai/codebase-composition";
+import { getColorModeForHexagonMetric, type HexagonMetricKey } from "@principal-ai/quality-lens-registry";
 import {
   QualityHexagonExpandable,
   QualityTier,
@@ -52,38 +53,39 @@ interface QualitySliceData {
   lastUpdated: string;
 }
 
-// Get the appropriate colorMode for a metric based on which lenses ran
+// Legacy fallbacks for when lensesRan is not available
+const LEGACY_FALLBACKS: Record<HexagonMetricKey, string> = {
+  linting: "eslint",
+  formatting: "prettier",
+  types: "typescript",
+  tests: "coverage",
+  deadCode: "knip",
+  documentation: "alexandria",
+};
+
+/**
+ * Get the appropriate colorMode for a metric based on which lenses ran.
+ * Uses the lens registry for dynamic resolution.
+ */
 function getColorModeForMetric(metric: string, lensesRan?: string[]): string | null {
-  // Static mappings for metrics with only one tool option
-  const staticMappings: Record<string, string> = {
-    types: "typescript",
-    documentation: "alexandria",
-    tests: "coverage",
-    deadCode: "knip",
-  };
+  // Validate metric is a valid hexagon metric key
+  if (!isValidHexagonMetric(metric)) return null;
+  const hexagonMetric = metric as HexagonMetricKey;
 
-  if (staticMappings[metric]) {
-    return staticMappings[metric];
+  // Use registry to find which lens ran for this category
+  const colorMode = getColorModeForHexagonMetric(hexagonMetric, lensesRan ?? []);
+
+  // If no lens ran for this category, fall back to default
+  // This ensures we still emit a colorMode for the UI to use
+  if (!colorMode && lensesRan === undefined) {
+    return LEGACY_FALLBACKS[hexagonMetric] ?? null;
   }
 
-  // Dynamic mappings for metrics with multiple tool options
-  if (metric === "linting") {
-    // Prefer biome-lint if it ran, otherwise eslint
-    if (lensesRan?.includes("biome-lint") || lensesRan?.includes("biome")) {
-      return "biome-lint";
-    }
-    return "eslint";
-  }
+  return colorMode;
+}
 
-  if (metric === "formatting") {
-    // Prefer biome-format if it ran, otherwise prettier
-    if (lensesRan?.includes("biome-format")) {
-      return "biome-format";
-    }
-    return "prettier";
-  }
-
-  return null;
+function isValidHexagonMetric(metric: string): metric is HexagonMetricKey {
+  return metric in LEGACY_FALLBACKS;
 }
 
 /**

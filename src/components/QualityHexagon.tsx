@@ -2,6 +2,7 @@ import * as React from "react";
 import { cn } from "../lib/utils";
 import type { Theme } from "@principal-ade/industry-theme";
 import type { QualityMetrics } from "@principal-ai/codebase-composition";
+import { isHexagonMetricConfigured, type HexagonMetricKey } from "@principal-ai/quality-lens-registry";
 
 export type { QualityMetrics };
 export type QualityTier = "none" | "bronze" | "silver" | "gold" | "platinum";
@@ -94,52 +95,16 @@ function getValueColor(value: number, key: string): string {
   return "#C62828"; // crimson
 }
 
-// Map lens IDs to hexagon metric keys
-const LENS_TO_METRIC_MAP: Record<string, MetricKey> = {
-  // Linting tools
-  eslint: "linting",
-  biome: "linting",
-  "biome-lint": "linting",
-  oxlint: "linting",
-  // Type checking tools
-  typescript: "types",
-  flow: "types",
-  // Testing tools
-  test: "tests",
-  jest: "tests",
-  vitest: "tests",
-  "bun-test": "tests",
-  mocha: "tests",
-  playwright: "tests",
-  cypress: "tests",
-  // Formatting tools
-  prettier: "formatting",
-  "biome-format": "formatting",
-  // Dead code detection
-  knip: "deadCode",
-  depcheck: "deadCode",
-  // Documentation
-  typedoc: "documentation",
-  jsdoc: "documentation",
-  alexandria: "documentation",
-};
-
 /**
- * Check if a metric has a lens that ran for it
+ * Check if a metric has a lens that ran for it.
+ * Uses the lens registry for the lens-to-metric mapping.
  */
 function isMetricConfigured(
   metricKey: MetricKey,
   lensesRan?: string[],
 ): boolean {
-  // undefined = old data without lensesRan tracking, assume all configured (backwards compatibility)
-  if (lensesRan === undefined) {
-    return true;
-  }
-  // Empty array = new data, explicitly no lenses ran for this package
-  if (lensesRan.length === 0) {
-    return false;
-  }
-  return lensesRan.some((lensId) => LENS_TO_METRIC_MAP[lensId] === metricKey);
+  // MetricKey and HexagonMetricKey are the same, just cast
+  return isHexagonMetricConfigured(metricKey as HexagonMetricKey, lensesRan);
 }
 
 // Metrics ordered clockwise from top-left
