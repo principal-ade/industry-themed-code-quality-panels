@@ -10,20 +10,79 @@ import {
 // Slice data shape - matches FormattedResults from quality-lens-cli
 type LensResultsSliceData = FormattedResults;
 
+// Payload type for package:select events
+interface PackageSelectPayload {
+  packagePath: string;
+  packageName: string;
+}
+
 /**
  * LensDataDebugPanelContent - Internal component that uses theme
  */
 const LensDataDebugPanelContent: React.FC<PanelComponentProps> = ({
   context,
   actions,
+  events,
 }) => {
   const { theme } = useTheme();
+  const [selectedPackage, setSelectedPackage] = React.useState<string | null>(
+    null,
+  );
 
   // Get lens results data from context
   const lensResultsSlice =
     context.getSlice<LensResultsSliceData>("lensResults");
   const hasSlice = context.hasSlice("lensResults");
   const isLoading = lensResultsSlice?.loading ?? false;
+
+  // Get unique package names and build a lookup map
+  const { packageNames, packagePathMap } = React.useMemo(() => {
+    if (!lensResultsSlice?.data?.results)
+      return { packageNames: [], packagePathMap: new Map<string, string>() };
+    const names = new Set<string>();
+    const pathMap = new Map<string, string>();
+
+    lensResultsSlice.data.results.forEach((r) => {
+      const name = r.package?.name ?? "unknown";
+      const path = r.package?.path ?? "";
+      names.add(name);
+      // Map both path and name to package name for lookup
+      if (path) pathMap.set(path, name);
+      pathMap.set(name, name);
+    });
+
+    return { packageNames: Array.from(names), packagePathMap: pathMap };
+  }, [lensResultsSlice?.data?.results]);
+
+  // Auto-select first package
+  React.useEffect(() => {
+    if (packageNames.length > 0 && !selectedPackage) {
+      setSelectedPackage(packageNames[0]);
+    }
+  }, [packageNames, selectedPackage]);
+
+  // Subscribe to package:select events
+  React.useEffect(() => {
+    if (!events) return;
+
+    const cleanup = events.on("package:select", (event) => {
+      const payload = event.payload as PackageSelectPayload | null;
+      if (!payload) return;
+
+      // Try to match by path first, then by name
+      const matchedPackage =
+        packagePathMap.get(payload.packagePath) ??
+        packagePathMap.get(payload.packageName) ??
+        // Also try matching the last segment of the path
+        packagePathMap.get(payload.packagePath.split("/").pop() ?? "");
+
+      if (matchedPackage) {
+        setSelectedPackage(matchedPackage);
+      }
+    });
+
+    return cleanup;
+  }, [events, packagePathMap]);
 
   // Handle file click - open in editor
   const handleFileClick = (file: string, line?: number) => {
@@ -79,27 +138,42 @@ const LensDataDebugPanelContent: React.FC<PanelComponentProps> = ({
             Lens Data Debug
           </h2>
         </div>
-        {lensResultsSlice?.data && (
+        {lensResultsSlice?.data && packageNames.length > 0 && (
           <div
             style={{
               display: "flex",
               alignItems: "center",
               gap: 12,
-              fontSize: 11,
-              color: theme.colors.textMuted,
+              fontSize: 12,
             }}
           >
-            <span>
-              {
-                new Set(
-                  lensResultsSlice.data.results.map(
-                    (r) => r.package?.name ?? "unknown",
-                  ),
-                ).size
-              }{" "}
-              packages
-            </span>
-            <span>{lensResultsSlice.data.results.length} results</span>
+            {packageNames.length > 1 ? (
+              <select
+                value={selectedPackage ?? ""}
+                onChange={(e) => setSelectedPackage(e.target.value)}
+                style={{
+                  padding: "4px 8px",
+                  borderRadius: 4,
+                  border: `1px solid ${theme.colors.border}`,
+                  backgroundColor: theme.colors.surface,
+                  color: theme.colors.text,
+                  fontFamily: theme.fonts.body,
+                  fontSize: 12,
+                  cursor: "pointer",
+                  outline: "none",
+                }}
+              >
+                {packageNames.map((pkg) => (
+                  <option key={pkg} value={pkg}>
+                    {pkg}
+                  </option>
+                ))}
+              </select>
+            ) : (
+              <span style={{ color: theme.colors.textMuted }}>
+                {packageNames[0]}
+              </span>
+            )}
           </div>
         )}
       </div>
@@ -148,6 +222,8 @@ const LensDataDebugPanelContent: React.FC<PanelComponentProps> = ({
             data={lensResultsSlice.data}
             theme={theme}
             onFileClick={handleFileClick}
+            selectedPackage={selectedPackage ?? undefined}
+            onPackageSelect={setSelectedPackage}
           />
         )}
       </div>

@@ -241,7 +241,8 @@ export const MockPanelProvider: React.FC<{
   children: (props: PanelComponentProps) => React.ReactNode;
   contextOverrides?: Partial<PanelContextValue>;
   actionsOverrides?: Partial<PanelActions>;
-}> = ({ children, contextOverrides, actionsOverrides }) => {
+  eventsOverride?: PanelEventEmitter;
+}> = ({ children, contextOverrides, actionsOverrides, eventsOverride }) => {
   // If slices are overridden, we need to update getSlice to use them
   let context = createMockContext(contextOverrides);
 
@@ -272,7 +273,7 @@ export const MockPanelProvider: React.FC<{
   }
 
   const actions = createMockActions(actionsOverrides);
-  const events = createMockEvents();
+  const events = eventsOverride ?? createMockEvents();
 
   return (
     <ThemeProvider>

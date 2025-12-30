@@ -2,7 +2,10 @@ import * as React from "react";
 import { cn } from "../lib/utils";
 import type { Theme } from "@principal-ade/industry-theme";
 import type { QualityMetrics } from "@principal-ai/codebase-composition";
-import { isHexagonMetricConfigured, type HexagonMetricKey } from "@principal-ai/quality-lens-registry";
+import {
+  isHexagonMetricConfigured,
+  type HexagonMetricKey,
+} from "@principal-ai/quality-lens-registry";
 
 export type { QualityMetrics };
 export type QualityTier = "none" | "bronze" | "silver" | "gold" | "platinum";
@@ -863,7 +866,10 @@ export function QualityHexagonExpandable({
           >
             {metricConfig.map(({ key, label }) => {
               const value = metrics[key as keyof QualityMetrics];
-              const configured = isMetricConfigured(key as MetricKey, lensesRan);
+              const configured = isMetricConfigured(
+                key as MetricKey,
+                lensesRan,
+              );
 
               return (
                 <div
@@ -909,7 +915,9 @@ export function QualityHexagonExpandable({
                     style={{
                       fontSize: 14,
                       fontWeight: 500,
-                      color: configured ? getValueColor(value, key) : theme.colors.textMuted,
+                      color: configured
+                        ? getValueColor(value, key)
+                        : theme.colors.textMuted,
                     }}
                     title={configured ? undefined : "Not configured"}
                   >

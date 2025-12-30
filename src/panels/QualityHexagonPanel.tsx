@@ -3,7 +3,10 @@ import { Hexagon, X, Copy, Check } from "lucide-react";
 import { useTheme } from "@principal-ade/industry-theme";
 import type { PanelComponentProps } from "../types";
 import type { QualityMetrics } from "@principal-ai/codebase-composition";
-import { getColorModeForHexagonMetric, type HexagonMetricKey } from "@principal-ai/quality-lens-registry";
+import {
+  getColorModeForHexagonMetric,
+  type HexagonMetricKey,
+} from "@principal-ai/quality-lens-registry";
 import {
   QualityHexagonExpandable,
   QualityTier,
@@ -67,13 +70,19 @@ const LEGACY_FALLBACKS: Record<HexagonMetricKey, string> = {
  * Get the appropriate colorMode for a metric based on which lenses ran.
  * Uses the lens registry for dynamic resolution.
  */
-function getColorModeForMetric(metric: string, lensesRan?: string[]): string | null {
+function getColorModeForMetric(
+  metric: string,
+  lensesRan?: string[],
+): string | null {
   // Validate metric is a valid hexagon metric key
   if (!isValidHexagonMetric(metric)) return null;
   const hexagonMetric = metric as HexagonMetricKey;
 
   // Use registry to find which lens ran for this category
-  const colorMode = getColorModeForHexagonMetric(hexagonMetric, lensesRan ?? []);
+  const colorMode = getColorModeForHexagonMetric(
+    hexagonMetric,
+    lensesRan ?? [],
+  );
 
   // If no lens ran for this category, fall back to default
   // This ensures we still emit a colorMode for the UI to use
@@ -368,7 +377,10 @@ const QualityHexagonPanelContent: React.FC<PanelComponentProps> = ({
                   onMetricClick={(metric) => {
                     // Emit colorMode event for File City
                     // Use lensesRan to determine correct tool (e.g., biome-lint vs eslint)
-                    const colorMode = getColorModeForMetric(metric, pkg.lensesRan);
+                    const colorMode = getColorModeForMetric(
+                      metric,
+                      pkg.lensesRan,
+                    );
                     if (colorMode) {
                       events.emit({
                         type: "quality:colorMode:select",

@@ -52,11 +52,11 @@
     }
   },
   "dependencies": {
-    "@principal-ade/industry-theme": "^0.1.2",
-    "@principal-ade/panel-framework-core": "^0.1.5",
+    "@principal-ade/industry-theme": "^0.1.4",
+    "@principal-ade/panel-framework-core": "^0.1.10",
     "@principal-ade/utcp-panel-event": "^0.1.0",
-    "@principal-ai/codebase-composition": "^0.2.9",
-    "@principal-ai/quality-lens-registry": "^0.2.0",
+    "@principal-ai/codebase-composition": "^0.2.25",
+    "@principal-ai/quality-lens-registry": "^0.2.5",
     "clsx": "^2.1.1",
     "lucide-react": "^0.552.0"
   },
