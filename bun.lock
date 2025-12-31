@@ -8,7 +8,7 @@
         "@principal-ade/panel-framework-core": "^0.1.10",
         "@principal-ade/utcp-panel-event": "^0.1.0",
         "@principal-ai/codebase-composition": "^0.2.25",
-        "@principal-ai/quality-lens-registry": "^0.2.5",
+        "@principal-ai/quality-lens-registry": "^0.3.3",
         "clsx": "^2.1.1",
         "lucide-react": "^0.552.0",
       },
@@ -217,7 +217,7 @@
 
     "@principal-ai/codebase-quality-lenses": ["@principal-ai/codebase-quality-lenses@0.1.56", "", { "peerDependencies": { "@a24z/alexandria-cli": ">=0.2.0" }, "optionalPeers": ["@a24z/alexandria-cli"] }, "sha512-B8qSFKx3ZRrAwSBqaopaEGxq2GeIj8raZ9T5zVdR/gOstxCXled0Gz/NV/+ukMCitXguHE9Re0WUUf7FF/9Omw=="],
 
-    "@principal-ai/quality-lens-registry": ["@principal-ai/quality-lens-registry@0.2.5", "", {}, "sha512-4yLxMIpE80RN27ZrzcZpESi0xgdmJIEgT8hMyZXtt3zVtZo+5p357XJ649Cgysb0LedekS/K8rG+MWn+gCenVw=="],
+    "@principal-ai/quality-lens-registry": ["@principal-ai/quality-lens-registry@0.3.3", "", {}, "sha512-+ln796H5BvVTEgiot9GIsTbEnZWF2aDNqYEG4AfBi0jmEJpHO68Gk2+fa6E4LvQ1da0Pa52JmQvnKptbeoEmaw=="],
 
     "@principal-ai/repository-abstraction": ["@principal-ai/repository-abstraction@0.2.4", "", {}, "sha512-UxVmCiUA0rhgQek+yxfWIoA8VEYCfLljU/eHd4Vx/MwvISAas4IVYS/i8kFmZD4q92XHYBFzyZyOQSg9sIq2FA=="],
 
